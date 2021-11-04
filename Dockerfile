@@ -6,7 +6,6 @@ FROM ruby:2.6.6
 # set some environment variables (can be overwritten when running container)
 ENV APP_PATH=/var/app
 ENV BUNDLE_VERSION=1.17.2
-ENV BUNDLE_PATH=/usr/local/bundle/gems
 ENV RAILS_PORT=3000
 
 # ARGs are for build-time arguments only, do not persist to container runtime like ENVs
