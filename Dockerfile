@@ -8,6 +8,11 @@ ENV APP_PATH=/var/app
 ENV BUNDLE_VERSION=1.17.2
 ENV RAILS_PORT=3000
 
+
+# copy entrypoint script into container, make it executable
+COPY ./entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
 # ARGs are for build-time arguments only, do not persist to container runtime like ENVs
 ARG NODE_VERSION=8
 
