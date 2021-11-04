@@ -1,0 +1,23 @@
+version: '3.9'
+networks:
+  development:
+volumes:
+  gem_cache:
+services:
+  rails_app:
+    build: .
+    container_name: rails_app
+    volumes:
+      - .:/var/app
+      - gem_cache:/usr/local/bundle/gems
+    networks:
+      - development
+    ports:
+      - 3000:3000
+    stdin_open: true
+    tty: true
+    entrypoint: entrypoint.sh
+    command: ['rails', 'server', '-p', '3000', '-b', '0.0.0.0']
+    environment:
+      RAILS_ENV: development
+    
