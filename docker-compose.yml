@@ -5,19 +5,19 @@ volumes:
   gem_cache:
 services:
   rails_app:
-    build: .
+    build: . # builds the image specified in the Dockerfile in this directory
     container_name: rails_app
     volumes:
-      - .:/var/app
-      - gem_cache:/usr/local/bundle/gems
+      - .:/var/app # mounts this directory (source code root directory) to the /var/app directory in the container
+      - gem_cache:/usr/local/bundle/gems # puts installed gems in the gem_cache volume so the image doesnt need to be rebuilt every time dependencies change
     networks:
       - development
     ports:
       - 3000:3000
-    stdin_open: true
+    stdin_open: true # stdin_open and tty allow an interactive shell to be attached to the container
     tty: true
-    entrypoint: entrypoint.sh
-    command: ['rails', 'server', '-p', '3000', '-b', '0.0.0.0']
+    entrypoint: entrypoint.sh # executes the entrypoint script on container start
+    command: ['rails', 'server', '-p', '3000', '-b', '0.0.0.0'] # starts the rails server on container start after entrypoint
     environment:
-      RAILS_ENV: development
+      RAILS_ENV: development # sets the RAILS_ENV environment variable in the container
     
