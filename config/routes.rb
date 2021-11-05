@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   root 'session#welcome'
+  post 'session/login'
+  post 'session/logout'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
