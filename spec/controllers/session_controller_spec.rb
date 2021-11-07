@@ -46,14 +46,14 @@ describe SessionController do
 
       allow(@nurse_double).to receive(:id).and_return('21')
       post :login, {"username_field" => "bob", "password_field" => "goff", "account_type" => "Nurse"}
-      expect(subject).to redirect_to(nurse_homepage_path)
+      expect(response).to redirect_to(nurse_homepage_path)
     end
 
     it "should redirect to home page for admins when admin logs in" do
 
       allow(@admin_double).to receive(:id).and_return('21')
       post :login, {"username_field" => "bob", "password_field" => "goff", "account_type" => "Administrator"}
-      expect(subject).to redirect_to(administrator_homepage_path)
+      expect(response).to redirect_to(administrator_homepage_path)
     end
 
   end
@@ -61,7 +61,16 @@ describe SessionController do
   describe "logout" do
 
     it "should correclty clear user_id in session variable" do
-      expect(1).to be (2)
+
+      session[:user_id] = '1234'
+      post :logout, {}
+      expect(session[:user_id]).to eq(nil)
+    end
+
+    it "should redirect user to root page of website" do
+      post :logout, {}
+      expect(response).to redirect_to(root_path)
+      
     end
 
   end
