@@ -4,7 +4,6 @@ class SessionController < ApplicationController
   end
 
   def login
-
     #insert try catch block here
     username = params.require(:username_field)
     password = params.require(:password_field)
