@@ -26,12 +26,23 @@ describe SessionController do
       expect(response).to redirect_to(root_path)
     end
 
+    it "should alert the user when they have not entered both a username and password" do
+      allow(Administrator).to receive(:find_by).with(any_args).and_return(nil)
+      post :login, {"username_field" => "bob", "password_field" => "", "account_type" => "Administrator"}
+      expect(flash[:alert]).to eq("Please enter both a username and password")
+    end
+
     it "should return to the home screen if the user is not found" do
 
       allow(Administrator).to receive(:find_by).with(any_args).and_return(nil)
       post :login, {"username_field" => "bob", "password_field" => "goff", "account_type" => "Administrator"}
       expect(subject).to redirect_to(root_path)
+    end
 
+    it "should alert the user when the credentials they entered could not be found in the database" do
+      allow(Administrator).to receive(:find_by).with(any_args).and_return(nil)
+      post :login, {"username_field" => "bob", "password_field" => "goff", "account_type" => "Administrator"}
+      expect(flash[:alert]).to eq("Administrator with username bob could not be found in the database")
     end
 
     it "should correctly set the session variable" do
