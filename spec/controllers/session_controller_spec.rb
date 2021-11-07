@@ -70,7 +70,7 @@ describe SessionController do
     it "should redirect user to root page of website" do
       post :logout, {}
       expect(response).to redirect_to(root_path)
-      
+
     end
 
   end
