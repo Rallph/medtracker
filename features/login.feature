@@ -6,16 +6,16 @@ Feature:
 
   Background: movies have been added to RottenPotatoes
 
-    Given the following Nurses have been added to MedTracker:
+    Given the following Nurses have been added to MedMonitor:
       | full_name               | username      | password     |
       | Bob Rogers              | bobby_R       | pa$$word     |
       | Sally Milbert           | s-milbert     | PassWord     |
 
-    And the following Administrators have been added to MedTracker:
+    And the following Administrators have been added to MedMonitor:
       | full_name               | username      | password     |
       | John Smith              | johnsmith1    | password1    |
 
-    And  I am on the MedTracker home page
+    And  I am on the MedMonitor home page
 
   Scenario: User does not fill out username and password field before hitting login
     When I attempt to login with username: "" and password: "PassWord"

@@ -1,11 +1,11 @@
-Given /the following Nurses have been added to MedTracker:/ do |nurses_table|
+Given /the following Nurses have been added to MedMonitor:/ do |nurses_table|
   nurses_table.hashes.each do |nurse|
 
     Nurse.create(nurse)
   end
 end
 
-Given /the following Administrators have been added to MedTracker:/ do |adminstrators_table|
+Given /the following Administrators have been added to MedMonitor:/ do |adminstrators_table|
 
   adminstrators_table.hashes.each do |admin|
 
@@ -13,7 +13,7 @@ Given /the following Administrators have been added to MedTracker:/ do |adminstr
   end
 end
 
-Given /^I am on the MedTracker home page$/ do
+Given /^I am on the MedMonitor home page$/ do
   visit root_path
 end
 
