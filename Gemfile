@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.6.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.10'
@@ -35,6 +36,18 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'rspec', '~>3.5'
+  gem 'rspec-rails'
+  gem 'guard-rspec'
+end
+
+group :test do
+  gem 'rspec-expectations'
+  gem 'cucumber-rails', :require=>false
+  gem 'database_cleaner'
+  gem 'simplecov'
 end
 
 group :development do

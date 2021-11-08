@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+ .page_banner {
+    width: 100%;
+    padding:30px 0;
+    text-align: center;
+    background: #33cccc;
+    color: white;
+ }

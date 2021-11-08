@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+
+  # administrator controller routes
+  get 'administrator/homepage'
+
+  # nurse controller routes
+  get 'nurse/homepage'
+
+  # session controller routes
+  root 'session#welcome'
+  post 'session/login'
+  post 'session/logout'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
