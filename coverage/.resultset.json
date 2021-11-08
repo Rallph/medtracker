@@ -1,0 +1,116 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/codyanderson/developer/SELT/final_project/selt_2021_proj_09/app/helpers/administrator_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/codyanderson/developer/SELT/final_project/selt_2021_proj_09/app/helpers/application_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/codyanderson/developer/SELT/final_project/selt_2021_proj_09/app/helpers/nurse_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/codyanderson/developer/SELT/final_project/selt_2021_proj_09/app/helpers/session_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/codyanderson/developer/SELT/final_project/selt_2021_proj_09/app/controllers/session_controller.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          8,
+          7,
+          null,
+          5,
+          5,
+          null,
+          5,
+          null,
+          2,
+          2,
+          3,
+          1,
+          1,
+          null,
+          null,
+          2,
+          null,
+          null,
+          null,
+          null,
+          3,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          2,
+          2,
+          null,
+          null
+        ]
+      },
+      "/Users/codyanderson/developer/SELT/final_project/selt_2021_proj_09/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          null,
+          null,
+          1,
+          null
+        ]
+      },
+      "/Users/codyanderson/developer/SELT/final_project/selt_2021_proj_09/app/models/nurse.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/codyanderson/developer/SELT/final_project/selt_2021_proj_09/app/models/administrator.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/codyanderson/developer/SELT/final_project/selt_2021_proj_09/app/controllers/administrator_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/codyanderson/developer/SELT/final_project/selt_2021_proj_09/app/controllers/nurse_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      }
+    },
+    "timestamp": 1636411280
+  }
+}
