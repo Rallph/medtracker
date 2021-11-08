@@ -11,3 +11,12 @@ administrators = [{:full_name => "John Smith", :username => "johnsmith1", :passw
 administrators.each do |admin|
   Administrator.create!(admin)
 end
+
+nurses = [
+  {:full_name => "Bob Rogers", :username => "bobby_R", :password => "pa$$word"},
+  {:full_name => "Sally Milbert", :username => "s-milbert", :password => "PassWord"}
+]
+
+nurses.each do |nurse|
+  Nurse.create!(nurse)
+end
