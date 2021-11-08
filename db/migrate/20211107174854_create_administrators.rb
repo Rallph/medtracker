@@ -1,8 +1,21 @@
 class CreateAdministrators < ActiveRecord::Migration
-  def change
-    create_table :administrators do |t|
+  # def change
+  #   create_table :administrators do |t|
+  #
+  #     t.timestamps null: false
+  #   end
+  # end
 
-      t.timestamps null: false
+  def up
+    create_table :administrators do |t|
+      t.string :full_name
+      t.string :username
+      t.string :password
     end
   end
+
+  def down
+    drop_table :administrators
+  end
+
 end

@@ -14,8 +14,9 @@
 ActiveRecord::Schema.define(version: 20211107174854) do
 
   create_table "administrators", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "full_name"
+    t.string "username"
+    t.string "password"
   end
 
   create_table "nurses", force: :cascade do |t|
