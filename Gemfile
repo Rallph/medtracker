@@ -4,8 +4,6 @@ ruby '2.6.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.10'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3', '1.3.13'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -41,6 +39,7 @@ group :development, :test do
   gem 'rspec', '~>3.5'
   gem 'rspec-rails'
   gem 'guard-rspec'
+  gem 'sqlite3', '1.3.13'
 end
 
 group :test do
@@ -48,6 +47,10 @@ group :test do
   gem 'cucumber-rails', :require=>false
   gem 'database_cleaner'
   gem 'simplecov'
+end
+
+group :production do
+  gem 'pg', '0.20.0'
 end
 
 group :development do
