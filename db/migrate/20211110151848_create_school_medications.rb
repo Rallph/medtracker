@@ -5,7 +5,7 @@ class CreateSchoolMedications < ActiveRecord::Migration
       t.string :medication_name
       t.integer :quantity
       t.string :unit
-      t.references :school
+      t.reference :school
     end
   end
 

@@ -1,13 +1,12 @@
 class CreateMedicationTransactions < ActiveRecord::Migration
   def up
     create_table :medication_transactions do |t|
-
-      t.timestamps
+      t.string :date
+      t.string :time
       t.string :change_in_quantity
-      t.references :school_medication
-      t.references :student
-      t.references :nurse
-
+      t.reference :school_medication
+      t.reference :student
+      t.reference :nurse
     end
   end
 

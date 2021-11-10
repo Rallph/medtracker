@@ -1,8 +1,9 @@
 class CreateConsentForms < ActiveRecord::Migration
-  def change
+  def up
     create_table :consent_forms do |t|
-
-      t.timestamps null: false
+      t.string :date
+      t.reference :parent
+      t.reference :student
     end
   end
 end
