@@ -5,6 +5,7 @@ class CreateNurses < ActiveRecord::Migration
       t.string :full_name
       t.string :username
       t.string :password_digest
+      t.string :email
       t.references :school
     end
   end

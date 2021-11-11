@@ -6,4 +6,7 @@ class CreateConsentForms < ActiveRecord::Migration
       t.references :student
     end
   end
+  def down
+    drop_table :consent_forms
+  end
 end

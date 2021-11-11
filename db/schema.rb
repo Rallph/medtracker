@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20211110223151) do
     t.string  "full_name"
     t.string  "username"
     t.string  "password_digest"
+    t.string  "email"
     t.integer "school_id"
   end
 
@@ -44,6 +45,11 @@ ActiveRecord::Schema.define(version: 20211110223151) do
     t.string  "username"
     t.string  "password_digest"
     t.integer "school_id"
+  end
+
+  create_table "parents", force: :cascade do |t|
+    t.string "full_name"
+    t.string "email"
   end
 
   create_table "school_medications", force: :cascade do |t|
