@@ -4,8 +4,8 @@ class CreateNurses < ActiveRecord::Migration
     create_table :nurses do |t|
       t.string :full_name
       t.string :username
-      t.string :password
-      t.reference :school
+      t.string :password_digest
+      t.references :school
     end
   end
 
