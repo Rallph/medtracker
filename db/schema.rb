@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20211110223151) do
   create_table "administrators", force: :cascade do |t|
     t.string  "full_name"
     t.string  "username"
-    t.string  "password"
+    t.string  "password_digest"
     t.integer "school_id"
   end
 
