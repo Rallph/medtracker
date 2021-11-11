@@ -4,8 +4,8 @@ class CreateAdministrators < ActiveRecord::Migration
     create_table :administrators do |t|
       t.string :full_name
       t.string :username
-      t.string :password
       t.string :email
+      t.string :password_digest
       t.references :school
     end
   end

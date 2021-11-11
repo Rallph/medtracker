@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20211110235110) do
+ActiveRecord::Schema.define(version: 20211110223151) do
 
   create_table "administrators", force: :cascade do |t|
     t.string  "full_name"
     t.string  "username"
-    t.string  "password"
+    t.string  "password_digest"
     t.string  "email"
     t.integer "school_id"
   end
@@ -43,8 +43,7 @@ ActiveRecord::Schema.define(version: 20211110235110) do
   create_table "nurses", force: :cascade do |t|
     t.string  "full_name"
     t.string  "username"
-    t.string  "password"
-    t.string  "email"
+    t.string  "password_digest"
     t.integer "school_id"
   end
 
