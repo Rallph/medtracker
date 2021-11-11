@@ -8,16 +8,16 @@ class SessionController < ApplicationController
     begin
 
       username = params.require(:username_field)
-      password = params.require(:password_field) #this will get used when we add authentication
+      password = params.require(:password_field)
 
       admin = Administrator.find_by(username: username)
       nurse = Nurse.find_by(username: username)
 
-      if (admin != nil)
+      if (admin.present? && admin.authenticate(password))
 
         session[:user_id] = admin.id
         redirect_to administrator_homepage_path
-      elsif (nurse != nil)
+      elsif (nurse.present? && nurse.authenticate(password))
         session[:user_id] = nurse.id
         redirect_to nurse_homepage_path
       else
