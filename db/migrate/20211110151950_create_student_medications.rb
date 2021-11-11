@@ -4,8 +4,8 @@ class CreateStudentMedications < ActiveRecord::Migration
       t.string :medication_name
       t.integer :quantity
       t.string :unit
-      t.reference :school
-      t.reference :student
+      t.references :school
+      t.references :student
     end
   end
   def down

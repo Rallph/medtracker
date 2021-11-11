@@ -4,4 +4,7 @@ class CreateDistricts < ActiveRecord::Migration
       t.string :district_name
     end
   end
+  def down
+    drop_table :districts
+  end
 end

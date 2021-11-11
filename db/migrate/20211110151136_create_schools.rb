@@ -3,7 +3,7 @@ class CreateSchools < ActiveRecord::Migration
   def up
     create_table :schools do |t|
       t.string :school_name
-      t.reference :district
+      t.references :district
     end
   end
 
