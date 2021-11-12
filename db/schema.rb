@@ -39,9 +39,10 @@ ActiveRecord::Schema.define(version: 20211112202756) do
   end
 
   create_table "emergency_contacts", force: :cascade do |t|
-    t.string "full_name"
-    t.string "relation"
-    t.string "phone_number"
+    t.string  "full_name"
+    t.string  "relation"
+    t.string  "phone_number"
+    t.integer "student_id"
   end
 
   create_table "nurses", force: :cascade do |t|
@@ -115,7 +116,6 @@ ActiveRecord::Schema.define(version: 20211112202756) do
     t.string  "full_name"
     t.string  "date_of_birth"
     t.integer "school_id"
-    t.integer "emergency_contact_id"
   end
 
 end
