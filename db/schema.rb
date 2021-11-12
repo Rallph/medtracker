@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20211112162401) do
+ActiveRecord::Schema.define(version: 20211112193304) do
 
   create_table "administrators", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -38,15 +38,6 @@ ActiveRecord::Schema.define(version: 20211112162401) do
     t.string "district_name"
   end
 
-  create_table "medication_transactions", force: :cascade do |t|
-    t.string  "date"
-    t.string  "time"
-    t.string  "change_in_quantity"
-    t.integer "school_medication_id"
-    t.integer "student_id"
-    t.integer "nurse_id"
-  end
-
   create_table "nurses", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -67,6 +58,20 @@ ActiveRecord::Schema.define(version: 20211112162401) do
     t.string "email"
   end
 
+  create_table "school_medication_transactions", force: :cascade do |t|
+    t.string  "date"
+    t.string  "time"
+    t.string  "change_in_quantity"
+    t.integer "school_medication_id"
+    t.integer "student_id"
+    t.integer "nurse_id"
+  end
+
+  create_table "school_medication_transactions_medications", id: false, force: :cascade do |t|
+    t.integer "school_medication_id",             null: false
+    t.integer "school_medication_transaction_id", null: false
+  end
+
   create_table "school_medications", force: :cascade do |t|
     t.string  "medication_name"
     t.integer "quantity"
@@ -77,6 +82,14 @@ ActiveRecord::Schema.define(version: 20211112162401) do
   create_table "schools", force: :cascade do |t|
     t.string  "school_name"
     t.integer "district_id"
+  end
+
+  create_table "student_medication_transactions", force: :cascade do |t|
+    t.string  "date"
+    t.string  "time"
+    t.string  "change_in_quantity"
+    t.integer "student_medication_id"
+    t.integer "nurse_id"
   end
 
   create_table "student_medications", force: :cascade do |t|
