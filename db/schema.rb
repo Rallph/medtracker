@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20211112201252) do
+ActiveRecord::Schema.define(version: 20211112202756) do
 
   create_table "administrators", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -36,6 +36,12 @@ ActiveRecord::Schema.define(version: 20211112201252) do
 
   create_table "districts", force: :cascade do |t|
     t.string "district_name"
+  end
+
+  create_table "emergency_contacts", force: :cascade do |t|
+    t.string "full_name"
+    t.string "relation"
+    t.string "phone_number"
   end
 
   create_table "nurses", force: :cascade do |t|
@@ -108,8 +114,8 @@ ActiveRecord::Schema.define(version: 20211112201252) do
   create_table "students", force: :cascade do |t|
     t.string  "full_name"
     t.string  "date_of_birth"
-    t.string  "emergency_contact_number"
     t.integer "school_id"
+    t.integer "emergency_contact_id"
   end
 
 end

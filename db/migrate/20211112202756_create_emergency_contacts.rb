@@ -4,6 +4,7 @@ class CreateEmergencyContacts < ActiveRecord::Migration
       t.string :full_name
       t.string :relation
       t.string :phone_number
+      t.references :student
     end
   end
   def down

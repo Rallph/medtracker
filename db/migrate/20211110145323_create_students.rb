@@ -4,7 +4,6 @@ class CreateStudents < ActiveRecord::Migration
       t.string :full_name
       t.string :date_of_birth
       t.references :school
-      t.references :emergency_contact
     end
   end
 
