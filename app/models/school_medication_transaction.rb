@@ -1,5 +1,5 @@
 class SchoolMedicationTransaction < ActiveRecord::Base
-  has_one :student
-  has_one :nurse
-  has_one :school_medication
+  belongs_to :student
+  belongs_to :nurse
+  belongs_to :school_medication
 end

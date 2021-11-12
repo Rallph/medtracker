@@ -1,4 +1,4 @@
 class StudentMedicationTransaction < ActiveRecord::Base
-  has_one :nurse
-  has_one :student_medication
+  belongs_to :nurse
+  belongs_to :student_medication
 end
