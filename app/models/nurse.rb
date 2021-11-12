@@ -1,5 +1,6 @@
 class Nurse < ActiveRecord::Base
-  has_secure_password
-  belongs_to :school
-  has_many :medication_transactions
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
 end

@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
 
+  devise_for :nurses
   # administrator controller routes
   get 'administrator/homepage'
 
   # nurse controller routes
   get 'nurse/homepage'
 
-  # session controller routes
-  root 'session#welcome'
-  post 'session/login'
-  post 'session/logout'
+  # define root route
+  root to: 'administrator#homepage'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
