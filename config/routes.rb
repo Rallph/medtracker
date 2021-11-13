@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :parents
   get 'homepage/home'
 
   get 'homepage_controller/home'
