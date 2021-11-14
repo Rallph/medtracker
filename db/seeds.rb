@@ -49,25 +49,25 @@ schools.each do |school|
   School.create!(school)
 end
 
+school_medications = [
+  {:medication_name => "Ibuprofen", :quantity => 30, :unit => "tablets", :school_id => 1},
+  {:medication_name => "Ibuprofen", :quantity => 25, :unit => "tablets", :school_id => 2},
+  {:medication_name => "Cough Syrup", :quantity => 250, :unit => "mL", :school_id => 1}
+]
+school_medications.each do |sm|
+  SchoolMedication.create!(sm)
+end
 
-#
-# school_medications = [
-#   {:medication_name => "Ibuprofen", :quantity => 30, :unit => "tablets", :school => 1},
-#   {:medication_name => "Ibuprofen", :quantity => 25, :unit => "tablets", :school => 2},
-#   {:medication_name => "Cough Syrup", :quantity => 250, :unit => "mL", :school => 1}
-# ]
-# school_medications.each do |sm|
-#   SchoolMedication.create!(sm)
-# end
-#
-# medication_transactions = [
-#   {:date => "11-09-2021", :time => "10:00AM", :change_in_quantity => "1", :medication_id => 1, :student_id => 1, :nurse_id => 2},
-#   {:date => "11-09-2021", :time => "10:45AM", :change_in_quantity => "10", :medication_id => 3, :student_id => 2, :nurse_id => 2},
-# ]
-# medication_transactions.each do |mt|
-#   MedicationTransaction.create!(mt)
-# end
-#
+
+
+school_medication_transactions = [
+  {:date => "11-09-2021", :time => "10:00AM", :change_in_quantity => "1", :school_medication_id => 1, :student_id => 1, :nurse_id => 2},
+  {:date => "11-09-2021", :time => "10:45AM", :change_in_quantity => "10", :school_medication_id => 3, :student_id => 2, :nurse_id => 2},
+]
+school_medication_transactions.each do |mt|
+  SchoolMedicationTransaction.create!(mt)
+end
+
 # consent_forms = [
 #   {:date => "09-22-2021", :parent_id => 1, :student_id => 1}
 # ]
