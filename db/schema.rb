@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20211114164208) do
 
   create_table "administrators", force: :cascade do |t|
@@ -71,8 +72,15 @@ ActiveRecord::Schema.define(version: 20211114164208) do
   add_index "nurses", ["reset_password_token"], name: "index_nurses_on_reset_password_token", unique: true
 
   create_table "parents", force: :cascade do |t|
-    t.string "full_name"
-    t.string "email"
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string   "full_name"
+    t.integer  "school_id"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   create_table "school_medication_transactions", force: :cascade do |t|

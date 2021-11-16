@@ -8,9 +8,12 @@
 </head>
 <body>
 
-  <h1 class = "page_banner">MedTracker</h1>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <h1 class = "text-center">MedTracker</h1>
+  <% flash.each do |type, msg| %>
+    <div class="alert alert-info">
+      <%= msg %>
+    </div>
+  <% end %>
   <%= yield %>
 
 </body>
