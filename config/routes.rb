@@ -1,14 +1,23 @@
 Rails.application.routes.draw do
 
-  devise_for :parents
   get 'homepage/home'
 
   get 'homepage_controller/home'
 
   # generate routs for devise login
-  devise_for :administrators
-  devise_for :nurses
+  #devise_for :administrators
+  #devise_for :nurses
+  #devise_for :parents
 
+  devise_for :administrators, path: 'administrators', controllers: {
+    sessions: "administrators/sessions"
+  }
+  devise_for :nurses, path: 'nurses', controllers: {
+    sessions: "nurses/sessions"
+  }
+  devise_for :parents, path: 'parents', controllers: {
+    sessions: "parents/sessions"
+  }
 
   # administrator controller routes
   get 'administrator/homepage', as: :administrator_root
