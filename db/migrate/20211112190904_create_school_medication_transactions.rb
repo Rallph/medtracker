@@ -1,6 +1,6 @@
-class CreateMedicationTransactions < ActiveRecord::Migration
+class CreateSchoolMedicationTransactions < ActiveRecord::Migration
   def up
-    create_table :medication_transactions do |t|
+    create_table :school_medication_transactions do |t|
       t.string :date
       t.string :time
       t.string :change_in_quantity
@@ -11,6 +11,6 @@ class CreateMedicationTransactions < ActiveRecord::Migration
   end
 
   def down
-    drop_table :medication_transactions
+    drop_table :school_medication_transactions
   end
 end

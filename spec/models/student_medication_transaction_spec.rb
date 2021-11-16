@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe MedicationTransaction, type: :model do
+RSpec.describe StudentMedicationTransaction, type: :model do
   pending "add some examples to (or delete) #{__FILE__}"
 end
