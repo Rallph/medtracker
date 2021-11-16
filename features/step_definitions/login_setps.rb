@@ -16,12 +16,18 @@ Given /^I am on the MedMonitor home page$/ do
   visit root_path
 end
 
-When /^I attempt to login as a "(.*?)" with email: "(.*?)" and password: "(.*?)"$/ do |user_type, username, password|
+When /^I log in as a "(.*?)" with email: "(.*?)" and password: "(.*?)"$/ do |user_type, username, password|
   
   visit "/#{user_type}s/sign_in"
   fill_in  "#{user_type}_email", :with => username
   fill_in  "#{user_type}_password", :with => password
   click_button 'Log in'
+
+end
+
+When /^I attempt to visit the "(.*?)" sign in page$/ do |user_type|
+
+  visit "/#{user_type}s/sign_in"
 
 end
 
