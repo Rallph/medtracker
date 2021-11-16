@@ -11,7 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20211113140827) do
+
+ActiveRecord::Schema.define(version: 20211114164208) do
 
   create_table "administrators", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -34,17 +35,25 @@ ActiveRecord::Schema.define(version: 20211113140827) do
     t.integer "student_id"
   end
 
+  create_table "consent_forms_school_medications", id: false, force: :cascade do |t|
+    t.integer "consent_form_id",      null: false
+    t.integer "school_medication_id", null: false
+  end
+
+  create_table "consent_forms_student_medications", id: false, force: :cascade do |t|
+    t.integer "consent_form_id",       null: false
+    t.integer "student_medication_id", null: false
+  end
+
   create_table "districts", force: :cascade do |t|
     t.string "district_name"
   end
 
-  create_table "medication_transactions", force: :cascade do |t|
-    t.string  "date"
-    t.string  "time"
-    t.string  "change_in_quantity"
-    t.integer "school_medication_id"
+  create_table "emergency_contacts", force: :cascade do |t|
+    t.string  "full_name"
+    t.string  "relation"
+    t.string  "phone_number"
     t.integer "student_id"
-    t.integer "nurse_id"
   end
 
   create_table "nurses", force: :cascade do |t|
@@ -74,8 +83,14 @@ ActiveRecord::Schema.define(version: 20211113140827) do
     t.datetime "updated_at",                          null: false
   end
 
-  add_index "parents", ["email"], name: "index_parents_on_email", unique: true
-  add_index "parents", ["reset_password_token"], name: "index_parents_on_reset_password_token", unique: true
+  create_table "school_medication_transactions", force: :cascade do |t|
+    t.string  "date"
+    t.string  "time"
+    t.string  "change_in_quantity"
+    t.integer "school_medication_id"
+    t.integer "student_id"
+    t.integer "nurse_id"
+  end
 
   create_table "school_medications", force: :cascade do |t|
     t.string  "medication_name"
@@ -89,6 +104,14 @@ ActiveRecord::Schema.define(version: 20211113140827) do
     t.integer "district_id"
   end
 
+  create_table "student_medication_transactions", force: :cascade do |t|
+    t.string  "date"
+    t.string  "time"
+    t.string  "change_in_quantity"
+    t.integer "student_medication_id"
+    t.integer "nurse_id"
+  end
+
   create_table "student_medications", force: :cascade do |t|
     t.string  "medication_name"
     t.integer "quantity"
@@ -100,7 +123,6 @@ ActiveRecord::Schema.define(version: 20211113140827) do
   create_table "students", force: :cascade do |t|
     t.string  "full_name"
     t.string  "date_of_birth"
-    t.string  "emergency_contact_number"
     t.integer "school_id"
   end
 
