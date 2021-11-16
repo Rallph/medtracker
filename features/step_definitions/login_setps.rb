@@ -1,15 +1,14 @@
-Given /the following Nurses have been added to MedMonitor:/ do |nurses_table|
-  nurses_table.hashes.each do |nurse|
+Given /the following "(.*?)" have been added to MedMonitor:/ do |user_type, users_table|
 
-    Nurse.create(nurse)
-  end
-end
+  users_table.hashes.each do |user|
 
-Given /the following Administrators have been added to MedMonitor:/ do |adminstrators_table|
-
-  adminstrators_table.hashes.each do |admin|
-
-    Administrator.create(admin)
+    if (user_type == "Administrators")
+      Administrator.create(user)
+    elsif (user_type == "Nurses")
+      Nurse.create(user)
+    else
+      Parent.create(user)
+    end
   end
 end
 
@@ -17,11 +16,12 @@ Given /^I am on the MedMonitor home page$/ do
   visit root_path
 end
 
-When /^I attempt to login with username: "(.*?)" and password: "(.*?)"$/ do |username, password|
-
-  fill_in 'username_field', :with => username
-  fill_in 'password_field', :with => password
-  click_button 'login'
+When /^I attempt to login as a "(.*?)" with email: "(.*?)" and password: "(.*?)"$/ do |user_type, username, password|
+  
+  visit "/#{user_type}s/sign_in"
+  fill_in  "#{user_type}_email", :with => username
+  fill_in  "#{user_type}_password", :with => password
+  click_button 'Log in'
 
 end
 
