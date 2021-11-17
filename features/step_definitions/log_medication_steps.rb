@@ -4,3 +4,7 @@ Given /the following Students have been added to MedMonitor:/ do |students_table
     Student.create!(student)
   end
 end
+
+Given /^I am on the Administer Medication page$/ do
+  visit :administer
+end
