@@ -71,9 +71,19 @@ ActiveRecord::Schema.define(version: 20211117210541) do
   add_index "nurses", ["reset_password_token"], name: "index_nurses_on_reset_password_token", unique: true
 
   create_table "parents", force: :cascade do |t|
-    t.string "full_name"
-    t.string "email"
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string   "full_name"
+    t.integer  "school_id"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
+
+  add_index "parents", ["email"], name: "index_parents_on_email", unique: true
+  add_index "parents", ["reset_password_token"], name: "index_parents_on_reset_password_token", unique: true
 
   create_table "parents_students", id: false, force: :cascade do |t|
     t.integer "parent_id",  null: false
