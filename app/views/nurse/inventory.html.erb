@@ -1,0 +1,35 @@
+<h1>Nurse#inventory</h1>
+<style>
+    table, th, td {
+        border:1px solid black;
+    }
+    table.center {
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+
+
+
+<table class="center" ; style="width:50%;background-color:powderblue">
+  <tr>
+    <th>id</th>
+    <th>medication_name</th>
+    <th>quantity</th>
+    <th>unit</th>
+    <th>school_id</th>
+  </tr>
+  <%@school_medications.each do |med| %>
+    <tr>
+      <td><%= med[:id] %></td>
+      <td><%= med[:medication_name] %></td>
+      <td><%= med[:quantity] %></td>
+      <td><%= med[:unit] %></td>
+      <td><%= med[:school_id] %></td>
+    </tr>
+  <% end %>
+</table>
+
+
+
+
