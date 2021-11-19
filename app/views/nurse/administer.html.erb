@@ -18,6 +18,11 @@
     </div>
 
     <div class="form-group">
+      <%= label_tag :time, "Date/Time" %>
+      <%= datetime_local_field_tag :time, nil, class: %w[form-control input-lg] %>
+    </div>
+
+    <div class="form-group">
       <%= label_tag :comment, "Comment" %>
       <%= text_area_tag :comment, nil, class: %w[form-control input-lg] %>
     </div>
