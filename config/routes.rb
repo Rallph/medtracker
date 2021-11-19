@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   # nurse controller routes
   get 'nurse/homepage', as: :nurse_root
 
+  # parent controller routes
+  get 'parent/homepage', as: :parent_root
+
   # homepage routes
   get 'homepage/home'
 
