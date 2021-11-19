@@ -11,7 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20211114164208) do
 
   create_table "administrators", force: :cascade do |t|
@@ -82,6 +81,9 @@ ActiveRecord::Schema.define(version: 20211114164208) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
   end
+
+  add_index "parents", ["email"], name: "index_parents_on_email", unique: true
+  add_index "parents", ["reset_password_token"], name: "index_parents_on_reset_password_token", unique: true
 
   create_table "school_medication_transactions", force: :cascade do |t|
     t.string  "date"
