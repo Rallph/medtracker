@@ -24,12 +24,6 @@ RSpec.describe NurseController, type: :controller do
       get :administer
     end
 
-    it 'should query the student medication model' do
-      fake_medication = [double('med1'), double('med2')]
-      expect(StudentMedication).to receive(:where).and_return(fake_medication)
-      get :administer
-    end
-
     it 'should render the administer medication template' do
 
       fake_students = [double('student1'), double('student2')]
@@ -37,7 +31,6 @@ RSpec.describe NurseController, type: :controller do
 
       allow(Student).to receive(:where).and_return(fake_students)
       allow(SchoolMedication).to receive(:where).and_return(fake_medication)
-      allow(StudentMedication).to receive(:where).and_return(fake_medication)
       get :administer
 
       expect(response).to render_template("administer")
