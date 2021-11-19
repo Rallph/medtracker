@@ -12,7 +12,7 @@ end
 Then /^I should see fields for "(.*?)"$/ do |fields|
 
   # split strings by comma, replace spaces with dashes to be formatted as HTML IDs
-  field_ids = fields.split(',').map { |field_str| field_str.gsub(" ", "-") }
+  field_ids = fields.split(',').map { |field_str| field_str.gsub(" ", "_") }
 
   # check that the page has elements with those IDs
   field_ids.each do |field_id|
