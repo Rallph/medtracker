@@ -20,3 +20,7 @@ Feature:
 
   Scenario: Nurse visits administer medication page
     Then I should see fields for "select student, select medication, dosage, comment"
+
+  Scenario: Nurse successfully administers medication to a student
+    When I administer "1" dose(s) of medication "Ibuprofen" to student "John Doe"
+    Then I should see: "1 dose(s) of Ibuprofen administered to John Doe"
