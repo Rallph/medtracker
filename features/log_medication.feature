@@ -18,4 +18,5 @@ Feature:
     And I log in as a "nurse" with email: "s-milbert@hotmail.com" and password: "PassWord"
     And I am on the Administer Medication page
 
-
+  Scenario: Nurse visits administer medication page
+    Then I should see fields for "select student, select medication, dosage, comment"
