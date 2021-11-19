@@ -4,4 +4,7 @@ class NurseController < ApplicationController
 
   def homepage
   end
+
+  def administer
+  end
 end
