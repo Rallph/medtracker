@@ -5,4 +5,7 @@ class AdministratorController < ApplicationController
   def homepage
   end
 
+  def add_student
+
+  end
 end
