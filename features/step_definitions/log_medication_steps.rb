@@ -16,7 +16,7 @@ Then /^I should see fields for "(.*?)"$/ do |fields|
 
   # check that the page has elements with those IDs
   field_ids.each do |field_id|
-    page.has_field?(field_id)
+    expect(page.has_field?(field_id)).to be_truthy
   end
 
 end
