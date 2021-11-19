@@ -20,3 +20,11 @@ Then /^I should see fields for "(.*?)"$/ do |fields|
   end
 
 end
+
+When /^I administer "([^"]*)" dose\(s\) of medication "([^"]*)" to student "([^"]*)"$/ do |dosage, medication, student|
+  select student, from: 'select_student'
+  select medication, from: 'select_medication'
+  fill_in 'dosage', with: dosage
+
+  click_button 'Administer Medication'
+end
