@@ -6,13 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# nurses = [
-#   {:full_name => "Bob Rogers", :username => "bobby_R", :password => "pa$$word", :email => "brogers@gmail.com"},
-#   {:full_name => "Sally Milbert", :username => "s-milbert", :password => "PassWord", :email => "smilbert@gmail.com"}
-# ]
-# nurses.each do |nurse|
-#   Nurse.create!(nurse)
-# end
+nurses = [
+  {:full_name => "Bob Rogers", :password => "pa$$word", :email => "brogers@gmail.com", :school_id => 1},
+  {:full_name => "Sally Milbert", :password => "PassWord", :email => "smilbert@gmail.com", :school_id => 1}
+]
+nurses.each do |nurse|
+  Nurse.create!(nurse)
+end
 #
 # administrators = [
 #   {:full_name => "John Smith", :username => "johnsmith1", :password => "password1", :email => "jsmith@gmail.com"}
@@ -22,13 +22,13 @@
 # end
 #
 students = [
-   {:full_name => "Will Ries", :date_of_birth => "10-01-2009", :emergency_contact_number => "555-543-8888", :school => 3},
-   {:full_name => "Jessica Klien", :date_of_birth => "04-10-2009", :emergency_contact_number => "555-543-4322", :school => 3},
-   {:full_name => "Samantha Gates", :date_of_birth => "02-11-2010", :emergency_contact_number => "555-555-4211", :school => 2}
+  {:full_name => "Will Ries", :date_of_birth => "10-01-2009", :school_id => 1},
+  {:full_name => "Jessica Klien", :date_of_birth => "04-10-2009", :school_id => 1},
+  {:full_name => "Samantha Gates", :date_of_birth => "02-11-2010", :school_id => 1}
 ]
- students.each do |student|
-   Student.create!(student)
- end
+students.each do |student|
+  Student.create!(student)
+end
 
 
 districts  = [
