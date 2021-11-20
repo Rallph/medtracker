@@ -16,12 +16,14 @@ class NurseController < ApplicationController
     param! :dosage,             Integer, required: true, min: 1, message: "At least one dose must be administered"
     param! :time,               String, required: true, message: "Administration time not specified"
     param! :comment,            String
-    
-    rescue_from "RailsParam::InvalidParameterError" do |exception|
-      flash[:alert] = exception.message
-      redirect_to :administer
-    end
 
+    datetime = params[:time].split("T")
+    date = datetime[0]
+    time = datetime[1]
+
+    SchoolMedicationTransaction.create!(student_id: params[:select_student], nurse_id: current_nurse.id, school_medication_id: params[:select_medication], change_in_quantity: params[:dosage], date: date, time: time, comment: params[:comment])
+
+    flash[:info] = "Medication administered successfully"
     redirect_to :administer
   end
 
