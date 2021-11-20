@@ -21,14 +21,14 @@
 #   Administrator.create!(admin)
 # end
 #
-# students = [
-#   {:full_name => "Will Ries", :date_of_birth => "10-01-2009", :emergency_contact_number => "555-543-8888", :school => 3},
-#   {:full_name => "Jessica Klien", :date_of_birth => "04-10-2009", :emergency_contact_number => "555-543-4322", :school => 3},
-#   {:full_name => "Samantha Gates", :date_of_birth => "02-11-2010", :emergency_contact_number => "555-555-4211", :school => 2}
-# ]
-# students.each do |student|
-#   Student.create!(student)
-# end
+students = [
+   {:full_name => "Will Ries", :date_of_birth => "10-01-2009", :emergency_contact_number => "555-543-8888", :school => 3},
+   {:full_name => "Jessica Klien", :date_of_birth => "04-10-2009", :emergency_contact_number => "555-543-4322", :school => 3},
+   {:full_name => "Samantha Gates", :date_of_birth => "02-11-2010", :emergency_contact_number => "555-555-4211", :school => 2}
+]
+ students.each do |student|
+   Student.create!(student)
+ end
 
 
 districts  = [

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   # administrator controller routes
   get 'administrator/homepage', as: :administrator_root
+  #post 'administrator/homepage' => 'administrator#submit_new_student', as: :submit_new_student
   get 'administrator/add_student' => 'administrator#add_student', as: :add_student
   post 'administrator/add_student' => 'administrator#submit_new_student', as: :submit_new_student
 
