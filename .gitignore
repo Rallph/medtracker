@@ -18,12 +18,8 @@
 
 # Ignore dotfiles in coverage directory
 coverage/.*
-/.byebug_history
 /.idea/.gitignore
-/.idea/dataSources.xml
-/main
 /.idea/misc.xml
 /.idea/modules.xml
-/.idea/inspectionProfiles/Project_Default.xml
 /.idea/selt_2021_proj_09.iml
 /.idea/vcs.xml
