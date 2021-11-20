@@ -40,4 +40,17 @@ RSpec.describe NurseController, type: :controller do
     end
   end
 
+  describe 'Submit Administer Medication Form' do
+    it 'should redirect to the administer form with a flash notice' do
+      post :administer_submit, { selected_student: "1", selected_medication: "1", dosage: "1", time: "2021-11-16T18:06"}
+      expect(flash[:info]).to be_truthy
+      expect(response).to redirect_to :administer
+    end
+
+    it 'should call the school medication transaction model to create a new transaction' do
+      post :administer_submit, { selected_student: "1", selected_medication: "1", dosage: "1", time: "2021-11-16T18:06"}
+      expect(SchoolMedicationTransaction).to receive(:create!)
+    end
+  end
+
 end
