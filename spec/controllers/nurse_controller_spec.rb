@@ -31,8 +31,8 @@ RSpec.describe NurseController, type: :controller do
     it "should assign the @meds_in_low_supply member variable" do
       fake_medicines = [double('medicine1'), double('medicine2')]
       allow(SchoolMedication).to receive(:where).and_return(fake_medicines)
-      expect(assigns(:meds_in_low_supply)).to eq(fake_medicines)
       get :homepage
+      expect(assigns(:meds_in_low_supply)).to eq(fake_medicines)
     end
 
   end
