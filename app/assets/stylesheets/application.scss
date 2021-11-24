@@ -1,26 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
-.nurse-homepage-button {
-  margin-top: 50px;
-}
-
-.nurse-alert {
-  margin-top: 50px;
-  border: 2px solid black;
-  border-radius: 10px;
-}
-
-.nurse-homepage-buttons {
-
-  margin-top: 14%;
-
-}
-
-.nurse-alert-header {
-  text-decoration: underline;
-  font-weight: bold;
-}
+@import "nurse.scss";
 
 .header {
   font-size: 50px;
