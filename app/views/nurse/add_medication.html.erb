@@ -1,0 +1,43 @@
+<div class="container">
+  <h2>Add Medication To Inventory</h2>
+
+  <%= form_tag do %>
+
+    <div class="form-group">
+      <%= label_tag :name_of_medication, "Name of Medication" %>
+      <%= text_field_tag :name_of_medication, nil, class: %w[form-control input-lg] %>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :unit_of_medication, "Unit of Measurement" %>
+      <%= text_field_tag :unit_of_medication, nil, class: %w[form-control input-lg] %>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :initial_amount, "Initial Amount" %>
+      <%= text_field_tag :initial_amount, nil, class: %w[form-control input-lg] %>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :belongs_to_student, "Belongs to Student?" %>
+      <%= check_box_tag :belongs_to_student, nil, false  %>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :student_id, "Student ID" %>
+      <%= text_field_tag :student_id, nil, class: %w[form-control input-lg], disabled: true%>
+    </div>
+
+    <div class="form-group">
+      <%= submit_tag "Add Medication", class: %w[btn btn-primary] %>
+    </div>
+
+    <script>
+        document.getElementById('belongs_to_student').onchange = function() {
+            document.getElementById('student_id').disabled = !this.checked;
+        };
+    </script>
+
+
+  <% end %>
+</div>
