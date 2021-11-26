@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   get   'nurse/administer' => 'nurse#administer', as: :administer
   post  'nurse/administer' => 'nurse#administer_submit', as: :administer_submit
   get   'nurse/add_medication' => 'nurse#add_medication', as: :add_medication
-  post   'nurse/add_medication' => 'nurse#add_medication', as: :add_medication_submit
+  post   'nurse/add_medication' => 'nurse#add_medication_submit', as: :add_medication_submit
 
   # parent controller routes
   get 'parent/homepage', as: :parent_root

@@ -34,4 +34,26 @@ class NurseController < ApplicationController
     redirect_to :administer
   end
 
+
+  def add_medication
+  end
+
+  def add_medication_submit
+    param! :name_of_medication,   String, required: true, message: "Name not specified"
+    param! :unit_of_medication,   String, required: true, message: "Unit not specified"
+    param! :initial_amount,       Integer, required: true, min: 0, message: "Initial amount is not specified or is invalid"
+
+    SchoolMedication.create!(
+      medication_name: params[:name_of_medication],
+      quantity: params[:initial_amount],
+      unit: params[:unit_of_medication],
+      school_id: 1
+    )
+    # SchoolMedicationTransaction.create!(student_id: params[:select_student], nurse_id: current_nurse.id, school_medication_id: params[:select_medication], change_in_quantity: params[:dosage], date: date, time: time, comment: params[:comment])
+
+    flash[:info] = "Medication added successfully"
+    redirect_to :add_medication
+
+  end
+
 end
