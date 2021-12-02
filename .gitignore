@@ -18,3 +18,5 @@
 
 # Ignore dotfiles in coverage directory
 coverage/.*
+
+.idea
