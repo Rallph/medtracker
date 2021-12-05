@@ -39,21 +39,55 @@ class NurseController < ApplicationController
   end
 
   def add_medication_submit
-    param! :name_of_medication,   String, required: true, message: "Name not specified"
-    param! :unit_of_medication,   String, required: true, message: "Unit not specified"
-    param! :initial_amount,       Integer, required: true, min: 0, message: "Initial amount is not specified or is invalid"
+    # param! :name_of_medication,   String, required: false, message: "Name not specified"
+    # param! :unit_of_medication,   String, required: false, message: "Unit not specified"
+    # param! :initial_amount,       Integer, required: false, message: "Initial amount is not specified or is invalid"
 
-    SchoolMedication.create!(
-      medication_name: params[:name_of_medication],
-      quantity: params[:initial_amount],
-      unit: params[:unit_of_medication],
-      school_id: 1
-    )
-    # SchoolMedicationTransaction.create!(student_id: params[:select_student], nurse_id: current_nurse.id, school_medication_id: params[:select_medication], change_in_quantity: params[:dosage], date: date, time: time, comment: params[:comment])
+    med_name = params[:name_of_medication]
+    initial_amount = params[:initial_amount]
+    med_unit = params[:unit_of_measurement]
 
-    flash[:info] = "Medication added successfully"
+    if med_name.eql? ''
+      flash[:info] = "Medication not added. Name of medication was not specified."
+    elsif med_unit.eql? ''
+      flash[:info] = "Medication not added. Unit of medication was not specified."
+    elsif initial_amount.eql? ''
+      flash[:info] = "Medication not added. Initial amount of medication was not specified."
+    elsif initial_amount.to_i.to_s != initial_amount
+      flash[:info] = "Medication not added. Initial amount of medication has to be a number (1,2,3,...)."
+    else
+
+      if defined? params[:belongs_to_student] and params[:belongs_to_student].eql? "on"
+
+        student_id = params[:student_id]
+
+        if student_id.eql? ''
+          flash[:info] = "Medication not added. Student box was checked, but Student ID was not specified."
+        elsif student_id.to_i.to_s != student_id
+          flash[:info] = "Medication not added. Student box was checked, but Student ID was not a number (1,2,3,...)."
+        else
+          StudentMedication.create!(
+            medication_name: med_name,
+            quantity: initial_amount,
+            unit: med_unit,
+            school_id: 1,
+            student_id: student_id
+          )
+          flash[:info] = "Student Medication added successfully"
+        end
+
+      else
+        SchoolMedication.create!(
+          medication_name: med_name,
+          quantity: initial_amount,
+          unit: med_unit,
+          school_id: 1
+        )
+        # SchoolMedicationTransaction.create!(student_id: params[:select_student], nurse_id: current_nurse.id, school_medication_id: params[:select_medication], change_in_quantity: params[:dosage], date: date, time: time, comment: params[:comment])
+
+        flash[:info] = "Medication added successfully"
+      end
+    end
     redirect_to :add_medication
-
   end
-
 end

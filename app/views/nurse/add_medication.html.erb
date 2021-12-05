@@ -9,8 +9,8 @@
     </div>
 
     <div class="form-group">
-      <%= label_tag :unit_of_medication, "Unit of Measurement" %>
-      <%= text_field_tag :unit_of_medication, nil, class: %w[form-control input-lg] %>
+      <%= label_tag :unit_of_measurement, "Unit of Measurement" %>
+      <%= text_field_tag :unit_of_measurement, nil, class: %w[form-control input-lg] %>
     </div>
 
     <div class="form-group">
@@ -35,6 +35,9 @@
     <script>
         document.getElementById('belongs_to_student').onchange = function() {
             document.getElementById('student_id').disabled = !this.checked;
+            if (document.getElementById('student_id').disabled == true) {
+                document.getElementById('student_id').value = ""
+            }
         };
     </script>
 
