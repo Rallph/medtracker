@@ -1,6 +1,6 @@
 class NurseController < ApplicationController
 
-  before_action :authenticate_nurse!
+  before_action :verify_nurse
 
   def homepage
 
