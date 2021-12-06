@@ -31,6 +31,16 @@ When /^I attempt to visit the "(.*?)" sign in page$/ do |user_type|
 
 end
 
+Then /^I should see the nurse homepage$/ do
+  buttons = ["Administer Medicine","Reports/Logs","Send Consent Form"]
+
+  buttons.each do |button|
+
+    expect(page.has_link?(button)).to be_truthy
+
+  end
+end
+
 Then /^I should see: "(.*?)"$/ do |alert|
 
   page.should have_content(alert)

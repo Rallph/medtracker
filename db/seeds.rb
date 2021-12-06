@@ -7,8 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 nurses = [
-  {:full_name => "Bob Rogers", :password => "pa$$word", :email => "brogers@gmail.com", :school_id => 1},
-  {:full_name => "Sally Milbert", :password => "PassWord", :email => "smilbert@gmail.com", :school_id => 1}
+  {:full_name => "Bob Rogers", :password => "pa$$word", :email => "brogers@gmail.com", :school_id => 1, :account_approved => true},
+  {:full_name => "Sally Milbert", :password => "PassWord", :email => "smilbert@gmail.com", :school_id => 1, :account_approved => true}
 ]
 nurses.each do |nurse|
   Nurse.create!(nurse)

@@ -10,7 +10,7 @@ Feature:
 
   Scenario: Nurse creates new account
     When I attempt to sign up as a "nurse" with email: "cody-r-anderson@gmail.com", full_name: "Cody Anderson", school_id: "24", and password: "pa$$word"
-    Then I should see: "Welcome! You have signed up successfully."
+    Then I should see: "Your Account has not yet been approved by an administrator."
 
   Scenario: Administrator creates new account
     When I attempt to sign up as a "administrator" with email: "cody-m-anderson@gmail.com", full_name: "Cody Anderson", school_id: "24", and password: "password"
