@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe NurseController, type: :controller do
 
   before {
-    nurse = double('nurse', school_id: 1, id: 1)
+    nurse = double('nurse', school_id: 1, id: 1, account_approved: true)
     login_with(nurse, :nurse)
   }
 
