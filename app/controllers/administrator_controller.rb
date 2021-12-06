@@ -6,7 +6,6 @@ class AdministratorController < ApplicationController
 
     # get list of all nurses who's accounts have not yet been approved.
     @unapproved_nurses = Nurse.where('account_approved = :approval_status AND school_id = :id', {approval_status: false, id: current_administrator.school_id})
-    puts @unapproved_nurses
 
   end
 

@@ -6,8 +6,10 @@ Given /the following "(.*?)" have been added to MedMonitor:/ do |user_type, user
       Administrator.create(user)
     elsif (user_type == "Nurses")
       Nurse.create(user)
-    else
+    elsif (user_type == "Parents")
       Parent.create(user)
+    else
+      Student.create(user)
     end
   end
 end
@@ -31,8 +33,13 @@ When /^I attempt to visit the "(.*?)" sign in page$/ do |user_type|
 
 end
 
-Then /^I should see the nurse homepage$/ do
-  buttons = ["Administer Medicine","Reports/Logs","Send Consent Form"]
+Then /^I should see the "(.*?)" homepage$/ do  |homepage|
+
+  if homepage == "administrator"
+    buttons = ["Manage Access","View Reports/Logs"]
+  else
+    buttons = ["Administer Medicine","Reports/Logs","Send Consent Form"]
+  end
 
   buttons.each do |button|
 

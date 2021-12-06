@@ -28,11 +28,11 @@ Feature:
 
   Scenario: Unapproved nurse logs into system
     When I log in as a "nurse" with email: "bobby_R@gmail.com" and password: "pa$$word"
-    Then I should see the nurse homepage
+    Then I should see the "nurse" homepage
 
   Scenario: admin logs into system
     When I log in as a "administrator" with email: "johnsmith1@icloud.com" and password: "password1"
-    Then I should see: "Administrator#homepage"
+    Then I should see the "administrator" homepage
 
   Scenario: parent logs into system
     When I log in as a "parent" with email: "johndavis1@yahoo.com" and password: "password2"
