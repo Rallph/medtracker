@@ -2,7 +2,10 @@ require 'rails_helper'
 
 RSpec.describe AdministratorController, type: :controller do
 
-  before { login_with(double('admin'), :administrator) }
+  before {
+    admin =  double('admin', school_id: 25)
+    login_with(admin, :administrator)
+  }
 
   describe "Render Homepage" do
 
