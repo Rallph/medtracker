@@ -32,3 +32,10 @@ Then /^I should only see medications belonging to school_id: "(.*?)"$/ do |schoo
     #%w{school_id}.should include td.text
     end
 end
+
+Then /^I should only see medications belonging to student_ids: "(.*?)"$/ do |student_ids|
+  array = student_ids.split(',')
+  all('#student_inventory tr > td:nth-child(6)').each do |td|
+    array.should include td.text
+  end
+end

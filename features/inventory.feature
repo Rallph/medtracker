@@ -30,10 +30,10 @@ Feature:
     And the following "student_medications" have been added to inventory:
       | medication_name         | quantity                   | unit         | school_id | student_id  |
       | Ibuprofen               | 30                         | tablets      | 1         | 1           |
-      | Ibuprofen               | 25                         | tablets      | 2         | 1           |
-      | Tylenol                 | 250                        | mL           | 1         | 2           |
+      | Ibuprofen               | 25                         | tablets      | 2         | 2           |
+      | Tylenol                 | 250                        | mL           | 1         | 3           |
       | Benadryl                | 15                         | tablets      | 2         | 4           |
-      | Tranquilizer            | 3                          | blow dart    | 1         | 2           |
+      | Tranquilizer            | 3                          | blow dart    | 1         | 5           |
 
     #And I am on the nurse inventory page
     # test difference in login into site as background
@@ -58,5 +58,5 @@ Feature:
   Scenario: Nurse views student medications
     When I log in as a "nurse" with email: "bobby_R@gmail.com" and password: "pa$$word"
     And I view "nurse" medication inventory
-    Then I should see medications belonging to student_id(s): "[1,2,4]"
+    Then I should only see medications belonging to student_ids: "1,3,5"
 

@@ -7,7 +7,8 @@ class NurseController < ApplicationController
 
   def inventory
     @school_medications = SchoolMedication.where('school_id = :nurse_school',:nurse_school => current_nurse[:school_id])
-    if @school_medications.empty?
+    @student_medications = StudentMedication.where('school_id = :nurse_school', :nurse_school => current_nurse[:school_id])
+    if @school_medications.empty? or @student_medications.empty?
       flash[:alert] = "Inventory is Empty."
     end
   end
