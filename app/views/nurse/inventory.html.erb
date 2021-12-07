@@ -1,17 +1,40 @@
 <h1>Nurse#inventory</h1>
 <style>
-    table, th, td {
-        border:1px solid black;
-    }
+
     table.center {
         margin-left: auto;
         margin-right: auto;
     }
+    table.styled-table{
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        min-width: 400px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.15)
+    }
+    table.styled-table thead tr {
+        background-color: #009879;
+        color: #ffffff;
+        text-align: left;
+    }
+    table.styled-table th,
+    table.styled-table td {
+        padding: 12px 15px;
+    }
+    table.styled-table tr {
+        border-bottom: 1px solid #dddddd;
+    }
+    table.styled-table tbody tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+    }
+    table.styled-table tbody tr:last-of-type {
+        border-bottom: 2px solid #009879;
+    }
 </style>
 
-
-
-<table id = "inventory" ; class="center" ; style="width:50%;background-color:powderblue">
+<table id = "inventory" ; class="styled-table">
+  <thead>
   <tr>
     <th>id</th>
     <th>medication_name</th>
@@ -19,6 +42,8 @@
     <th>unit</th>
     <th>school_id</th>
   </tr>
+  </thead>
+  <tbody>
   <%@school_medications.each do |med| %>
     <tr>
       <td><%= med[:id] %></td>
@@ -28,7 +53,10 @@
       <td><%= med[:school_id] %></td>
     </tr>
   <% end %>
+  </tbody>
 </table>
+
+
 
 
 
