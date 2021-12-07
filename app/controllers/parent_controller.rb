@@ -5,7 +5,9 @@ class ParentController < ApplicationController
 
 
   def consent_form
-    # @medications = Medication.where()
+    @student_id = 1
+    # @
+    @school_medications = StudentMedication.where()
   end
 
 

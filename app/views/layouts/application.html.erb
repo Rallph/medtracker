@@ -8,7 +8,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+  <a> <%= link_to 'Log Out', destroy_parent_session_path, method: :delete %> </a>
   <h1 class = "header">MedTracker</h1>
   <% flash.each do |type, msg| %>
     <div class="alert alert-info">
