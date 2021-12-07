@@ -51,14 +51,33 @@ end
 
 school_medications = [
   {:medication_name => "Ibuprofen", :quantity => 30, :unit => "tablets", :school_id => 1},
-  {:medication_name => "Ibuprofen", :quantity => 25, :unit => "tablets", :school_id => 2},
-  {:medication_name => "Cough Syrup", :quantity => 250, :unit => "mL", :school_id => 1}
+  {:medication_name => "Tylenol", :quantity => 25, :unit => "tablets", :school_id => 1},
+  {:medication_name => "petroleum jelly", :quantity => 250, :unit => "mL", :school_id => 1},
+  {:medication_name => "excedrine", :quantity => 250, :unit => "tablets", :school_id => 1},
+  {:medication_name => "Ibuprofen", :quantity => 30, :unit => "tablets", :school_id => 2},
+  {:medication_name => "Tylenol", :quantity => 25, :unit => "tablets", :school_id => 2},
+  {:medication_name => "petroleum jelly", :quantity => 250, :unit => "mL", :school_id => 2},
+  {:medication_name => "excedrine", :quantity => 250, :unit => "tablets", :school_id => 2}
+
 ]
 school_medications.each do |sm|
   SchoolMedication.create!(sm)
 end
 
+student_medications = [
+  {:medication_name => "Aderall", :quantity => 30, :unit => "tablets", :school_id => 1, :student_id => 1},
+  {:medication_name => "Amoxicillin", :quantity => 500, :unit => "mL", :school_id => 1, :student_id => 1},
+  {:medication_name => "Albuteral", :quantity => 100, :unit => "inhaler", :school_id => 1, :student_id => 2},
+  {:medication_name => "Cephalexin", :quantity => 25, :unit => "tablets", :school_id => 1, :student_id => 2},
+  {:medication_name => "Azithromycin", :quantity => 20, :unit => "tablets", :school_id => 2, :student_id => 3},
+  {:medication_name => "Fluticasone", :quantity => 30, :unit => "nasal spray", :school_id => 2, :student_id => 4},
+  {:medication_name => "Cefdinir", :quantity => 15, :unit => "tablets", :school_id => 2, :student_id => 4},
+  {:medication_name => "Prednisone", :quantity => 37, :unit => "tablets", :school_id => 2, :student_id => 5}
+]
 
+student_medications.each do |stm|
+  StudentMedication.create!(stm)
+end
 
 school_medication_transactions = [
   {:date => "11-09-2021", :time => "10:00AM", :change_in_quantity => "1", :school_medication_id => 1, :student_id => 1, :nurse_id => 2},
