@@ -23,8 +23,11 @@ end
 #
 students = [
   {:full_name => "Will Ries", :date_of_birth => "10-01-2009", :school_id => 1},
-  {:full_name => "Jessica Klien", :date_of_birth => "04-10-2009", :school_id => 1},
-  {:full_name => "Samantha Gates", :date_of_birth => "02-11-2010", :school_id => 1}
+  {:full_name => "Jessica Klien", :date_of_birth => "6/11/2008", :school_id => 1},
+  {:full_name => "Samantha Gates", :date_of_birth => "02-11-2010", :school_id => 1},
+  {:full_name => "Samantha Gates", :date_of_birth => "02-11-2010", :school_id => 1},
+  {:full_name => "Samantha Gates", :date_of_birth => "02-11-2010", :school_id => 1},
+  {:full_name => "Samantha Gates", :date_of_birth => "02-11-2010", :school_id => 1},
 ]
 students.each do |student|
   Student.create!(student)
