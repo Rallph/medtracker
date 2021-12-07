@@ -1,0 +1,27 @@
+
+<table id="poll_table" style="width:700px;margin:0 auto;font-size:20px;position:relative;" class="table table-striped table-sm">
+  <thead>
+  <tr>
+    <th scope="col">Name</th>
+    <th scope="col" >Email Address</th>
+  </tr>
+  </thead>
+
+  <tbody>
+
+    <% @unapproved_nurses.each do |nurse| %>
+      <tr class="active">
+        <td id="<%= nurse.full_name %>"><%= nurse.full_name %></td>
+        <td><%= nurse.email %></td>
+        <td><%= button_tag "Approve Access".html_safe, {class: 'btn btn-primary', type: 'button', onclick: "approveAccount(this)"} %></td>
+      </tr>
+    <% end %>
+
+  </tbody>
+
+</table>
+
+<% content_for :approve_accounts_javascript do %>
+  <%= javascript_include_tag "ApproveAccounts.js" %>
+<% end %>
+
