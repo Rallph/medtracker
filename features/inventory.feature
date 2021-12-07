@@ -32,7 +32,7 @@ Feature:
       | Ibuprofen               | 30                         | tablets      | 1         | 1           |
       | Ibuprofen               | 25                         | tablets      | 2         | 1           |
       | Tylenol                 | 250                        | mL           | 1         | 2           |
-      | Benadryl                | 15                         | tablets      | 2         | 3           |
+      | Benadryl                | 15                         | tablets      | 2         | 4           |
       | Tranquilizer            | 3                          | blow dart    | 1         | 2           |
 
     #And I am on the nurse inventory page
@@ -54,4 +54,9 @@ Feature:
     When I log in as a "nurse" with email: "jimmyB@gmail.com" and password: "PASSWORD"
     And I view "nurse" medication inventory
     Then I should see: "Inventory is Empty."
+
+  Scenario: Nurse views student medications
+    When I log in as a "nurse" with email: "bobby_R@gmail.com" and password: "pa$$word"
+    And I view "nurse" medication inventory
+    Then I should see medications belonging to student_id(s): "[1,2,4]"
 
