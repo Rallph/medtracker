@@ -5,9 +5,26 @@ class ParentController < ApplicationController
 
 
   def consent_form
-    @student_id = 1
-    # @
-    @school_medications = StudentMedication.where()
+
+    # sql = "SELECT * from posts where id = #{params[:id}"
+    # result = ActiveRecord::Base.connection.execute(sql)
+
+    # result.to_a
+
+
+    @student = Student.where('id = 1')
+    @student_medications = StudentMedication.where('student_id = 1')
+    @student.each do |student|
+      @student_medications.each do |sm|
+        puts 'here'
+        puts student.student_medications
+        student.student_medications << sm
+        # student.save!
+        # puts student.student_medications
+
+        # sm.students << student
+      end
+    end
   end
 
 

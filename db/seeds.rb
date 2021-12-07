@@ -5,14 +5,17 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+#
+# nurses = [
+#   {:full_name => "Bob Rogers", :password => "pa$$word", :email => "brogers@gmail.com", :school_id => 1},
+#   {:full_name => "Sally Milbert", :password => "PassWord", :email => "smilbert@gmail.com", :school_id => 1}
+# ]
+# nurses.each do |nurse|
+#   Nurse.create!(nurse)
+# end
 
-nurses = [
-  {:full_name => "Bob Rogers", :password => "pa$$word", :email => "brogers@gmail.com", :school_id => 1},
-  {:full_name => "Sally Milbert", :password => "PassWord", :email => "smilbert@gmail.com", :school_id => 1}
-]
-nurses.each do |nurse|
-  Nurse.create!(nurse)
-end
+
+
 #
 # administrators = [
 #   {:full_name => "John Smith", :username => "johnsmith1", :password => "password1", :email => "jsmith@gmail.com"}
@@ -58,8 +61,6 @@ school_medications.each do |sm|
   SchoolMedication.create!(sm)
 end
 
-
-
 school_medication_transactions = [
   {:date => "11-09-2021", :time => "10:00AM", :change_in_quantity => "1", :school_medication_id => 1, :student_id => 1, :nurse_id => 2},
   {:date => "11-09-2021", :time => "10:45AM", :change_in_quantity => "10", :school_medication_id => 3, :student_id => 2, :nurse_id => 2},
@@ -68,6 +69,26 @@ school_medication_transactions.each do |mt|
   SchoolMedicationTransaction.create!(mt)
 end
 
+
+student_medications = [
+  {:medication_name => "testmed1", :quantity => 30, :unit => "tablets", :school_id => 1, :student_id => 1},
+  {:medication_name => "testmed2", :quantity => 25, :unit => "tablets", :school_id => 1, :student_id => 1},
+  {:medication_name => "testmed3", :quantity => 40, :unit => "tablets", :school_id => 1, :student_id => 1},
+  {:medication_name => "testmed4", :quantity => 30, :unit => "tablets", :school_id => 1, :student_id => 2},
+  {:medication_name => "testmed5", :quantity => 25, :unit => "tablets", :school_id => 1, :student_id => 2},
+  {:medication_name => "testmed6", :quantity => 40, :unit => "tablets", :school_id => 1, :student_id => 3},
+]
+student_medications.each do |sm|
+  StudentMedication.create!(sm)
+end
+
+# approved_student_meds = [
+#   {:student_id => 1, :student_medication_id => 1},
+#   {:student_id => 1, :student_medication_id => 1},
+# ]
+# approved_student_meds.each do |asm|
+#   StudentMedicationsStudents.create!(asm)
+# end
 # consent_forms = [
 #   {:date => "09-22-2021", :parent_id => 1, :student_id => 1}
 # ]
