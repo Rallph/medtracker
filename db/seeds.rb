@@ -1,3 +1,4 @@
+require 'csv'
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -24,14 +25,22 @@ end
 students = [
   {:full_name => "Will Ries", :date_of_birth => "10-01-2009", :school_id => 1},
   {:full_name => "Jessica Klien", :date_of_birth => "6/11/2008", :school_id => 1},
-  {:full_name => "Samantha Gates", :date_of_birth => "02-11-2010", :school_id => 1},
-  {:full_name => "Samantha Gates", :date_of_birth => "02-11-2010", :school_id => 1},
-  {:full_name => "Samantha Gates", :date_of_birth => "02-11-2010", :school_id => 1},
-  {:full_name => "Samantha Gates", :date_of_birth => "02-11-2010", :school_id => 1},
+  {:full_name => "Samantha Gates", :date_of_birth => "02-11-2010", :school_id => 1}
 ]
 students.each do |student|
   Student.create!(student)
 end
+
+
+students_text = File.read(Rails.root.join('db','students.csv'))
+students_enumerable = CSV.parse(students_text, :headers => true)
+students_enumerable.each do |row|
+  #puts(row[0])
+  Student.create!( {:full_name => row[0],
+                    :date_of_birth => row["date_of_birth"],
+                    :school_id => row["school_id"]})
+end
+
 
 
 districts  = [
