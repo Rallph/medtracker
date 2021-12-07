@@ -1,102 +1,124 @@
-<h1>Nurse#inventory</h1>
-<style>
-    * {
-        box-sizing: border-box;
-    }
-    .column {
-        float: left;
-        width: 50%;
-        padding: 5px;
-    }
-    .row{
-        margin-left: -5px;
-        margin-right: -5px;
-    }
-    table.center {
-        margin-left: auto;
-        margin-right: auto;
-    }
-    table.styled-table{
-        border-collapse: collapse;
-        margin: 25px 0;
-        font-size: 0.9em;
-        font-family: sans-serif;
-        min-width: 400px;
-        box-shadow: 0 0 20px rgba(0,0,0,0.15)
-    }
-    table.styled-table thead tr {
-        background-color: #009879;
-        color: #ffffff;
-        text-align: left;
-    }
-    table.styled-table th,
-    table.styled-table td {
-        padding: 12px 15px;
-    }
-    table.styled-table tr {
-        border-bottom: 1px solid #dddddd;
-    }
-    table.styled-table tbody tr:nth-of-type(even) {
-        background-color: #f3f3f3;
-    }
-    table.styled-table tbody tr:last-of-type {
-        border-bottom: 2px solid #009879;
-    }
-</style>
+<h1>Nurse Inventory</h1>
+<head>
+  <style>
+      * {
+          box-sizing: border-box;
+      }
+      .column {
+          float: left;
+          width: 50%;
+          padding: 5px;
+      }
+      .row::after{
+          content: "";
+          clear: both;
+          display: table;
+          margin-left: -5px;
+          margin-right: -5px;
+      }
+      .table-wrapper {
+          height: 400px;
+          width: 550px;
+          padding: 0px;
+          margin: 0px auto 0px auto;
+          overflow: auto;
+      }
+      table.styled-table{
+          border-collapse: collapse;
+          margin: 25px 0;
+          font-size: 0.9em;
+          font-family: sans-serif;
+          min-width: 400px;
+          box-shadow: 0 0 20px rgba(0,0,0,0.15)
+      }
+      table.styled-table thead tr {
+          background-color: #009879;
+          color: #ffffff;
+          text-align: left;
+      }
+      table.styled-table th,
+      table.styled-table td {
+          padding: 12px 15px;
+      }
+      table.styled-table tr {
+          border-bottom: 1px solid #dddddd;
+      }
+      table.styled-table tbody tr:nth-of-type(even) {
+          background-color: #f3f3f3;
+      }
+      table.styled-table tbody tr:last-of-type {
+          border-bottom: 2px solid #009879;
+      }
+      h3 {
+          text-align: center;
+      }
+
+  </style>
+</head>
+<body>
 <div class="row">
   <div class="column">
-    <table id = "inventory" ; class="styled-table">
-      <thead>
-      <tr>
-        <th>id</th>
-        <th>medication_name</th>
-        <th>quantity</th>
-        <th>unit</th>
-        <th>school_id</th>
-      </tr>
-      </thead>
-      <tbody>
-      <%@school_medications.each do |med| %>
+    <h3>School Medications</h3>
+    <div class="table-wrapper">
+      <table id = "inventory" ; class="styled-table">
+        <thead>
         <tr>
-          <td><%= med[:id] %></td>
-          <td><%= med[:medication_name] %></td>
-          <td><%= med[:quantity] %></td>
-          <td><%= med[:unit] %></td>
-          <td><%= med[:school_id] %></td>
+          <th>id</th>
+          <th>medication_name</th>
+          <th>quantity</th>
+          <th>unit</th>
+          <th>school_id</th>
         </tr>
-      <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+        <%@school_medications.each do |med| %>
+          <tr>
+            <td><%= med[:id] %></td>
+            <td><%= med[:medication_name] %></td>
+            <td><%= med[:quantity] %></td>
+            <td><%= med[:unit] %></td>
+            <td><%= med[:school_id] %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
   </div>
   <div class="column">
-    <table id=student_inventory ; class="styled-table">
-      <thead>
-      <tr>
-        <th>id</th>
-        <th>medication_name</th>
-        <th>quantity</th>
-        <th>unit</th>
-        <th>school_id</th>
-        <th>student_id</th>
-      </tr>
-      </thead>
-      <tbody>
-      <%@student_medications.each do |med| %>
+    <h3>Student Medications</h3>
+    <div class="table-wrapper">
+      <table id=student_inventory ; class="styled-table">
+        <thead>
         <tr>
-          <td><%= med[:id] %></td>
-          <td><%= med[:medication_name] %></td>
-          <td><%= med[:quantity] %></td>
-          <td><%= med[:unit] %></td>
-          <td><%= med[:school_id] %></td>
-          <td><%= med[:student_id] %></td>
+          <th>id</th>
+          <th>medication_name</th>
+          <th>quantity</th>
+          <th>unit</th>
+          <th>school_id</th>
+          <th>student_id</th>
         </tr>
-      <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+        <%@student_medications.each do |med| %>
+          <tr>
+            <td><%= med[:id] %></td>
+            <td><%= med[:medication_name] %></td>
+            <td><%= med[:quantity] %></td>
+            <td><%= med[:unit] %></td>
+            <td><%= med[:school_id] %></td>
+            <td><%= med[:student_id] %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
   </div>
 </div>
+</body>
 
-<h2>School and Student Medication Inventories Side by Side</h2>
+
 
 
 

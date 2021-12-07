@@ -42,7 +42,7 @@ Feature:
   Scenario: Nurse logs in then goes to inventory
     When I log in as a "nurse" with email: "bobby_R@gmail.com" and password: "pa$$word"
     And I view "nurse" medication inventory
-    Then I should see: "Nurse#inventory"
+    Then I should see: "Nurse Inventory"
 
 
   Scenario: Nurse views school medication
