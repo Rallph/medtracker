@@ -19,7 +19,7 @@ class NurseController < ApplicationController
 
   def administer_submit
     param! :select_student,     Integer, required: true, message: "Student not specified"
-    param! :select_medication,  Integer, required: true, message: "Medication not specified"
+    param! :select_school_medication,  Integer, required: true, message: "Medication not specified"
     param! :dosage,             Integer, required: true, min: 1, message: "At least one dose must be administered"
     param! :time,               String, required: true, message: "Administration time not specified"
     param! :comment,            String
@@ -28,7 +28,7 @@ class NurseController < ApplicationController
     date = datetime[0]
     time = datetime[1]
 
-    SchoolMedicationTransaction.create!(student_id: params[:select_student], nurse_id: current_nurse.id, school_medication_id: params[:select_medication], change_in_quantity: params[:dosage], date: date, time: time, comment: params[:comment])
+    SchoolMedicationTransaction.create!(student_id: params[:select_student], nurse_id: current_nurse.id, school_medication_id: params[:select_school_medication], change_in_quantity: params[:dosage], date: date, time: time, comment: params[:comment])
 
     flash[:info] = "Medication administered successfully"
     redirect_to :administer
