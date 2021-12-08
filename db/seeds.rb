@@ -87,11 +87,11 @@ end
 #   ConsentForm.create!(cf)
 # end
 #
-# parents = [
-#   {:full_name => "Sally Ries", :email => "sries@gmail.com"},
-#   {:full_name => "Kelly Klien", :email => "kklien@gmail.com"},
-#   {:full_name => "Bob Gates", :email => "bgates@gmail.com"}
-# ]
-# parents.each do |parent|
-#   Parent.create!(parent)
-# end
+parents = [
+ {:full_name => "Sally Ries", :email => "sries@gmail.com", :password => "Password123"},
+ {:full_name => "Kelly Klien", :email => "kklien@gmail.com", :password => "Password123"},
+ {:full_name => "Bob Gates", :email => "bgates@gmail.com", :password => "Password123"}]
+
+parents.each do |parent|
+  Parent.create!(parent)
+end
