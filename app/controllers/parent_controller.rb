@@ -26,6 +26,4 @@ class ParentController < ApplicationController
       end
     end
   end
-
-
 end

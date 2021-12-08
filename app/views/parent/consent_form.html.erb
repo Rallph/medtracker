@@ -76,6 +76,17 @@
     <%# end %>
 
 </table>
+
+
 <% @student_medications.each do |sm| %>
   <p> <%= sm.medication_name %></p>
+<% end %>
+
+<p></p>
+<% @student.each do |st| %>
+  <p> <%= st %></p>
+  <p> <%= st.full_name %></p>
+  <% st.student_medications.each do |stsm| %>
+    <p> <%= stsm.medication_name %> </p>
+  <% end %>
 <% end %>
