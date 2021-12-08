@@ -13,6 +13,11 @@
     </div>
 
     <div class="form-group">
+      <%= label_tag :select_student_medication, "Student Medication" %>
+      <%= select_tag :select_student_medication, [], class: %w[form-control input-lg] %>
+    </div>
+
+    <div class="form-group">
       <%= label_tag :dosage, "Dosage" %>
       <%= number_field_tag :dosage, 1, min: 1, class: %w[form-control input-lg]%>
     </div>
