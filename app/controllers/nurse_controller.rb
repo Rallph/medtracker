@@ -18,17 +18,20 @@ class NurseController < ApplicationController
   end
 
   def administer_submit
-    param! :select_student,     Integer, required: true, message: "Student not specified"
-    param! :select_school_medication,  Integer, required: true, message: "Medication not specified"
-    param! :dosage,             Integer, required: true, min: 1, message: "At least one dose must be administered"
-    param! :time,               String, required: true, message: "Administration time not specified"
-    param! :comment,            String
+
+    school_medication = params[:select_school_medication]
+    student_medication = params[:select_student_medication]
 
     datetime = params[:time].split("T")
     date = datetime[0]
     time = datetime[1]
 
-    SchoolMedicationTransaction.create!(student_id: params[:select_student], nurse_id: current_nurse.id, school_medication_id: params[:select_school_medication], change_in_quantity: params[:dosage], date: date, time: time, comment: params[:comment])
+    #TODO add actual validation to ensure only one type of medication is submitted
+    if student_medication && !student_medication.empty?
+      StudentMedicationTransaction.create!(nurse_id: current_nurse.id, student_medication_id: student_medication, change_in_quantity: params[:dosage], date: date, time: time, comment: params[:comment])
+    else
+      SchoolMedicationTransaction.create!(student_id: params[:select_student], nurse_id: current_nurse.id, school_medication_id: school_medication, change_in_quantity: params[:dosage], date: date, time: time, comment: params[:comment])
+    end
 
     flash[:info] = "Medication administered successfully"
     redirect_to :administer
