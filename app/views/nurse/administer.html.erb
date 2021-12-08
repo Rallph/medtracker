@@ -14,7 +14,7 @@
 
     <div class="form-group">
       <%= label_tag :select_student_medication, "Student Medication" %>
-      <%= select_tag :select_student_medication, [], class: %w[form-control input-lg] %>
+      <%= select_tag :select_student_medication, nil, class: %w[form-control input-lg] %>
     </div>
 
     <div class="form-group">
@@ -37,3 +37,28 @@
     </div>
   <% end %>
 </div>
+
+<script>
+
+  // accepts an array of StudentMedication objects in json format
+  const updateStudentMedications = (student_medications_json) => {
+
+      const student_medication_select = $("#select_student_medication")
+      student_medication_select.empty();
+
+      // maps through the sutdent medications json array, creates an array of <option> html elements
+      // that each have the medication name as their text and medication id as their value
+      const student_medication_options = student_medications_json.map(med => {
+          let option = document.createElement("option");
+          option.text = med.medication_name;
+          option.value = med.id;
+
+          return option
+      });
+
+      // put all the previously created <option> elements into the student medication select tag
+      student_medication_select.append(student_medication_options);
+  }
+
+
+</script>
