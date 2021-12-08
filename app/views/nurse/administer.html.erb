@@ -12,7 +12,7 @@
       <%= select_tag :select_school_medication, options_from_collection_for_select(@school_medication_options, 'id', 'medication_name'), class: %w[form-control input-lg] %>
     </div>
 
-    <div class="form-group">
+    <div class="form-group" id="student-medication-section">
       <%= label_tag :select_student_medication, "Student Medication" %>
       <%= select_tag :select_student_medication, nil, class: %w[form-control input-lg] %>
     </div>
@@ -45,20 +45,26 @@
 
       const student_medication_select = $("#select_student_medication")
       student_medication_select.empty();
+      if (student_medications_json.length !== 0) { // hide the student medications field if the student doesnt have any medications
+          // maps through the student medications json array, creates an array of <option> html elements
+          // that each have the medication name as their text and medication id as their value
+          const student_medication_options = student_medications_json.map(med => {
+              let option = document.createElement("option");
+              option.text = med.medication_name;
+              option.value = med.id;
 
-      // maps through the sutdent medications json array, creates an array of <option> html elements
-      // that each have the medication name as their text and medication id as their value
-      const student_medication_options = student_medications_json.map(med => {
-          let option = document.createElement("option");
-          option.text = med.medication_name;
-          option.value = med.id;
+              return option
+          });
 
-          return option
-      });
-
-      // put all the previously created <option> elements into the student medication select tag
-      student_medication_select.append(student_medication_options);
+          // put all the previously created <option> elements into the student medication select tag
+          student_medication_select.append(student_medication_options);
+          $("#student-medication-section").show();
+      } else {
+          $("#student-medication-section").hide();
+      }
   }
+
+  $("#student-medication-section").hide(); // hide student medications initially
 
   $("#select_student").change((event) => {
       let student_id = event.target.value;
@@ -69,6 +75,8 @@
               url: `/student_medications/student/${student_id}`,
               success: updateStudentMedications
           })
+      } else {
+          $("#student-medication-section").hide(); // hide student medications if prompt is selected
       }
   })
 
