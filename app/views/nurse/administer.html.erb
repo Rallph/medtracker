@@ -62,10 +62,14 @@
 
   $("#select_student").change((event) => {
       let student_id = event.target.value;
-      $.ajax({
-          url: `/student_medications/student/${student_id}`,
-          success: updateStudentMedications
-      })
+
+      // check that student_id is not empty in case the prompt is selected again
+      if (student_id) {
+          $.ajax({
+              url: `/student_medications/student/${student_id}`,
+              success: updateStudentMedications
+          })
+      }
   })
 
 </script>
