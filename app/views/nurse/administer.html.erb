@@ -4,7 +4,7 @@
   <%= form_tag do %>
     <div class="form-group">
       <%= label_tag :select_student, "Student" %>
-      <%= select_tag :select_student, options_from_collection_for_select(@student_options, 'id', 'full_name'), class: %w[form-control input-lg] %>
+      <%= select_tag :select_student, options_from_collection_for_select(@student_options, 'id', 'full_name'), class: %w[form-control input-lg], :prompt => "Select a student" %>
     </div>
 
     <div class="form-group">
