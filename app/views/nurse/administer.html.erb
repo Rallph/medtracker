@@ -60,5 +60,12 @@
       student_medication_select.append(student_medication_options);
   }
 
+  $("#select_student").change((event) => {
+      let student_id = event.target.value;
+      $.ajax({
+          url: `/student_medications/student/${student_id}`,
+          success: updateStudentMedications
+      })
+  })
 
 </script>
