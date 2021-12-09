@@ -20,7 +20,7 @@
     <% end %>
 
     <% @unapproved_admins.each do |admin| %>
-    <tr class="active" id="admin-<%= admin.email %>">
+    <tr class="active" id="administrator-<%= admin.email %>">
       <td>Administrator</td>
       <td><%= admin.full_name %></td>
       <td><%= admin.email %></td>
@@ -29,7 +29,7 @@
     <% end %>
 
     <% @approved_nurses.each do |nurse| %>
-      <tr class="active" id=nurse-"<%= nurse.email %>">
+      <tr class="active" id="nurse-<%= nurse.email %>">
         <td>Nurse</td>
         <td><%= nurse.full_name %></td>
         <td><%= nurse.email %></td>
@@ -38,7 +38,7 @@
     <% end %>
 
     <% @approved_admins.each do |admin| %>
-      <tr class="active" id="admin-<%= admin.email %>">
+      <tr class="active" id="administrator-<%= admin.email %>">
         <td>Administrator</td>
         <td><%= admin.full_name %></td>
         <td><%= admin.email %></td>
