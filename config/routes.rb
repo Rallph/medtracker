@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   get 'parent/homepage', as: :parent_root
   get 'parent/consent_form' => "parent#consent_form", as: :consent_form
   get 'parent/approve_medication' => "parent#approve_medication", as: :approve_medication
+  get 'parent/disapprove_medication' => "parent#disapprove_medication", as: :disapprove_medication
 
   # homepage routes
   get 'homepage/home'
