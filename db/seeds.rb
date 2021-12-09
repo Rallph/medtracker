@@ -82,6 +82,15 @@ student_medications.each do |sm|
   StudentMedication.create!(sm)
 end
 
+medication_approvals = [
+  {:student_or_school => 'student', :student_medication_id => 1, :student_id => 1},
+  {:student_or_school => 'student', :student_medication_id => 2, :student_id => 1}
+]
+medication_approvals.each do |ma|
+  MedicationApproval.create!(ma)
+end
+
+
 # approved_student_meds = [
 #   {:student_id => 1, :student_medication_id => 1},
 #   {:student_id => 1, :student_medication_id => 1},

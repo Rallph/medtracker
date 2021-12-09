@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20211207152235) do
+ActiveRecord::Schema.define(version: 20211208210149) do
 
   create_table "administrators", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -52,6 +52,13 @@ ActiveRecord::Schema.define(version: 20211207152235) do
     t.string  "full_name"
     t.string  "relation"
     t.string  "phone_number"
+    t.integer "student_id"
+  end
+
+  create_table "medication_approvals", force: :cascade do |t|
+    t.string  "student_or_school"
+    t.integer "student_medication_id"
+    t.integer "school_medication_id"
     t.integer "student_id"
   end
 

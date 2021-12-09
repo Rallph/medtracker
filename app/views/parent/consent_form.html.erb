@@ -15,7 +15,14 @@
 
   <tbody>
 
+  <%# @approved_student_meds.each do |asm| %>
+<!--    <p> <%#= asm %></p>-->
+  <%# end %>
+
+
     <%# @invitees.each do |invitee| %>
+
+
     <tr class="active">
       <td>Ibuprofen</td>
 <!--      <td><%#= invitee.phone_number %></td>-->
@@ -78,15 +85,23 @@
 </table>
 
 
-<% @student_medications.each do |sm| %>
-  <p> <%= sm.medication_name %></p>
-<% end %>
+<%# @student_medications.each do |sm| %>
+<!--  <p> <%#= sm.medication_name %></p>-->
+<%# end %>
 
-<p></p>
-<% @student.each do |st| %>
-  <p> <%= st %></p>
-  <p> <%= st.full_name %></p>
-  <% st.student_medications.each do |stsm| %>
-    <p> <%= stsm.medication_name %> </p>
-  <% end %>
+<!--<p></p>-->
+<%# @student.each do |st| %>
+<!--  <p> <%#= st %></p>-->
+<!--  <p> <%#= st.full_name %></p>-->
+  <%# st.medication_approvals.each do |stsm| %>
+<!--    <p> <%#= stsm.student_medication_id %> </p>-->
+  <%# end %>
+<%# end %>
+
+<% @approved_student_meds.each do |apm| %>
+  <p> <%= apm %></p>
+<% end %>
+<p>----</p>
+<% @non_approved_student_meds.each do |napm| %>
+  <p> <%= napm %></p>
 <% end %>
