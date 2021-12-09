@@ -28,3 +28,14 @@ Given /the following "(.*?)" have been added to inventory:/ do |medication_type,
     end
   end
 end
+
+When /^I view "(.*?)" medication inventory$/ do |user_type|
+  #pending # Write code here that turns the phrase above into concrete actions
+  visit "/#{user_type}/inventory"
+end
+
+Then /^I should only see medications belonging to schools in district: "(.*?)"$/ do |district|
+  result = true
+
+  result.should be_falsey
+end
