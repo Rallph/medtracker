@@ -8,20 +8,19 @@ require 'csv'
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 nurses = [
-  {:full_name => "Bob Rogers", :password => "pa$$word", :email => "brogers@gmail.com", :school_id => 1},
-  {:full_name => "Sally Milbert", :password => "PassWord", :email => "smilbert@gmail.com", :school_id => 1}
+  {:full_name => "Bob Rogers", :password => "Password123", :email => "brogers@gmail.com", :school_id => 1},
+  {:full_name => "Sally Milbert", :password => "Password123", :email => "smilbert@gmail.com", :school_id => 1},
+  {:full_name => "Betty Hawkeye", :password => "Password123", :email => "bethawks@gmail.com", :school_id => 2},
+  {:full_name => "Justice Conrad", :password => "Password123", :email => "justicecon@gmail.com", :school_id => 2},
+  {:full_name => "Stacy Streif", :password => "Password123", :email => "sstrief@gmail.com", :school_id => 3},
+  {:full_name => "Harrison Fairfield", :password => "Password123", :email => "harryfairy@gmail.com", :school_id => 3},
+  {:full_name => "Jack Davenport", :password => "Password123", :email => "jackyd@gmail.com", :school_id => 4},
+  {:full_name => "Abby Hein", :password => "Password123", :email => "hein-abby@gmail.com", :school_id => 4}
 ]
 nurses.each do |nurse|
   Nurse.create!(nurse)
 end
-#
-# administrators = [
-#   {:full_name => "John Smith", :username => "johnsmith1", :password => "password1", :email => "jsmith@gmail.com"}
-# ]
-# administrators.each do |admin|
-#   Administrator.create!(admin)
-# end
-#
+
 # One administrator per school
 administrators = [{:email => "jbronx@gmail.com", :password => "Password123",:full_name => "Jerry Bronx", :school_id => 1},
                   {:email => "gomez-stream@gmail.com", :password => "Password123",:full_name => "Gomez Stream", :school_id => 2},
@@ -118,12 +117,6 @@ parents_enumerable.each do |row|
                     :password => row["password"]})
 end
 
-#parents_students = [{:parent_id => 1, :student_id => 1}]
-#ParentsStudents.create!(parents_students[0])
-#
-#parent = Parent.first
-#student = Student.first
-#parent.students << student
 
 Parent.count.times do |i|
   parent = Parent.find(i + 1)
