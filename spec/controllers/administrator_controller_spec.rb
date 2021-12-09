@@ -11,6 +11,7 @@ RSpec.describe AdministratorController, type: :controller do
 
     before(:each) do
       @fake_nurses = [double('nurse1'), double('nurse2')]
+      @fake_admins = [double('admin1'), double('admin2')]
     end
 
     it "returns http success" do
@@ -20,6 +21,11 @@ RSpec.describe AdministratorController, type: :controller do
 
     it "should query the Nurse Model" do
       expect(Nurse).to receive(:where).and_return(@fake_nurses)
+      get :homepage
+    end
+
+    it "should query the Administrator Model" do
+      expect(Administrator).to receive(:where).and_return(@fake_admins)
       get :homepage
     end
 
@@ -35,6 +41,12 @@ RSpec.describe AdministratorController, type: :controller do
       allow(Nurse).to receive(:where).and_return(@fake_nurses)
       get :homepage
       expect(assigns(:unapproved_nurses)).to eq(@fake_nurses)
+    end
+
+    it "should assign the @unapproved_admins member variable" do
+      allow(Administrator).to receive(:where).and_return(@fake_admins)
+      get :homepage
+      expect(assigns(:unapproved_admins)).to eq(@fake_admins)
     end
 
   end
