@@ -8,14 +8,14 @@ require 'csv'
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 nurses = [
-  {:full_name => "Bob Rogers", :password => "Password123", :email => "brogers@gmail.com", :school_id => 1},
-  {:full_name => "Sally Milbert", :password => "Password123", :email => "smilbert@gmail.com", :school_id => 1},
-  {:full_name => "Betty Hawkeye", :password => "Password123", :email => "bethawks@gmail.com", :school_id => 2},
-  {:full_name => "Justice Conrad", :password => "Password123", :email => "justicecon@gmail.com", :school_id => 2},
-  {:full_name => "Stacy Streif", :password => "Password123", :email => "sstrief@gmail.com", :school_id => 3},
-  {:full_name => "Harrison Fairfield", :password => "Password123", :email => "harryfairy@gmail.com", :school_id => 3},
-  {:full_name => "Jack Davenport", :password => "Password123", :email => "jackyd@gmail.com", :school_id => 4},
-  {:full_name => "Abby Hein", :password => "Password123", :email => "hein-abby@gmail.com", :school_id => 4}
+  {:full_name => "Bob Rogers", :password => "Password123", :email => "brogers@gmail.com", :school_id => 1, :account_approved => true},
+  {:full_name => "Sally Milbert", :password => "Password123", :email => "smilbert@gmail.com", :school_id => 1, :account_approved => true},
+  {:full_name => "Betty Hawkeye", :password => "Password123", :email => "bethawks@gmail.com", :school_id => 2, :account_approved => true},
+  {:full_name => "Justice Conrad", :password => "Password123", :email => "justicecon@gmail.com", :school_id => 2, :account_approved => true},
+  {:full_name => "Stacy Streif", :password => "Password123", :email => "sstrief@gmail.com", :school_id => 3, :account_approved => true},
+  {:full_name => "Harrison Fairfield", :password => "Password123", :email => "harryfairy@gmail.com", :school_id => 3, :account_approved => true},
+  {:full_name => "Jack Davenport", :password => "Password123", :email => "jackyd@gmail.com", :school_id => 4, :account_approved => true},
+  {:full_name => "Abby Hein", :password => "Password123", :email => "hein-abby@gmail.com", :school_id => 4, :account_approved => true}
 ]
 nurses.each do |nurse|
   Nurse.create!(nurse)
