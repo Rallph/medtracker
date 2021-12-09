@@ -57,4 +57,15 @@ class ParentController < ApplicationController
 
 
   end
+
+  def approve_medication
+
+    student_id = params['student_id']
+    med_type = params['med_type']
+    medication_id = params['medication_id']
+
+
+
+  end
+
 end
