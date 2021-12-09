@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe AdministratorController, type: :controller do
 
   before {
-    admin =  double('admin', school_id: 25)
+    admin =  double('admin', school_id: 1, account_approved: true)
     login_with(admin, :administrator)
   }
 
