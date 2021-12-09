@@ -3,6 +3,9 @@ class NurseController < ApplicationController
   before_action :authenticate_nurse!
 
   def homepage
+    @current_user = current_nurse
+    @account_type = 'nurse'
+
 
     # query DB for any medicines which are low in inventory
     @meds_in_low_supply = SchoolMedication.where("((unit = 'mL' AND quantity <= :mL_alert_quantity) OR (unit = 'tablets' AND quantity <= :tablet_alert_quantity)) AND (school_id = :nurse_school_id)",
@@ -13,6 +16,9 @@ class NurseController < ApplicationController
   end
 
   def administer
+    @current_user = current_nurse
+    @account_type = 'nurse'
+
     @student_options = Student.where("school_id = :school_id", { school_id: current_nurse.school_id }).map { |student| [student.full_name, student.id] }
     @school_medication_options = SchoolMedication.where("school_id = :school_id", { school_id: current_nurse.school_id }).map { |school_medication| [school_medication.medication_name, school_medication.id] }
   end

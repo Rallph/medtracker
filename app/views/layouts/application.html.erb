@@ -9,8 +9,6 @@
 </head>
 <body>
 
-
-
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -22,8 +20,11 @@
 <!--      <li><a href="#">Page 2</a></li>-->
 <!--    </ul>-->
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Signed in as: lhageman20@gmail.com</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Signed in as: <%= @current_user.email %></a></li>
+<!--      <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>-->
+      <li> <%= link_to 'Log Out', destroy_nurse_session_path, method: :delete %> </li>
+
+
     </ul>
   </div>
 </nav>
