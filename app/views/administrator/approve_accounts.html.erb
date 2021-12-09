@@ -10,12 +10,20 @@
   <tbody>
 
     <% @unapproved_nurses.each do |nurse| %>
-      <tr class="active">
-        <td id="<%= nurse.full_name %>"><%= nurse.full_name %></td>
+      <tr class="active" id="<%= nurse.email %>">
+        <td><%= nurse.full_name %></td>
         <td><%= nurse.email %></td>
-        <td><%= button_tag "Approve Access".html_safe, {class: 'btn btn-primary', type: 'button', onclick: "approveAccount(this)"} %></td>
+        <td><%= button_tag "Approve Access".html_safe, {class: 'btn btn-primary', type: 'button', id: nurse.email, onclick: "approveAccount(this)"} %></td>
       </tr>
     <% end %>
+
+    <% @approved_nurses.each do |nurse| %>
+    <tr class="active" id="<%= nurse.email %>">
+      <td><%= nurse.full_name %></td>
+      <td><%= nurse.email %></td>
+      <td>Account Approved</td>
+    </tr>
+  <% end %>
 
   </tbody>
 

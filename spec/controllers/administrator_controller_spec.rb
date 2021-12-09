@@ -42,7 +42,7 @@ RSpec.describe AdministratorController, type: :controller do
   describe "Render Manage Access Page" do
 
     before(:each) do
-      @fake_nurses = [double('nurse1'), double('nurse2')]
+      @fake_nurses = [double('nurse1', account_approved: true), double('nurse2', account_approved: false)]
     end
 
     it "returns http success" do
@@ -65,7 +65,7 @@ RSpec.describe AdministratorController, type: :controller do
     it "should assign the @unapproved_nurses member variable" do
       allow(Nurse).to receive(:where).and_return(@fake_nurses)
       get :approve_accounts
-      expect(assigns(:unapproved_nurses)).to eq(@fake_nurses)
+      expect(assigns(:unapproved_nurses)).to eq([@fake_nurses[1]])
     end
 
   end

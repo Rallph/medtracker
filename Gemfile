@@ -29,6 +29,10 @@ gem 'rails-erd'
 gem 'bootstrap-sass'
 
 gem 'rails_param'
+
+#gem 'capybara-webkit'
+
+#gem 'selenium-webdriver'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

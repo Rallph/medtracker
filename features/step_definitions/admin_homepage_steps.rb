@@ -11,5 +11,11 @@ Then /I should see access alerts for nurse\(s\):"(.*?)" with email\(s\) "(.*?)"/
     element.should have_content(medicine[1])
 
   end
+end
+
+
+When /I open the manage access page/ do
+
+  click_link 'Manage Access'
 
 end
