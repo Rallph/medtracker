@@ -24,4 +24,16 @@ class ApplicationController < ActionController::Base
 
   end
 
+  # check that user is both logged in and that their account has been approved
+  def verify_administrator
+
+    if current_administrator.account_approved == true
+      authenticate_administrator!
+    else
+      flash[:warning] = "Your Account has not yet been approved by an administrator."
+      redirect_to root_path
+    end
+
+  end
+
 end

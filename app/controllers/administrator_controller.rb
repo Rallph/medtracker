@@ -1,6 +1,6 @@
 class AdministratorController < ApplicationController
 
-  before_action :authenticate_administrator!
+  before_action :verify_administrator
 
   def homepage
 
