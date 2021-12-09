@@ -25,17 +25,18 @@
   <% end %>
 
     <tr class="active">
-      <td>
-      <div class="input-group">
-        <select class="custom-select" style="width:200px" id="inputGroupSelect04">
-          <option selected></option>
-          <% @non_approved_student_meds.each do |nasm| %>
-            <option value="1"><%= nasm.medication_name %></option>
-        <% end %>
-        </select>
-      </div>
+      <%= form_tag "/parent/consent_form" do %>
+        <%= hidden_field_tag :med_type, "student" %>
+        <%= hidden_field_tag :student_id, @student[0].id.to_s %>
+        <td>
+        <div class="input-group">
+          <%= select_tag :medication_id, options_for_select(@non_approved_student_meds.collect{ |nasm| [nasm.medication_name, nasm.id]}), class: %w[form-control input-lg] %>
+        </div>
       </td>
       <td></td>
-      <td align="right"><%= link_to "Approve Medication".html_safe, "approve_medication?student_id=1&med_type=student&medication_id=3", {class: 'btn btn-primary', type: 'button'} %></td>
+      <td align="right">
+        <%= submit_tag "Approve Medication", class: %w[btn btn-primary] %>
+      </td>
+      <% end %>
     </tr>
 </table>
