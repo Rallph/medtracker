@@ -84,7 +84,9 @@ end
 
 medication_approvals = [
   {:student_or_school => 'student', :student_medication_id => 1, :student_id => 1},
-  {:student_or_school => 'student', :student_medication_id => 2, :student_id => 1}
+  {:student_or_school => 'student', :student_medication_id => 2, :student_id => 1},
+  {:student_or_school => 'school', :school_medication_id => 1, :student_id => 1},
+  {:student_or_school => 'school', :school_medication_id => 2, :student_id => 1}
 ]
 medication_approvals.each do |ma|
   MedicationApproval.create!(ma)

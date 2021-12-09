@@ -15,31 +15,41 @@ class ParentController < ApplicationController
 
 
     @student = Student.where('id = 1')
-    @student_medications = StudentMedication.where('student_id = 1')
 
+    @school_medications = SchoolMedication.all
     @approved_medication_ids = @student[0].medication_approvals
-
-
-    @approved_student_meds = []
-    @non_approved_student_meds = []
-
-    @student_medications.each do |student_med|
-
+    @approved_school_meds = []
+    @non_approved_school_meds = []
+    @school_medications.each do |school_med|
       approved = false
       @approved_medication_ids.each do |approved_med|
+        if (approved_med.student_or_school.eql? 'school') and (approved_med.school_medication_id.eql? school_med.id)
+          approved = true
+        end
+      end
+      if approved.eql? true
+        @approved_school_meds.append school_med
+      else
+        @non_approved_school_meds.append school_med
+      end
+    end
 
+    @student_medications = StudentMedication.where('student_id = 1')
+    # @approved_medication_ids = @student[0].medication_approvals
+    @approved_student_meds = []
+    @non_approved_student_meds = []
+    @student_medications.each do |student_med|
+      approved = false
+      @approved_medication_ids.each do |approved_med|
         if (approved_med.student_or_school.eql? 'student') and (approved_med.student_medication_id.eql? student_med.id)
           approved = true
         end
-
       end
-
       if approved.eql? true
         @approved_student_meds.append student_med
       else
         @non_approved_student_meds.append student_med
       end
-
     end
 
 
