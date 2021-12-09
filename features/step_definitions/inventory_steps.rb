@@ -11,6 +11,16 @@ Given /the following "(.*?)" have been added to inventory:/ do |medication_type,
   end
 end
 
+Given /the following students have been added to MedMonitor:/ do |students_table|
+  students_table.hashes.each do |student|
+    Student.create(student)
+  end
+end
+
+Given /the school with name: "(.*?)" and district_id: "(.*?)" has been added to MedMonitor:/ do |school_name, district_id|
+  School.create(:school_name =>school_name, :district_id => district_id)
+end
+
 
 
 #And /^I view "(.*?)" medication inventory$/ do |user_type|
@@ -23,7 +33,7 @@ When /^I view "(.*?)" medication inventory$/ do |user_type|
 end
 
 
-Then /^I should only see medications belonging to school_id: "(.*?)"$/ do |school_id|
+Then /^I should only see medications belonging to school_name: "(.*?)"$/ do |school_id|
   #pending # Write code here that turns the phrase above into concrete actions
 
   all('#inventory tr > td:nth-child(5)').each do |td|
@@ -33,7 +43,7 @@ Then /^I should only see medications belonging to school_id: "(.*?)"$/ do |schoo
     end
 end
 
-Then /^I should only see medications belonging to student_ids: "(.*?)"$/ do |student_ids|
+Then /^I should only see medications belonging to student_name: "(.*?)"$/ do |student_ids|
   array = student_ids.split(',')
   all('#student_inventory tr > td:nth-child(6)').each do |td|
     array.should include td.text

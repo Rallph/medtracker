@@ -11,6 +11,8 @@ Feature:
       | Sally Milbert           | s-milbert@hotmail.com      | PassWord     | 2         |
       | Jim Beam                | jimmyB@gmail.com           | PASSWORD     | 3         |
 
+    And the school with name: "Kate Wickham Elementary" and district_id: "1" has been added to MedMonitor:
+
     And the following "Administrators" have been added to MedMonitor:
       | full_name               | email                      | password     | school_id |
       | John Smith              | johnsmith1@icloud.com      | password1    | 12        |
@@ -31,10 +33,12 @@ Feature:
       | medication_name         | quantity                   | unit         | school_id | student_id  |
       | Ibuprofen               | 30                         | tablets      | 1         | 1           |
       | Ibuprofen               | 25                         | tablets      | 2         | 2           |
-      | Tylenol                 | 250                        | mL           | 1         | 3           |
+      | Tylenol                 | 250                        | mL           | 2         | 3           |
       | Benadryl                | 15                         | tablets      | 2         | 4           |
-      | Tranquilizer            | 3                          | blow dart    | 1         | 5           |
-
+      | Tranquilizer            | 3                          | blow dart    | 2         | 5           |
+    And the following students have been added to MedMonitor:
+      | full_name               | date_of_birth              | school_id    |
+      | John Doe                | 08-24-2011                 | 1            |
     #And I am on the nurse inventory page
     # test difference in login into site as background
     #And I log in as a "nurse" with email: "bobby_R@gmail.com" and password: "pa$$word"
@@ -48,7 +52,7 @@ Feature:
   Scenario: Nurse views school medication
     When I log in as a "nurse" with email: "bobby_R@gmail.com" and password: "pa$$word"
     And I view "nurse" medication inventory
-    Then I should only see medications belonging to school_id: "1"
+    Then I should only see medications belonging to school_name: "Kate Wickham Elementary"
 
   Scenario: Nurse views empty inventory
     When I log in as a "nurse" with email: "jimmyB@gmail.com" and password: "PASSWORD"
@@ -58,5 +62,5 @@ Feature:
   Scenario: Nurse views student medications
     When I log in as a "nurse" with email: "bobby_R@gmail.com" and password: "pa$$word"
     And I view "nurse" medication inventory
-    Then I should only see medications belonging to student_ids: "1,3,5"
+    Then I should only see medications belonging to student_name: "John Doe"
 
