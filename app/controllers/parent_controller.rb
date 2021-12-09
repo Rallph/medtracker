@@ -64,8 +64,15 @@ class ParentController < ApplicationController
     med_type = params['med_type']
     medication_id = params['medication_id']
 
+    if med_type.eql? 'student'
+      MedicationApproval.create!({:student_id => student_id, :student_or_school => med_type, :student_medication_id => medication_id})
+    else
+      MedicationApproval.create!({:student_id => student_id, :student_or_school => med_type, :school_medication_id => medication_id})
+    end
 
+    redirect_to :consent_form
 
   end
+
 
 end
