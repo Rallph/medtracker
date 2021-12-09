@@ -22,10 +22,10 @@ nurses.each do |nurse|
 end
 
 # One administrator per school
-administrators = [{:email => "jbronx@gmail.com", :password => "Password123",:full_name => "Jerry Bronx", :school_id => 1},          #, :account_approved => true},
-                  {:email => "gomez-stream@gmail.com", :password => "Password123",:full_name => "Gomez Stream", :school_id => 2},     #, :account_approved => true},
-                  {:email => "meggabriel@gmail.com", :password => "Password123",:full_name => "Megan Gabrielson", :school_id => 3},  #, :account_approved => true},
-                  {:email => "dannyamato@gmail.com", :password => "Password123",:full_name => "Daniel Amato", :school_id => 4}]      #, :account_approved =>true}]
+administrators = [{:email => "jbronx@gmail.com", :password => "Password123",:full_name => "Jerry Bronx", :school_id => 1, :account_approved => true},
+                  {:email => "gomez-stream@gmail.com", :password => "Password123",:full_name => "Gomez Stream", :school_id => 2, :account_approved => true},
+                  {:email => "meggabriel@gmail.com", :password => "Password123",:full_name => "Megan Gabrielson", :school_id => 3, :account_approved => true},
+                  {:email => "dannyamato@gmail.com", :password => "Password123",:full_name => "Daniel Amato", :school_id => 4, :account_approved =>true}]
 
 administrators.each do |admin|
   Administrator.create!(admin)
