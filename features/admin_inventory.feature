@@ -1,8 +1,8 @@
 Feature:
 
   As an administrator
-  I want to view all of the medications in stock and the amount left of each medication in the entire school district
-  So that I can efficiently monitor the district medication stock
+  I want to view all of the medications in stock at my school
+  So that I can efficiently monitor the school medications in stock
 
   Background:
     Given the following districts have been added to MedMonitor:
