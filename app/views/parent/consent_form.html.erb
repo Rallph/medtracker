@@ -15,93 +15,27 @@
 
   <tbody>
 
-  <%# @approved_student_meds.each do |asm| %>
+  <% @approved_student_meds.each do |asm| %>
 <!--    <p> <%#= asm %></p>-->
-  <%# end %>
-
-
-    <%# @invitees.each do |invitee| %>
-
-
     <tr class="active">
-      <td>Ibuprofen</td>
-<!--      <td><%#= invitee.phone_number %></td>-->
+      <td><%= asm.medication_name %></td>
       <td></td>
       <td align="right"><%= link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, "delete_invitee?delete_invitee=", {class: 'btn btn-danger', type: 'button'} %></td>
     </tr>
-
-    <tr class="active">
-      <td>Amoxicillin</td>
-      <!--      <td><%#= invitee.phone_number %></td>-->
-      <td></td>
-      <td align="right"><%= link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, "delete_invitee?delete_invitee=", {class: 'btn btn-danger', type: 'button'} %></td>
-    </tr>
-
-    <tr class="active">
-      <td>Tylenol</td>
-      <!--      <td><%#= invitee.phone_number %></td>-->
-      <td></td>
-
-      <td align="right"><%= link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, "delete_invitee?delete_invitee=", {class: 'btn btn-danger', type: 'button'} %></td>
-    </tr>
+  <% end %>
 
     <tr class="active">
       <td>
       <div class="input-group">
         <select class="custom-select" style="width:200px" id="inputGroupSelect04">
           <option selected>Choose...</option>
-          <option value="1">Aspirin</option>
-          <option value="2">DayQuil</option>
-          <option value="3">Excedrin</option>
+          <% @non_approved_student_meds.each do |nasm| %>
+            <option value="1"><%= nasm.medication_name %></option>
+        <% end %>
         </select>
-<!--        <div class="input-group-append">-->
-<!--          <button class="btn btn-outline-secondary" type="button">Button</button>-->
-<!--        </div>-->
       </div>
       </td>
       <td></td>
       <td align="right"><%= link_to "Approve Medication".html_safe, "delete_invitee?delete_invitee=", {class: 'btn btn-primary', type: 'button'} %></td>
-
     </tr>
-
-
-    <%# end %>
-    <%#= form_tag 'add_invitee', method: :get do %>
-
-<!--      <tr class="active">-->
-<!--          <td>-->
-            <%#= text_field_tag :name, nil, class: "form-control"%>
-<!--            <label style="font-size:17px;color:grey">Name of Invitee</label>-->
-<!--          </td>-->
-<!--          <td>-->
-            <%#= text_field_tag :phone_number, nil, class: "form-control"%>
-<!--            <label style="font-size:17px;color:grey">Ex. Format: (1)5635551234</label>-->
-<!--          </td>-->
-<!--          <td><%#= button_tag "<span class='glyphicon glyphicon-plus'></span>".html_safe, :class => 'btn btn-primary form-control' %></td>-->
-<!--        </tr>-->
-        <%#flash[:poll_id] = @poll.id %>
-    <%# end %>
-
 </table>
-
-
-<%# @student_medications.each do |sm| %>
-<!--  <p> <%#= sm.medication_name %></p>-->
-<%# end %>
-
-<!--<p></p>-->
-<%# @student.each do |st| %>
-<!--  <p> <%#= st %></p>-->
-<!--  <p> <%#= st.full_name %></p>-->
-  <%# st.medication_approvals.each do |stsm| %>
-<!--    <p> <%#= stsm.student_medication_id %> </p>-->
-  <%# end %>
-<%# end %>
-
-<% @approved_student_meds.each do |apm| %>
-  <p> <%= apm %></p>
-<% end %>
-<p>----</p>
-<% @non_approved_student_meds.each do |napm| %>
-  <p> <%= napm %></p>
-<% end %>
