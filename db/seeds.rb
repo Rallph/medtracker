@@ -71,14 +71,22 @@ schools.each do |school|
 end
 
 school_medications = [
-  {:medication_name => "Ibuprofen", :quantity => 30, :unit => "tablets", :school_id => 1},
-  {:medication_name => "Ibuprofen", :quantity => 25, :unit => "tablets", :school_id => 2},
+  {:medication_name => "Ibuprofen Extra Strength", :quantity => 30, :unit => "tablets", :school_id => 1},
+  {:medication_name => "Ibuprofen", :quantity => 300, :unit => "mL", :school_id => 2},
   {:medication_name => "Cough Syrup", :quantity => 250, :unit => "mL", :school_id => 1}
 ]
 school_medications.each do |sm|
   SchoolMedication.create!(sm)
 end
-
+school_meds_text = File.read(Rails.root.join('db','seeds_csv','school_medications.csv'))
+school_meds_enumerable = CSV.parse(school_meds_text, :headers => true)
+school_meds_enumerable.each do |row|
+  #puts(row[0])
+  SchoolMedication.create!({:medication_name => row[0],
+                            :quantity => row["quantity"],
+                            :unit => row["unit"],
+                            :school_id => row["school_id"]})
+end
 
 
 school_medication_transactions = [
