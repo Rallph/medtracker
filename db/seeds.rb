@@ -100,6 +100,17 @@ student_meds_enumerable.each do |row|
                              :student_id => row["student_id"]})
 end
 
+school_med_transactions_text = File.read(Rails.root.join('db','seeds_csv','school_medication_transactions.csv'))
+school_med_transactions_enumerable = CSV.parse(school_med_transactions_text, :headers => true)
+school_med_transactions_enumerable.each do |row|
+  SchoolMedicationTransaction.create!({:date => row[0],
+                                       :time => row["time"],
+                                       :change_in_quantity => row["change_in_quantity"],
+                                       :school_medication_id => row["school_medication_id"],
+                                       :student_id => row["student_id"],
+                                       :nurse_id => row["nurse_id"]})
+end
+=begin
 school_medication_transactions = [
   {:date => "11-09-2021", :time => "10:00AM", :change_in_quantity => "1", :school_medication_id => 1, :student_id => 1, :nurse_id => 2},
   {:date => "11-09-2021", :time => "10:45AM", :change_in_quantity => "10", :school_medication_id => 3, :student_id => 2, :nurse_id => 2},
@@ -107,6 +118,7 @@ school_medication_transactions = [
 school_medication_transactions.each do |mt|
   SchoolMedicationTransaction.create!(mt)
 end
+=end
 
 # consent_forms = [
 #   {:date => "09-22-2021", :parent_id => 1, :student_id => 1}
