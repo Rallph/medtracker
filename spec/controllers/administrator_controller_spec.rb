@@ -51,10 +51,11 @@ RSpec.describe AdministratorController, type: :controller do
 
   end
 
-  describe "Render Manage Access Page" do
+  describe "Render approve accounts Page" do
 
     before(:each) do
       @fake_nurses = [double('nurse1', account_approved: true), double('nurse2', account_approved: false)]
+      @fake_admins = [double('nurse1', account_approved: false), double('nurse2', account_approved: true)]
     end
 
     it "returns http success" do
@@ -67,6 +68,11 @@ RSpec.describe AdministratorController, type: :controller do
       get :approve_accounts
     end
 
+    it "should query the Administrator Model" do
+      expect(Administrator).to receive(:where).and_return(@fake_admins)
+      get :approve_accounts
+    end
+
     it "should render the approve_accounts page" do
       allow(Nurse).to receive(:where).and_return(@fake_nurses)
       get :approve_accounts
@@ -74,10 +80,40 @@ RSpec.describe AdministratorController, type: :controller do
       expect(response).to render_template("approve_accounts")
     end
 
+    it "should assign the @school_nurses member variable" do
+      allow(Nurse).to receive(:where).and_return(@fake_nurses)
+      get :approve_accounts
+      expect(assigns(:school_nurses)).to eq(@fake_nurses)
+    end
+
     it "should assign the @unapproved_nurses member variable" do
       allow(Nurse).to receive(:where).and_return(@fake_nurses)
       get :approve_accounts
       expect(assigns(:unapproved_nurses)).to eq([@fake_nurses[1]])
+    end
+
+    it "should assign the @approved_nurses member variable" do
+      allow(Nurse).to receive(:where).and_return(@fake_nurses)
+      get :approve_accounts
+      expect(assigns(:approved_nurses)).to eq([@fake_nurses[0]])
+    end
+
+    it "should assign the @school_admins member variable" do
+      allow(Administrator).to receive(:where).and_return(@fake_admins)
+      get :approve_accounts
+      expect(assigns(:school_admins)).to eq(@fake_admins)
+    end
+
+    it "should assign the @unapproved_admins member variable" do
+      allow(Administrator).to receive(:where).and_return(@fake_admins)
+      get :approve_accounts
+      expect(assigns(:unapproved_admins)).to eq([@fake_admins[0]])
+    end
+
+    it "should assign the @approved_admins member variable" do
+      allow(Administrator).to receive(:where).and_return(@fake_admins)
+      get :approve_accounts
+      expect(assigns(:approved_admins)).to eq([@fake_admins[1]])
     end
 
   end

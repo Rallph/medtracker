@@ -15,10 +15,15 @@ class AdministratorController < ApplicationController
   def approve_accounts
 
     # get list of nurses who's accounts have not yet been approved
-    @school_nurses = Nurse.where('school_id = :id', {id: current_administrator.school_id})
+    school_id = current_administrator.school_id
+    @school_nurses = Nurse.where('school_id = :id', {id: school_id})
+    @school_admins = Administrator.where('school_id = :id', {id: school_id})
 
     @approved_nurses = []
     @unapproved_nurses = []
+
+    @approved_admins = []
+    @unapproved_admins = []
 
     @school_nurses.each do |nurse|
 
@@ -28,6 +33,14 @@ class AdministratorController < ApplicationController
         @unapproved_nurses.append(nurse)
       end
 
+    end
+
+    @school_admins.each do |admin|
+      if admin.account_approved
+        @approved_admins.append(admin)
+      else
+        @unapproved_admins.append(admin)
+      end
     end
 
   end
