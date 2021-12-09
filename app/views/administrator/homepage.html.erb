@@ -15,7 +15,14 @@
       </p>
     <% end %>
 
-    <% if @unapproved_nurses.blank? == true %>
+    <% @unapproved_admins.each do |admin| %>
+      <p>
+        Administrator <%= admin.full_name %> is requesting account approval:<br>
+        Email: <%= admin.email %><br><br>
+      </p>
+    <% end %>
+
+    <% if @unapproved_nurses.blank? == true and @unapproved_admins.blank? == true %>
       <p><br>No Notifications at this time.<br><br></p>
     <% end %>
 

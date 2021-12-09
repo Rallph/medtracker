@@ -4,8 +4,11 @@ class AdministratorController < ApplicationController
 
   def homepage
 
-    # get list of all nurses who's accounts have not yet been approved.
-    @unapproved_nurses = Nurse.where('account_approved = :approval_status AND school_id = :id', {approval_status: false, id: current_administrator.school_id})
+    school_id = current_administrator.school_id
+
+    # get all nurses and admins who's accounts have not yet been approved.
+    @unapproved_nurses = Nurse.where('account_approved = :approval_status AND school_id = :id', {approval_status: false, id: school_id})
+    @unapproved_admins = Administrator.where('account_approved = :approval_status AND school_id = :id', {approval_status: false, id: school_id})
 
   end
 
