@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   #post 'administrator/homepage' => 'administrator#submit_new_student', as: :submit_new_student
   get 'administrator/add_student' => 'administrator#add_student', as: :add_student
   post 'administrator/add_student' => 'administrator#submit_new_student', as: :submit_new_student
+  get 'administrator/inventory' => 'administrator#inventory', as: :inventory
 
 
   # nurse controller routes
