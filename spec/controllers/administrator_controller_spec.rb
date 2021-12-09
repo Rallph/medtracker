@@ -122,33 +122,56 @@ RSpec.describe AdministratorController, type: :controller do
 
     before(:each) do
       @fake_nurses = [double('nurse1', :update => 1), double('nurse2')]
+      @fake_admins = [double('admin1', :update => 1), double('admin2')]
       @email = "bob@bob.com"
+      @admin_role = "Administrator"
+      @nurse_role = "Nurse"
     end
 
     it "should assign the @email member variable" do
 
       allow(Nurse).to receive(:where).and_return(@fake_nurses)
-      post :approve_new_account, {"email" => @email}
+      allow(Administrator).to receive(:where).and_return(@fake_admins)
+      post :approve_new_account, {"email" => @email, "role" => @nurse_role}
       expect(assigns(:email)).to eq(@email)
 
     end
 
-    it "should query the nurse model" do
-      expect(Nurse).to receive(:where).and_return(@fake_nurses)
-      post :approve_new_account, {"email" => @email}
+    it "should assign the @role member variable" do
+
+      allow(Nurse).to receive(:where).and_return(@fake_nurses)
+      allow(Administrator).to receive(:where).and_return(@fake_admins)
+      post :approve_new_account, {"email" => @email, "role" => @admin_role}
+      expect(assigns(:role)).to eq(@admin_role)
+
     end
 
-    it "should call the update method on the returned nurse object" do
+    it "should query the nurse model when the role is nurse" do
+      expect(Nurse).to receive(:where).and_return(@fake_nurses)
+      post :approve_new_account, {"email" => @email, "role" => @nurse_role}
+    end
+
+    it "should query the admin model when the role is admin" do
+      expect(Administrator).to receive(:where).and_return(@fake_admins)
+      post :approve_new_account, {"email" => @email, "role" => @admin_role}
+    end
+
+    it "should call the update method on the returned nurse object when the role is nurse" do
       allow(Nurse).to receive(:where).and_return(@fake_nurses)
       expect(@fake_nurses[0]).to receive(:update).with(account_approved: true).and_return(nil)
-      post :approve_new_account, {"email" => @email}
+      post :approve_new_account, {"email" => @email, "role" => @nurse_role}
+    end
+
+    it "should call the update method on the returned admin object when the role is admin" do
+      allow(Administrator).to receive(:where).and_return(@fake_admins)
+      expect(@fake_admins[0]).to receive(:update).with(account_approved: true).and_return(nil)
+      post :approve_new_account, {"email" => @email, "role" => @admin_role}
 
     end
 
     it "should redirect to the approve accounts page" do
       allow(Nurse).to receive(:where).and_return(@fake_nurses)
-      post :approve_new_account, {"email" => @email}
-
+      post :approve_new_account, {"email" => @email, "role" => @nurse_role}
       expect(response).to redirect_to(:approve_accounts)
     end
 

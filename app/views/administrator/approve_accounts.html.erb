@@ -1,5 +1,5 @@
 
-<table id="poll_table" style="width:700px;margin:0 auto;font-size:20px;position:relative;" class="table table-striped table-sm">
+<table id="poll_table" style="width:850px;margin:0 auto;font-size:20px;position:relative;" class="table table-striped table-sm">
   <thead>
   <tr>
     <th scope="col">Role</th>
@@ -19,31 +19,32 @@
       </tr>
     <% end %>
 
-    <% @unnaproved_admins.each do |admin| %>
+    <% @unapproved_admins.each do |admin| %>
     <tr class="active" id="admin-<%= admin.email %>">
       <td>Administrator</td>
       <td><%= admin.full_name %></td>
       <td><%= admin.email %></td>
-      <td><%= button_tag "Approve Access".html_safe, {class: 'btn btn-primary', type: 'button', id: "admin" + admin.email, onclick: "approveAccount(this)"} %></td>
+      <td><%= button_tag "Approve Access".html_safe, {class: 'btn btn-primary', type: 'button', id: "admin-" + admin.email, onclick: "approveAccount(this)"} %></td>
     </tr>
     <% end %>
 
     <% @approved_nurses.each do |nurse| %>
-    <tr class="active" id="<%= nurse.email %>">
-      <td><%= nurse.full_name %></td>
-      <td><%= nurse.email %></td>
-      <td>Account Approved</td>
-    </tr>
-  <% end %>
+      <tr class="active" id=nurse-"<%= nurse.email %>">
+        <td>Nurse</td>
+        <td><%= nurse.full_name %></td>
+        <td><%= nurse.email %></td>
+        <td>Account Approved</td>
+      </tr>
+    <% end %>
 
-  <% @approved_admins.each do |admin| %>
-    <tr class="active" id="admin-<%= admin.email %>">
-      <td>Administrator</td>
-      <td><%= admin.full_name %></td>
-      <td><%= admin.email %></td>
-      <td>Account Approved</td>
-    </tr>
-  <% end %>
+    <% @approved_admins.each do |admin| %>
+      <tr class="active" id="admin-<%= admin.email %>">
+        <td>Administrator</td>
+        <td><%= admin.full_name %></td>
+        <td><%= admin.email %></td>
+        <td>Account Approved</td>
+      </tr>
+    <% end %>
 
   </tbody>
 

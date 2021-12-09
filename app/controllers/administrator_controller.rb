@@ -48,9 +48,15 @@ class AdministratorController < ApplicationController
   def approve_new_account
 
     @email = params[:email]
+    @role = params[:role]
 
-    @nurse = Nurse.where('email = :nurse_email', {nurse_email: @email})
-    @nurse.first.update(account_approved: true)
+    if (@role == "Nurse")
+      @nurse = Nurse.where('email = :nurse_email', {nurse_email: @email})
+      @nurse.first.update(account_approved: true)
+    else
+      @admin = Administrator.where('email = :admin_email', {admin_email: @email})
+      @admin.first.update(account_approved: true)
+    end
 
     redirect_to :approve_accounts
 
