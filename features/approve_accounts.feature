@@ -13,11 +13,11 @@ Feature:
       | Luke Hageman            | l-hageman@hotmail.com      | paswerd      | 3         | false            |
 
     And the following "Administrators" have been added to MedMonitor:
-      | full_name               | email                      | password     | school_id |
-      | John Smith              | johnsmith1@icloud.com      | password1    | 3        |
+      | full_name               | email                      | password     | school_id | account_approved |
+      | John Smith              | johnsmith1@icloud.com      | password1    | 3         | true             |
 
 
-    And I log in as a "administrator" with email: "johnsmith1@icloud.com " and password: "password1"
+    And I log in as a "administrator" with email: "johnsmith1@icloud.com" and password: "password1"
     And I open the manage access page
 
   Scenario: Admin visits Administrator Manage Access Page

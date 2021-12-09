@@ -14,9 +14,9 @@ Feature:
 
   Scenario: Administrator creates new account
     When I attempt to sign up as a "administrator" with email: "cody-m-anderson@gmail.com", full_name: "Cody Anderson", school_id: "24", and password: "password"
-    Then I should see: "Welcome! You have signed up successfully."
+    Then I should see: "Your Account has not yet been approved by an administrator."
 
   Scenario: Parent creates new account
-    When I attempt to sign up as a "administrator" with email: "cody-r-andersen@gmail.com", full_name: "Cody Andersen", school_id: "21", and password: "password1"
+    When I attempt to sign up as a "parent" with email: "cody-r-andersen@gmail.com", full_name: "Cody Andersen", school_id: "21", and password: "password1"
     Then I should see: "Welcome! You have signed up successfully."
 

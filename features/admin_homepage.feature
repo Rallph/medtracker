@@ -12,15 +12,15 @@ Feature:
       | Cody Anderson           | c-anderson@hotmail.com     | passwrd      | 3         | false            |
 
     And the following "Administrators" have been added to MedMonitor:
-      | full_name               | email                      | password     | school_id |
-      | John Smith              | johnsmith1@icloud.com      | password1    | 3        |
+      | full_name               | email                      | password     | school_id | account_approved |
+      | John Smith              | johnsmith1@icloud.com      | password1    | 3         | true             |
+      | John Doe                | johndoe1@icloud.com        | password2    | 3         | false            |
 
 
-    And I log in as a "administrator" with email: "johnsmith1@icloud.com " and password: "password1"
+    And I log in as a "administrator" with email: "johnsmith1@icloud.com" and password: "password1"
 
-  Scenario: Admin visits the nurse homepage
+  Scenario: Admin visits their homepage
     Then I should see buttons for: "Manage Access,View Reports/Logs"
 
   Scenario: Admin visits homepage and checks Access Notifications
-
-    Then I should see access alerts for nurse(s):"Cody Anderson" with email(s) "c-anderson@hotmail.com"
+    Then I should see access alerts for user(s):"Cody Anderson,John Doe" with email(s) "c-anderson@hotmail.com,johndoe1@icloud.com"

@@ -1,14 +1,14 @@
-Then /I should see access alerts for nurse\(s\):"(.*?)" with email\(s\) "(.*?)"/ do |nurse_names, nurse_emails|
+Then /I should see access alerts for user\(s\):"(.*?)" with email\(s\) "(.*?)"/ do |user_names, user_emails|
 
-  medicines = nurse_names.split(',')
-  quantities = nurse_emails.split(',')
+  users = user_names.split(',')
+  emails = user_emails.split(',')
 
-  medicines_mapped_to_quantities = medicines.zip(quantities)
+  users_mapped_to_emails = users.zip(emails)
 
-  medicines_mapped_to_quantities.each do |medicine|
+  users_mapped_to_emails.each do |user|
 
-    element = find('p', text: medicine[0])
-    element.should have_content(medicine[1])
+    element = find('p', text: user[0])
+    element.should have_content(user[1])
 
   end
 end
