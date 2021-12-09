@@ -32,7 +32,7 @@ students.each do |student|
 end
 
 
-students_text = File.read(Rails.root.join('db','students.csv'))
+students_text = File.read(Rails.root.join('db','seeds_csv','students.csv'))
 students_enumerable = CSV.parse(students_text, :headers => true)
 students_enumerable.each do |row|
   #puts(row[0])
@@ -94,4 +94,14 @@ parents = [
 
 parents.each do |parent|
   Parent.create!(parent)
+end
+
+
+parents_text = File.read(Rails.root.join('db','seeds_csv','parents.csv'))
+parents_enumerable = CSV.parse(parents_text, :headers => true)
+parents_enumerable.each do |row|
+  #puts(row[0])
+  Parent.create!( {:email => row[0],
+                    :full_name => row["full_name"],
+                    :password => row["password"]})
 end
