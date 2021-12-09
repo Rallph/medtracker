@@ -22,6 +22,7 @@ end
 #   Administrator.create!(admin)
 # end
 #
+=begin
 students = [
   {:full_name => "Will Ries", :date_of_birth => "10-01-2009", :school_id => 1},
   {:full_name => "Jessica Klien", :date_of_birth => "6/11/2008", :school_id => 1},
@@ -30,7 +31,7 @@ students = [
 students.each do |student|
   Student.create!(student)
 end
-
+=end
 
 students_text = File.read(Rails.root.join('db','seeds_csv','students.csv'))
 students_enumerable = CSV.parse(students_text, :headers => true)
@@ -87,6 +88,8 @@ end
 #   ConsentForm.create!(cf)
 # end
 #
+#
+=begin
 parents = [
  {:full_name => "Sally Ries", :email => "sries@gmail.com", :password => "Password123"},
  {:full_name => "Kelly Klien", :email => "kklien@gmail.com", :password => "Password123"},
@@ -95,7 +98,7 @@ parents = [
 parents.each do |parent|
   Parent.create!(parent)
 end
-
+=end
 
 parents_text = File.read(Rails.root.join('db','seeds_csv','parents.csv'))
 parents_enumerable = CSV.parse(parents_text, :headers => true)
@@ -104,4 +107,17 @@ parents_enumerable.each do |row|
   Parent.create!( {:email => row[0],
                     :full_name => row["full_name"],
                     :password => row["password"]})
+end
+
+#parents_students = [{:parent_id => 1, :student_id => 1}]
+#ParentsStudents.create!(parents_students[0])
+#
+#parent = Parent.first
+#student = Student.first
+#parent.students << student
+
+Parent.count.times do |i|
+  parent = Parent.find(i + 1)
+  student = Student.find(i + 1)
+  parent.students << student
 end
