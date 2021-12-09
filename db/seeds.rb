@@ -13,14 +13,14 @@ nurses = [
 nurses.each do |nurse|
   Nurse.create!(nurse)
 end
-#
-# administrators = [
-#   {:full_name => "John Smith", :username => "johnsmith1", :password => "password1", :email => "jsmith@gmail.com"}
-# ]
-# administrators.each do |admin|
-#   Administrator.create!(admin)
-# end
-#
+
+administrators = [
+  {:full_name => "John Smith", :password => "password1", :email => "jsmith@gmail.com", :school_id => 1, :account_approved => true}
+]
+administrators.each do |admin|
+  Administrator.create!(admin)
+end
+
 students = [
   {:full_name => "Will Ries", :date_of_birth => "10-01-2009", :school_id => 1},
   {:full_name => "Jessica Klien", :date_of_birth => "04-10-2009", :school_id => 1},
