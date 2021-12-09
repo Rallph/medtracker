@@ -22,6 +22,15 @@ end
 #   Administrator.create!(admin)
 # end
 #
+# One administrator per school
+administrators = [{:email => "jbronx@gmail.com", :password => "Password123",:full_name => "Jerry Bronx", :school_id => 1},
+                  {:email => "gomez-stream@gmail.com", :password => "Password123",:full_name => "Gomez Stream", :school_id => 2},
+                  {:email => "meggabriel@gmail.com", :password => "Password123",:full_name => "Megan Gabrielson", :school_id => 3},
+                  {:email => "dannyamato@gmail.com", :password => "Password123",:full_name => "Daniel Amato", :school_id => 4}]
+
+administrators.each do |admin|
+  Administrator.create!(admin)
+end
 =begin
 students = [
   {:full_name => "Will Ries", :date_of_birth => "10-01-2009", :school_id => 1},
@@ -45,18 +54,18 @@ end
 
 
 districts  = [
-  {:district_name => "Western Dubuque School District"},
-  {:district_name => "Iowa City School District"}
+  {:district_name => "Des Moines Public Schools School District"},
+  {:district_name => "Iowa City Community School District"}
 ]
 districts.each do |district|
   District.create!(district)
 end
 
 schools = [
-  {:school_name => "Beckman High School", :district_id => 1},
-  {:school_name => "West Liberty High School", :district_id => 2},
+  {:school_name => "Capitol View Elementary School", :district_id => 1},
+  {:school_name => "Harding Middle School", :district_id => 1},
   {:school_name => "Iowa City West High School", :district_id => 2},
-  {:school_name => "Jefferson Elementary School", :district_id => 2}
+  {:school_name => "Van Allen Elementary School", :district_id => 2}
 ]
 schools.each do |school|
   School.create!(school)
