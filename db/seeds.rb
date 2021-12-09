@@ -54,7 +54,7 @@ end
 
 school_medications = [
   {:medication_name => "Ibuprofen", :quantity => 30, :unit => "tablets", :school_id => 1},
-  {:medication_name => "Ibuprofen", :quantity => 25, :unit => "tablets", :school_id => 2},
+  {:medication_name => "Tylenol", :quantity => 25, :unit => "tablets", :school_id => 2},
   {:medication_name => "Cough Syrup", :quantity => 250, :unit => "mL", :school_id => 1}
 ]
 school_medications.each do |sm|

@@ -36,3 +36,39 @@
       <% end %>
     </tr>
 </table>
+
+
+<table id="poll_table" style="width:400px;margin:0 auto;font-size:20px;position:relative;top:-40px;table-layout: fixed" class="table table-striped table-sm">
+  <thead>
+  <tr>
+    <th scope="col" style="width:200px">Medication Name</th>
+    <th scope="col" style="width:400px">Approval Notes</th>
+    <th scope="col" style="width:200px"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+
+  <% @approved_school_meds.each do |asm| %>
+    <tr class="active">
+      <td><%= asm.medication_name %></td>
+      <td></td>
+      <td align="right"><%= link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, "disapprove_medication?student_id="+@student[0].id.to_s+"&med_type=school&medication_id="+asm.id.to_s, {class: 'btn btn-danger', type: 'button'} %></td>
+    </tr>
+  <% end %>
+  <tr class="active">
+    <%= form_tag "/parent/consent_form" do %>
+      <%= hidden_field_tag :med_type, "school" %>
+      <%= hidden_field_tag :student_id, @student[0].id.to_s %>
+      <td>
+        <div class="input-group">
+          <%= select_tag :medication_id, options_for_select(@non_approved_school_meds.collect{ |nasm| [nasm.medication_name, nasm.id]}), class: %w[form-control input-lg] %>
+        </div>
+      </td>
+      <td></td>
+      <td align="right">
+        <%= submit_tag "Approve Medication", class: %w[btn btn-primary] %>
+      </td>
+    <% end %>
+  </tr>
+</table>
