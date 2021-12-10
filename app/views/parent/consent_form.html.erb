@@ -21,7 +21,7 @@
 
   <% @approved_student_meds.each do |asm| %>
     <tr class="active">
-      <td><%= asm.medication_name %></td>
+      <td id="approved_student_med"><%= asm.medication_name %></td>
       <td></td>
 
       <td align="right">
@@ -69,7 +69,7 @@
 
   <% @approved_school_meds.each do |asm| %>
     <tr class="active">
-      <td><%= asm.medication_name %></td>
+      <td id="approved_school_med"><%= asm.medication_name %></td>
       <td></td>
       <td align="right">
         <%#= link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, "disapprove_medication?student_id="+@student[0].id.to_s+"&med_type=school&medication_id="+asm.id.to_s, {class: 'btn btn-danger', type: 'button'} %>

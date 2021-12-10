@@ -35,5 +35,6 @@ Feature:
 
   Scenario: Parent visits the medication consent form page
     Then I should see "Danny Smith" in the page title
-
+    And I should see "Ibuprofen,Tylenol" approved in the school medication table
+    And I should see "Clarinex,Astelin,Optivar" approved in the student medication table
 
