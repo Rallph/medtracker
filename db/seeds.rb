@@ -162,3 +162,15 @@ Parent.count.times do |i|
   student = Student.find(i + 1)
   parent.students << student
 end
+
+#Create medication_approvals table from existing medication transactions
+#
+# SCHOOL MEDICATION APPROVALS
+SchoolMedication.count.times do |i|
+  school_med = SchoolMedicationTransaction.find(i + 1)
+  student_or_school = 'school'
+
+  MedicationApproval.create!({:student_or_school => student_or_school,
+                              :school_medication_id => school_med[:school_medication_id],
+                              :student_id => school_med[:student_id]})
+end
