@@ -14,8 +14,10 @@
     <div class="navbar-header">
       <%  if defined?(current_nurse.email) or defined?(current_parent.email) or defined?(current_parent.email) %>
         <a class="navbar-brand header" href="homepage">MedTracker</a>
-      <% else %>
+      <% elsif request.fullpath.eql? '/' %>
         <a class="navbar-brand header" href="#">MedTracker</a>
+      <% else %>
+        <a class="navbar-brand header" href="/">MedTracker</a>
     <% end %>
     </div>
     <ul class="nav navbar-nav navbar-right">
