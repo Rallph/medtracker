@@ -6,8 +6,11 @@ Given /the following "(.*?)" have been added to MedMonitor:/ do |user_type, user
       Administrator.create(user)
     elsif (user_type == "Nurses")
       Nurse.create(user)
-    else
+    elsif (user_type == "Parents")
       Parent.create(user)
+    else
+      student = Student.create(user)
+      student.parents << Parent.find(1)
     end
   end
 end

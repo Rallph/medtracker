@@ -1,5 +1,10 @@
 class ParentController < ApplicationController
+
+  before_action :authenticate_parent!
+
   def homepage
+
+    @students = current_parent.students
 
   end
 
