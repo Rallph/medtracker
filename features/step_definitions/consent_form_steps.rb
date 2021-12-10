@@ -26,8 +26,26 @@ When /I visit the consent form page/ do
   visit "/parent/consent_form"
 end
 
-When /^I should see "(.*?)" as the page title$/ do |user_type|
-  #pending # Write code here that turns the phrase above into concrete actions
-  expect(false).to be_truthy
-  # visit "/#{user_type}/inventory"
+When /^student "(.*?)" has been approved for the following student medications: "(.*?)"$/ do |student_id,approved_student_medications|
+  approved_student_medications.split(',').each do |asm|
+    MedicationApproval.create({:student_or_school => 'student', :student_medication_id => asm, :student_id => student_id})
+  end
+end
+
+
+When /^student "(.*?)" has been approved for the following school medications: "(.*?)"$/ do |student_id,approved_school_medications|
+  approved_school_medications.split(',').each do |asm|
+    MedicationApproval.create({:student_or_school => 'school', :student_medication_id => asm, :student_id => student_id})
+  end
+end
+
+Then /^I should see "(.*?)" in the page title$/ do |student_name|
+
+  result = false
+  x = all("h2")
+  if x[0].text.include? student_name
+    result = true
+  end
+
+  expect(result).to be_truthy
 end

@@ -22,14 +22,18 @@ Feature:
     And the following student medications have been added to inventory:
       | medication_name         | quantity                   | unit         | school_id | student_id  |
       | Clarinex                | 30                         | tablets      | 1         | 1           |
-      | Astelin                 | 25                         | tablets      | 2         | 2           |
+      | Astelin                 | 25                         | tablets      | 2         | 1           |
       | Optivar                 | 250                        | mL           | 1         | 1           |
-      | Elestat                 | 15                         | tablets      | 2         | 2           |
+      | Elestat                 | 15                         | tablets      | 2         | 1           |
+
+    And student "1" has been approved for the following school medications: "1,3"
+
+    And student "1" has been approved for the following student medications: "1,2,3"
 
     And I log in as a "parent" with email: "johnsmith1@icloud.com" and password: "123456"
     And I visit the consent form page
 
   Scenario: Parent visits the medication consent form page
-    Then I should see "Danny Smith" as the page title
+    Then I should see "Danny Smith" in the page title
 
 
