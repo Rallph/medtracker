@@ -15,7 +15,7 @@ nurses = [
   {:full_name => "Stacy Streif", :password => "Password123", :email => "sstrief@gmail.com", :school_id => 3, :account_approved => true},
   {:full_name => "Harrison Fairfield", :password => "Password123", :email => "harryfairy@gmail.com", :school_id => 3, :account_approved => true},
   {:full_name => "Jack Davenport", :password => "Password123", :email => "jackyd@gmail.com", :school_id => 4, :account_approved => true},
-  {:full_name => "Abby Hein", :password => "Password123", :email => "hein-abby@gmail.com", :school_id => 4, :account_approved => true}
+  {:full_name => "Abby Hein", :password => "Password123", :email => "hein-abby@gmail.com", :school_id => 4, :account_approved => false}
 ]
 nurses.each do |nurse|
   Nurse.create!(nurse)
@@ -30,16 +30,7 @@ administrators = [{:email => "jbronx@gmail.com", :password => "Password123",:ful
 administrators.each do |admin|
   Administrator.create!(admin)
 end
-=begin
-students = [
-  {:full_name => "Will Ries", :date_of_birth => "10-01-2009", :school_id => 1},
-  {:full_name => "Jessica Klien", :date_of_birth => "6/11/2008", :school_id => 1},
-  {:full_name => "Samantha Gates", :date_of_birth => "02-11-2010", :school_id => 1}
-]
-students.each do |student|
-  Student.create!(student)
-end
-=end
+
 
 students_text = File.read(Rails.root.join('db','seeds_csv','students.csv'))
 students_enumerable = CSV.parse(students_text, :headers => true)
@@ -81,7 +72,6 @@ end
 school_meds_text = File.read(Rails.root.join('db','seeds_csv','school_medications.csv'))
 school_meds_enumerable = CSV.parse(school_meds_text, :headers => true)
 school_meds_enumerable.each do |row|
-  #puts(row[0])
   SchoolMedication.create!({:medication_name => row[0],
                             :quantity => row["quantity"],
                             :unit => row["unit"],
@@ -100,6 +90,7 @@ student_meds_enumerable.each do |row|
                              :student_id => row["student_id"]})
 end
 
+# Seeding for SchoolMedicationTransaction. Done from csv file.
 school_med_transactions_text = File.read(Rails.root.join('db','seeds_csv','school_medication_transactions.csv'))
 school_med_transactions_enumerable = CSV.parse(school_med_transactions_text, :headers => true)
 school_med_transactions_enumerable.each do |row|
@@ -110,15 +101,8 @@ school_med_transactions_enumerable.each do |row|
                                        :student_id => row["student_id"],
                                        :nurse_id => row["nurse_id"]})
 end
-=begin
-school_medication_transactions = [
-  {:date => "11-09-2021", :time => "10:00AM", :change_in_quantity => "1", :school_medication_id => 1, :student_id => 1, :nurse_id => 2},
-  {:date => "11-09-2021", :time => "10:45AM", :change_in_quantity => "10", :school_medication_id => 3, :student_id => 2, :nurse_id => 2},
-]
-school_medication_transactions.each do |mt|
-  SchoolMedicationTransaction.create!(mt)
-end
-=end
+
+#Seeding for StudentMedicationTransaction. Done from csv file.
 student_med_transactions_text = File.read(Rails.root.join('db','seeds_csv','student_medication_transactions.csv'))
 student_med_transactions_enumerable = CSV.parse(student_med_transactions_text, :headers => true)
 student_med_transactions_enumerable.each do |row|
@@ -128,25 +112,8 @@ student_med_transactions_enumerable.each do |row|
                                        :student_medication_id => row["student_medication_id"],
                                        :nurse_id => row["nurse_id"]})
 end
-# consent_forms = [
-#   {:date => "09-22-2021", :parent_id => 1, :student_id => 1}
-# ]
-# consent_forms.each do |cf|
-#   ConsentForm.create!(cf)
-# end
-#
-#
-=begin
-parents = [
- {:full_name => "Sally Ries", :email => "sries@gmail.com", :password => "Password123"},
- {:full_name => "Kelly Klien", :email => "kklien@gmail.com", :password => "Password123"},
- {:full_name => "Bob Gates", :email => "bgates@gmail.com", :password => "Password123"}]
 
-parents.each do |parent|
-  Parent.create!(parent)
-end
-=end
-
+#Seeding for Parents. Done from csv file.
 parents_text = File.read(Rails.root.join('db','seeds_csv','parents.csv'))
 parents_enumerable = CSV.parse(parents_text, :headers => true)
 parents_enumerable.each do |row|
@@ -156,7 +123,9 @@ parents_enumerable.each do |row|
                     :password => row["password"]})
 end
 
-
+#Create has_and_belongs_to_many relationship. Done from csv file. The csv files are set up in a manner the first
+# row of parents belongs to the first row of students. This is so that last names can match up properly.
+# Because of this, be cautious while changing any seeding for students or parents.
 Parent.count.times do |i|
   parent = Parent.find(i + 1)
   student = Student.find(i + 1)
