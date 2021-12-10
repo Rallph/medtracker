@@ -9,7 +9,7 @@ RSpec.describe ParentController, type: :controller do
     allow(controller).to receive(:current_parent).and_return(@admin)
   }
 
-  describe "Render Admin Homepage" do
+  describe "Render Parent Homepage" do
 
     it "returns http success" do
       get :homepage
@@ -21,7 +21,7 @@ RSpec.describe ParentController, type: :controller do
       get :homepage
     end
 
-    it "should render the nurse homepage" do
+    it "should render the parent homepage" do
 
       get :homepage
       expect(response).to render_template("homepage")
