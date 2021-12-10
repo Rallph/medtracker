@@ -16,6 +16,7 @@ nurses = [
   {:full_name => "Harrison Fairfield", :password => "Password123", :email => "harryfairy@gmail.com", :school_id => 3, :account_approved => true},
   {:full_name => "Jack Davenport", :password => "Password123", :email => "jackyd@gmail.com", :school_id => 4, :account_approved => true},
   {:full_name => "Abby Hein", :password => "Password123", :email => "hein-abby@gmail.com", :school_id => 4, :account_approved => false}
+
 ]
 nurses.each do |nurse|
   Nurse.create!(nurse)
@@ -29,6 +30,7 @@ administrators = [{:email => "jbronx@gmail.com", :password => "Password123",:ful
 
 administrators.each do |admin|
   Administrator.create!(admin)
+
 end
 
 

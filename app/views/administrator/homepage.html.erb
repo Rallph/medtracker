@@ -1,3 +1,31 @@
-<h1>Administrator#homepage</h1>
-<p>Find me in app/views/administrator/homepage.html.erb</p>
-<button type="button">Add Student</button>
+<div class="row">
+  <div class = "col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-8 col-xs-offset-2 btn-group-vertical">
+
+    <%= link_to 'Manage Access', "approve_accounts", {class: 'nurse-homepage-button btn btn-primary', type: 'button'} %>
+    <%= link_to 'View Reports/Logs', "reports", {class: 'btn btn-primary nurse-homepage-button', type: 'button'} %>
+
+  </div>
+
+  <div class = "col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-8 col-xs-offset-2 nurse-alert">
+    <h3 class = "nurse-alert-header">Access Alerts:</h3>
+    <% @unapproved_nurses.each do |nurse| %>
+      <p>
+        Nurse <%= nurse.full_name %> is requesting account approval:<br>
+        Email: <%= nurse.email %><br><br>
+      </p>
+    <% end %>
+
+    <% @unapproved_admins.each do |admin| %>
+      <p>
+        Administrator <%= admin.full_name %> is requesting account approval:<br>
+        Email: <%= admin.email %><br><br>
+      </p>
+    <% end %>
+
+    <% if @unapproved_nurses.blank? == true and @unapproved_admins.blank? == true %>
+      <p><br>No Notifications at this time.<br><br></p>
+    <% end %>
+
+  </div>
+
+</div>
