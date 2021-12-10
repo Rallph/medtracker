@@ -39,6 +39,7 @@ When /^student "(.*?)" has been approved for the following school medications: "
   end
 end
 
+
 Then /^I should see "(.*?)" in the page title$/ do |student_name|
 
   result = false
@@ -55,12 +56,9 @@ Then /^I should see "(.*?)" approved in the student medication table$/ do |appro
   result = true
   table_elements = all("td")
 
-  temp = []
   approved_medications.split(',').each do |am|
     in_table = false
     table_elements.each do |td|
-      temp.append [am, td[:id]]
-
       if am.eql? td.text and td[:id].eql? 'approved_student_med'
         in_table = true
       end
@@ -80,12 +78,9 @@ Then /^I should see "(.*?)" approved in the school medication table$/ do |approv
   result = true
   table_elements = all("td")
 
-  temp = []
   approved_medications.split(',').each do |am|
     in_table = false
     table_elements.each do |td|
-      temp.append [am, td[:id]]
-
       if am.eql? td.text and td[:id].eql? 'approved_school_med'
         in_table = true
       end
@@ -100,28 +95,46 @@ Then /^I should see "(.*?)" approved in the school medication table$/ do |approv
 end
 
 
-# Then /^I should see "(.*?)" non-approved in the school medication table$/ do |approved_medications|
-#
-#   result = true
-#   table_elements = all("td")
-#
-#   temp = []
-#   approved_medications.split(',').each do |am|
-#     in_table = false
-#     table_elements.each do |td|
-#       temp.append [am, td[:id]]
-#
-#
-#       if am.eql? td.text and td[:id].eql? 'approved_school_med'
-#         in_table = true
-#       end
-#     end
-#     if not in_table
-#       result = false
-#     end
-#   end
-#
-#   # expect(temp).to be_falsey
-#   expect(result).to be_truthy
-#
-# end
+Then /^I should see "(.*?)" non-approved in the school medication drop down$/ do |unapproved_medications|
+
+  result = true
+  select_elements = all("select")
+
+  unapproved_medications.split(',').each do |um|
+    in_table = false
+    select_elements[1].text.split(' ').each do |sel|
+
+      if um.eql? sel
+        in_table = true
+      end
+    end
+    if not in_table
+      result = false
+    end
+  end
+
+  expect(result).to be_truthy
+
+end
+
+Then /^I should see "(.*?)" non-approved in the student medication drop down$/ do |unapproved_medications|
+
+  result = true
+  select_elements = all("select")
+
+  unapproved_medications.split(',').each do |um|
+    in_table = false
+    select_elements[0].text.split(' ').each do |sel|
+
+      if um.eql? sel
+        in_table = true
+      end
+    end
+    if not in_table
+      result = false
+    end
+  end
+
+  expect(result).to be_truthy
+
+end
