@@ -19,9 +19,9 @@ class AdministratorController < ApplicationController
   end
 
   def inventory
-    @school = School.find(current_administrator[:school_id])
-    @school_medications = SchoolMedication.where('school_id = :administrator_school', :administrator_school => current_administrator[:school_id])
-    @student_medications = StudentMedication.where('school_id = :administrator_school', :administrator_school => current_administrator[:school_id])
+    @school = School.find(current_administrator.school_id)
+    @school_medications = SchoolMedication.where('school_id = :administrator_school', :administrator_school => current_administrator.school_id)
+    @student_medications = StudentMedication.where('school_id = :administrator_school', :administrator_school => current_administrator.school_id)
     if @school_medications.empty? or @student_medications.empty?
       flash[:alert] = "Inventory is Empty."
     end

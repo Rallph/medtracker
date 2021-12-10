@@ -22,7 +22,7 @@ RSpec.describe AdministratorController, type: :controller do
       #end
 
     it "should query the SchoolMedication Model" do
-      fake_school = double('school1', school_id: 1)
+      fake_school = double('school1', :school_id => 1)
       fake_medication = [double('medicine1'), double('medicine2')]
       expect(School).to receive(:find).and_return(fake_school)
       expect(SchoolMedication).to receive(:where).and_return(fake_medication)
