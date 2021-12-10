@@ -35,5 +35,5 @@ jobs:
 
       run: |
         bundle exec rake db:migrate RAILS_ENV=test
-        bundle exec rake cucumber
         bundle exec rspec spec/controllers
+        bundle exec rake cucumber
