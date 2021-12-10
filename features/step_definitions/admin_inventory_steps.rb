@@ -34,8 +34,10 @@ When /^I view "(.*?)" medication inventory$/ do |user_type|
   visit "/#{user_type}/inventory"
 end
 
-Then /^I should only see medications belonging to schools in district: "(.*?)"$/ do |district|
-  result = true
-
-  result.should be_falsey
+Then /^I should only see medications belonging to school_name: "(.*?)"$/ do |school_name|
+  all('#inventory tr > td:nth-child(5)').each do |td|
+    #puts(td.text)
+    "#{school_name}".should include td.text
+    #%w{school_id}.should include td.text
+  end
 end

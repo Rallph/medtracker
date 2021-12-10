@@ -18,4 +18,12 @@ class AdministratorController < ApplicationController
     redirect_to :add_student
   end
 
+  def inventory
+    @school_medications = SchoolMedication.where('school_id = :administrator_school', :administrator_school => current_administrator[:school_id])
+    @student_medications = StudentMedication.where('school_id = :administrator_school', :administrator_school => current_administrator[:school_id])
+    if @school_medications.empty? or @student_medications.empty?
+      flash[:alert] = "Inventory is Empty."
+    end
+  end
+
 end

@@ -43,8 +43,8 @@ Feature:
       And I view "administrator" medication inventory
       Then I should see: "Admin Inventory"
 
-    Scenario: Admin view district medication inventory
+    Scenario: Admin view school medication inventory
       When I log in as a "administrator" with email: "johnsmith1@icloud.com" and password: "123456"
       And I view "administrator" medication inventory
-      Then I should only see medications belonging to schools in district: "ICCSD"
+      Then I should only see medications belonging to school_name: "kate wickham elementary school"
 
