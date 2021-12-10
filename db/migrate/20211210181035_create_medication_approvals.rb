@@ -5,8 +5,6 @@ class CreateMedicationApprovals < ActiveRecord::Migration
       t.references :student_medication
       t.references :school_medication
       t.references :student
-
-      t.timestamps null: false
     end
   end
 
