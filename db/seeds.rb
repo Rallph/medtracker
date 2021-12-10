@@ -166,7 +166,7 @@ end
 #Create medication_approvals table from existing medication transactions
 #
 # SCHOOL MEDICATION APPROVALS
-SchoolMedication.count.times do |i|
+SchoolMedicationTransaction.count.times do |i|
   school_med = SchoolMedicationTransaction.find(i + 1)
   student_or_school = 'school'
 
