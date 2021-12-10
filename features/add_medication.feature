@@ -14,9 +14,9 @@ Feature: Nurse Add Medication
     And I log in as a "nurse" with email: "s-milbert@hotmail.com" and password: "PassWord"
     And I am on the Add Medication page
 
-  Scenario: Nurse visits the add medication page
-    When The student box is checked
-    Then I should see fields for "name of medication,unit of measurement,initial amount"
+#  Scenario: Nurse visits the add medication page
+#    When The student box is checked
+#    Then I should see fields for "name of medication,unit of measurement,initial amount"
 
   Scenario: Nurse adds a school medication to the inventory
     When I enter a school medication as name: "Ibuprofen", unit: "tablets", initial amount: "30"
@@ -34,9 +34,9 @@ Feature: Nurse Add Medication
     When I enter a school medication as name: "Ibuprofen", unit: "tablets", initial amount: ""
     Then I should see: "Medication not added. Initial amount of medication was not specified."
 
-  Scenario: Nurse adds a student medication to the inventory
-    When The student box is checked
-    When I enter a student medication as name: "Amoxicillin", unit: "tablets", initial amount: "10", student id: "1"
-    Then I should see: "Student medication added successfully"
+#  Scenario: Nurse adds a student medication to the inventory
+#    When The student box is checked
+#    When I enter a student medication as name: "Amoxicillin", unit: "tablets", initial amount: "10", student id: "1"
+#    Then I should see: "Student medication added successfully"
 
 

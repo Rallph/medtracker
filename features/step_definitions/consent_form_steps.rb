@@ -22,8 +22,8 @@ Given /the following student medications have been added to inventory:/ do |stud
   end
 end
 
-When /I visit the consent form page/ do
-  visit "/parent/consent_form"
+When /^I visit the consent form page with student id: "(.*?)"$/ do |s_id|
+  visit "/parent/consent_form?student_id=" +  s_id
 end
 
 When /^student "(.*?)" has been approved for the following student medications: "(.*?)"$/ do |student_id,approved_student_medications|

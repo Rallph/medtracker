@@ -31,7 +31,7 @@ Feature:
     And student "1" has been approved for the following student medications: "1,2,3"
 
     And I log in as a "parent" with email: "johnsmith1@icloud.com" and password: "123456"
-    And I visit the consent form page
+    And I visit the consent form page with student id: "1"
 
   Scenario: Parent visits the medication consent form page
     Then I should see "Danny Smith" in the page title
