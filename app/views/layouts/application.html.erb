@@ -12,20 +12,23 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <%  if defined?(current_nurse.email) or defined?(current_parent.email) or defined?(current_parent.email) %>
-        <a class="navbar-brand header" href="homepage">MedTracker</a>
+        <a id="home_navigation" class="navbar-brand header" href="homepage">MedTracker</a>
       <% elsif request.fullpath.eql? '/' %>
-        <a class="navbar-brand header" href="#">MedTracker</a>
+        <a id="home_navigation" class="navbar-brand header" href="#">MedTracker</a>
       <% else %>
-        <a class="navbar-brand header" href="/">MedTracker</a>
+        <a id="home_navigation" class="navbar-brand header" href="/">MedTracker</a>
     <% end %>
     </div>
     <ul class="nav navbar-nav navbar-right">
       <% if defined?(current_nurse.email) %>
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Nurse signed in as: <%= current_nurse.email %></a></li>
-        <li> <%= link_to 'Log Out', destroy_nurse_session_path, method: :delete %> </li>
+        <li><a href="#" id="user_info"><span class="glyphicon glyphicon-user"></span> Nurse signed in as: <%= current_nurse.email %></a></li>
+        <li> <%= link_to 'Log Out', destroy_nurse_session_path, method: :delete, id: :logout %> </li>
       <% elsif defined?(current_parent.email) %>
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Parent signed in as: <%= current_parent.email %></a></li>
-        <li> <%= link_to 'Log Out', destroy_parent_session_path, method: :delete %> </li>
+        <li><a href="#" id="user_info"><span class="glyphicon glyphicon-user"></span> Parent signed in as: <%= current_parent.email %></a></li>
+        <li> <%= link_to 'Log Out', destroy_parent_session_path, method: :delete, id: :logout %> </li>
+      <% elsif defined?(current_administer.email) %>
+        <li><a href="#" id="user_info"><span class="glyphicon glyphicon-user"></span> Administer signed in as: <%= current_administer.email %></a></li>
+        <li> <%= link_to 'Log Out', destroy_administer_session_path, method: :delete, id: :logout %> </li>
       <% end %>
     </ul>
   </div>
