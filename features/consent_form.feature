@@ -40,6 +40,12 @@ Feature:
     And I should see "Clarinex,Astelin,Optivar" approved in the student medication table
     And I should see "Elestat" non-approved in the student medication drop down
 
+  Scenario: Parent unapproves a medicine
+    When I unapprove medication: "Ibuprofen"
+    Then I should see "Tylenol" approved in the school medication table
+    And I should see "Ibuprofen,Aspirin,Benadryl" non-approved in the school medication drop down
+
   Scenario: Parent approves a medicine
-
-
+    When I approve school medication: "Aspirin"
+    Then I should see "Ibuprofen,Aspirin,Tylenol" approved in the school medication table
+    And I should see "Benadryl" non-approved in the school medication drop down

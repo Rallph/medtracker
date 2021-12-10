@@ -40,6 +40,20 @@ When /^student "(.*?)" has been approved for the following school medications: "
 end
 
 
+When /^I approve school medication: "(.*?)"$/ do |medication|
+
+  select(medication, :from => 'sc_medication_id')
+  find("#approve_school_med").click
+
+end
+
+When /^I unapprove medication: "(.*?)"$/ do |medication|
+
+  find("#delete_"+medication).click
+
+end
+
+
 Then /^I should see "(.*?)" in the page title$/ do |student_name|
 
   result = false
