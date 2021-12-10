@@ -166,6 +166,10 @@ end
 #Create medication_approvals table from existing medication transactions
 #
 # SCHOOL MEDICATION APPROVALS
+# NOTE: the csv file for school medication transactions is set up such that there are no duplicate students taking
+# the same medication twice. If that were to happen, this method of seeding would create duplicates.
+# To counter act this we could check if the pending medication approal already exists in the DB, and if it does we
+# skip the creation of that approval.
 SchoolMedicationTransaction.count.times do |i|
   school_med = SchoolMedicationTransaction.find(i + 1)
   student_or_school = 'school'
@@ -173,4 +177,14 @@ SchoolMedicationTransaction.count.times do |i|
   MedicationApproval.create!({:student_or_school => student_or_school,
                               :school_medication_id => school_med[:school_medication_id],
                               :student_id => school_med[:student_id]})
+end
+# Create medication approvals for student medication. Using StudentMedication model since it already contains
+# All the req. info needed.
+StudentMedication.count.times do |i|
+  student_med = StudentMedication.find(i + 1)
+  student_or_school = 'student'
+
+  MedicationApproval.create!({:student_or_school => student_or_school,
+                              :student_medication_id => i,
+                              :student_id => student_med[:student_id]})
 end
