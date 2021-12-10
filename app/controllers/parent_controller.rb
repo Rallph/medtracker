@@ -11,7 +11,8 @@ class ParentController < ApplicationController
 
   def consent_form
 
-    @student = Student.where('id = 1')
+    # @student = params[:student_id]
+    @student = Student.where('id = '+ params[:student_id])
 
     @school_medications = SchoolMedication.all
     @approved_medication_ids = @student[0].medication_approvals
@@ -60,7 +61,7 @@ class ParentController < ApplicationController
       medication_id = params['sc_medication_id']
       MedicationApproval.create!({:student_id => student_id, :student_or_school => med_type, :school_medication_id => medication_id})
     end
-    redirect_to :consent_form
+    redirect_to '/parent/consent_form?student_id=' + student_id
   end
 
   def disapprove_medication
@@ -74,7 +75,7 @@ class ParentController < ApplicationController
       med_to_disapprove = MedicationApproval.where("student_id = "+student_id+" AND student_or_school = '"+med_type+"' AND school_medication_id = "+medication_id)
       med_to_disapprove[0].destroy
     end
-    redirect_to :consent_form #and return
+    redirect_to '/parent/consent_form?student_id=' + student_id
   end
 
 end
