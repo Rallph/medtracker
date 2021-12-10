@@ -21,9 +21,9 @@ Then /^I should see fields for "(.*?)"$/ do |fields|
 
 end
 
-When /^I administer "([^"]*)" dose\(s\) of medication "([^"]*)" to student "([^"]*)"$/ do |dosage, medication, student|
+When /^I administer "([^"]*)" dose\(s\) of school medication "([^"]*)" to student "([^"]*)"$/ do |dosage, medication, student|
   select student, from: 'select_student'
-  select medication, from: 'select_medication'
+  select medication, from: 'select_school_medication'
   fill_in 'dosage', with: dosage
 
   click_button 'Administer Medication'
