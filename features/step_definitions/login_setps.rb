@@ -9,8 +9,8 @@ Given /the following "(.*?)" have been added to MedMonitor:/ do |user_type, user
     elsif (user_type == "Parents")
       Parent.create(user)
     else
-      Student.create(user)
-      Student.parents << Parent.where('id = 3').first
+      student = Student.create(user)
+      student.parents << Parent.find(1)
     end
   end
 end

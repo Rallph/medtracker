@@ -7,7 +7,7 @@ Then /^I should see the following students: "(.*?)"$/ do |students|
   end
 end
 
-When /^I click the "(.*?)" button for student "(.*?) with id "(.*?)"$/ do |button, student, id|
+When /^I click the "(.*?)" button for student "(.*?)" with id "(.*?)"$/ do |button, student, id|
 
   click_button(button + "-" + student + "-" + id)
 
