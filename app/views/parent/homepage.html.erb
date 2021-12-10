@@ -15,27 +15,27 @@
         <td style="text-align: center"><%= student.full_name %></td>
         <td style="text-align: center">
           <div id="parent-homepage-divs">
-            <%= form_tag "view_medication_distribution" do %>
+            <%= form_tag "view_medication_distribution", method: :get do %>
               <%= hidden_field_tag :student_id, student.id %>
-              <%= button_tag :class => "btn btn-info", :id => "View Medication Distribution-" + student.full_name do %>
+              <%= button_tag :class => "btn btn-info", :id => "View Medication History-" + student.full_name + "-" + student.id.to_s do %>
                 View Medication History <span class='glyphicon glyphicon-list-alt'></span>
               <% end %>
             <% end %>
           </div>
 
           <div id="parent-homepage-divs">
-            <%= form_tag "consent_form" do %>
+            <%= form_tag "consent_form", method: :get do %>
               <%= hidden_field_tag :student_id, student.id %>
-              <%= button_tag :class => "btn btn-warning", :id => "Edit Consent Form-" + student.full_name  do %>
+              <%= button_tag :class => "btn btn-warning", :id => "Edit Consent Form-" + student.full_name + "-" + student.id.to_s do %>
                 Edit Consent Form <span class='glyphicon glyphicon-pencil'></span>
               <% end %>
             <% end %>
           </div>
 
           <div id="parent-homepage-divs">
-            <%= form_tag "medication_stock" do %>
+            <%= form_tag "medication_stock", method: :get do %>
               <%= hidden_field_tag :student_id, student.id %>
-              <%= button_tag :class => "btn btn-primary", :id => "View Medication Stock-" + student.full_name do %>
+              <%= button_tag :class => "btn btn-primary", :id => "View Medication Stock-" + student.full_name + "-" + student.id.to_s do %>
                 View Medication Stock <span class='glyphicon glyphicon-list'></span>
               <% end %>
             <% end %>

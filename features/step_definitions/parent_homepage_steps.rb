@@ -1,4 +1,4 @@
-Then /I should see the following students: "(.*?)"/ do |students|
+Then /^I should see the following students: "(.*?)"$/ do |students|
   students_array = students.split(',')
   students_array.each do |student|
 
@@ -7,8 +7,8 @@ Then /I should see the following students: "(.*?)"/ do |students|
   end
 end
 
-When /I click the "(.*?)" button for student "(.*?)" / do |button, student|
+When /^I click the "(.*?)" button for student "(.*?) with id "(.*?)"$/ do |button, student, id|
 
-  click_button(button + "-" + student)
+  click_button(button + "-" + student + "-" + id)
 
 end
