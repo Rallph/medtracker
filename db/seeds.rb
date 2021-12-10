@@ -24,13 +24,25 @@
 #   Administrator.create!(admin)
 # end
 #
+
+parents = [
+  {:full_name => "Sally Ries", :email => "sries@gmail.com", :school_id => 1, :password => "password1"},
+  {:full_name => "Kelly Klien", :email => "kklien@gmail.com", :school_id => 1, :password => "password2"},
+  {:full_name => "Bob Gates", :email => "bgates@gmail.com", :school_id => 1, :password => "password3"}
+]
+
 students = [
   {:full_name => "Will Ries", :date_of_birth => "10-01-2009", :school_id => 1},
   {:full_name => "Jessica Klien", :date_of_birth => "04-10-2009", :school_id => 1},
   {:full_name => "Samantha Gates", :date_of_birth => "02-11-2010", :school_id => 1}
 ]
-students.each do |student|
-  Student.create!(student)
+
+parent_students = parents.zip(students)
+
+parent_students.each do |parent_student|
+  student = Student.create!(parent_student[1])
+  parent = Parent.create(parent_student[0])
+  student.parents << parent
 end
 
 
@@ -107,11 +119,3 @@ end
 #   ConsentForm.create!(cf)
 # end
 #
-# parents = [
-#   {:full_name => "Sally Ries", :email => "sries@gmail.com"},
-#   {:full_name => "Kelly Klien", :email => "kklien@gmail.com"},
-#   {:full_name => "Bob Gates", :email => "bgates@gmail.com"}
-# ]
-# parents.each do |parent|
-#   Parent.create!(parent)
-# end
