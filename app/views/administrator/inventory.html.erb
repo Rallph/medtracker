@@ -1,4 +1,5 @@
 <h1>Admin Inventory</h1>
+<h2>School: <%=@school[:school_name] %></h2>
 <head>
   <style>
 
@@ -81,8 +82,6 @@
           <th>medication_name</th>
           <th>quantity</th>
           <th>unit</th>
-          <th>school_id</th>
-          <th>school_name</th>
         </tr>
         </thead>
         <tbody>
@@ -91,8 +90,6 @@
             <td><%= med[:medication_name] %></td>
             <td><%= med[:quantity] %></td>
             <td><%= med[:unit] %></td>
-            <td><%= med[:school_id] %></td>
-            <td><%= med.school.school_name %></td>
           </tr>
         <% end %>
         </tbody>
@@ -109,8 +106,6 @@
           <th>medication_name</th>
           <th>quantity</th>
           <th>unit</th>
-          <th>school_id</th>
-          <th>student_id</th>
           <th>student_name</th>
         </tr>
         </thead>
@@ -120,8 +115,6 @@
             <td><%= med[:medication_name] %></td>
             <td><%= med[:quantity] %></td>
             <td><%= med[:unit] %></td>
-            <td><%= med[:school_id] %></td>
-            <td><%= med[:student_id] %></td>
             <td><%= med.student.full_name %></td>
           </tr>
         <% end %>
