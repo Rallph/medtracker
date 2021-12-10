@@ -28,3 +28,7 @@ Feature:
     When I log in as a "nurse" with email: "bobby_r@gmail.com" and password: "pa$$word"
     Then I should see 'Nurse logged in as "bobby_r@gmail.com"' and logout option
 
+  Scenario: Logout as nurse
+    When I log in as a "nurse" with email: "bobby_r@gmail.com" and password: "pa$$word"
+    And I press the logout button
+    Then I should be redirected to the MedMonitor home page
