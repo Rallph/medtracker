@@ -29,6 +29,7 @@ gem 'rails-erd'
 gem 'bootstrap-sass'
 
 gem 'rails_param'
+gem 'csv'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
