@@ -3,10 +3,10 @@ Feature: Nurse Add Medication
   Background: Nurses, students, and medications have been added to MedMonitor
 
     Given the following "Nurses" have been added to MedMonitor:
-      | full_name               | email                      | password     | school_id |
-      | Sally Milbert           | s-milbert@hotmail.com      | PassWord     | 14        |
+      | full_name               | email                      | password     | school_id | account_approved |
+      | Sally Milbert           | s-milbert@hotmail.com      | PassWord     | 14        | t               |
 
-    And the following Students have been added to MedMonitor:
+    And the following "Students" have been added to MedMonitor:
       | full_name               | school_id
       | John Doe                | 14
       | Jane Doe                | 14
@@ -14,6 +14,8 @@ Feature: Nurse Add Medication
     And I log in as a "nurse" with email: "s-milbert@hotmail.com" and password: "PassWord"
     And I am on the Add Medication page
 
+
+    # Capybara not responding to javascript
 #  Scenario: Nurse visits the add medication page
 #    When The student box is checked
 #    Then I should see fields for "name of medication,unit of measurement,initial amount"
@@ -34,6 +36,7 @@ Feature: Nurse Add Medication
     When I enter a school medication as name: "Ibuprofen", unit: "tablets", initial amount: ""
     Then I should see: "Medication not added. Initial amount of medication was not specified."
 
+  # Capybara not responding to javascript
 #  Scenario: Nurse adds a student medication to the inventory
 #    When The student box is checked
 #    When I enter a student medication as name: "Amoxicillin", unit: "tablets", initial amount: "10", student id: "1"

@@ -21,6 +21,8 @@ Rails.application.routes.draw do
 
   # administrator controller routes
   get 'administrator/homepage', as: :administrator_root
+  get 'administrator/approve_accounts' => 'administrator#approve_accounts', as: :approve_accounts
+  post 'administrator/approve_new_account' => "administrator#approve_new_account"
   #post 'administrator/homepage' => 'administrator#submit_new_student', as: :submit_new_student
   get 'administrator/add_student' => 'administrator#add_student', as: :add_student
   post 'administrator/add_student' => 'administrator#submit_new_student', as: :submit_new_student

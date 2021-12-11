@@ -32,3 +32,12 @@ Then /I should see medicine alerts for "(.*?)" with quantities "(.*?)"/ do |mdic
   end
 
 end
+
+
+Given /the following students have been added to MedMonitor with parent id 1:/ do |users_table|
+
+  users_table.hashes.each do |user|
+      student = Student.create(user)
+      student.parents << Parent.find(1)
+  end
+end

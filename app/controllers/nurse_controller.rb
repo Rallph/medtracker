@@ -1,9 +1,8 @@
 class NurseController < ApplicationController
 
-  before_action :authenticate_nurse!
+  before_action :verify_nurse
 
   def homepage
-
     # query DB for any medicines which are low in inventory
     @meds_in_low_supply = SchoolMedication.where("((unit = 'mL' AND quantity <= :mL_alert_quantity) OR (unit = 'tablets' AND quantity <= :tablet_alert_quantity)) AND (school_id = :nurse_school_id)",
                                                  {mL_alert_quantity: 250, tablet_alert_quantity: 50, nurse_school_id: (current_nurse).school_id})
@@ -13,6 +12,7 @@ class NurseController < ApplicationController
   end
 
   def administer
+
     @student_options = Student.where("school_id = :school_id", { school_id: current_nurse.school_id }).map { |student| [student.full_name, student.id] }
     @school_medication_options = SchoolMedication.where("school_id = :school_id", { school_id: current_nurse.school_id }).map { |school_medication| [school_medication.medication_name, school_medication.id] }
   end
@@ -39,9 +39,6 @@ class NurseController < ApplicationController
   end
 
   def add_medication_submit
-    # param! :name_of_medication,   String, required: false, message: "Name not specified"
-    # param! :unit_of_medication,   String, required: false, message: "Unit not specified"
-    # param! :initial_amount,       Integer, required: false, message: "Initial amount is not specified or is invalid"
 
     med_name = params[:name_of_medication]
     initial_amount = params[:initial_amount]
@@ -83,7 +80,6 @@ class NurseController < ApplicationController
           unit: med_unit,
           school_id: 1
         )
-        # SchoolMedicationTransaction.create!(student_id: params[:select_student], nurse_id: current_nurse.id, school_medication_id: params[:select_medication], change_in_quantity: params[:dosage], date: date, time: time, comment: params[:comment])
 
         flash[:info] = "Medication added successfully"
       end

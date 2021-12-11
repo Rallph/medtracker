@@ -7,13 +7,15 @@ Feature:
   Background: Users Have been added to MedMonitor
 
     Given the following "Nurses" have been added to MedMonitor:
-      | full_name               | email                      | password     | school_id |
-      | Bob Rogers              | bobby_R@gmail.com          | pa$$word     | 12        |
-      | Sally Milbert           | s-milbert@hotmail.com      | PassWord     | 14        |
+      | full_name               | email                      | password     | school_id | account_approved |
+      | Bob Rogers              | bobby_R@gmail.com          | pa$$word     | 12        | true             |
+      | Sally Milbert           | s-milbert@hotmail.com      | PassWord     | 14        | true             |
+      | Jane Doe                | j-doe@hotmail.com          | passtheword  | 14        | false            |
 
     And the following "Administrators" have been added to MedMonitor:
-      | full_name               | email                      | password     | school_id |
-      | John Smith              | johnsmith1@icloud.com      | password1    | 12        |
+      | full_name               | email                      | password     | school_id | account_approved |
+      | John Smith              | johnsmith1@icloud.com      | password1    | 12        | true             |
+      | John Doe                | johndoe1@icloud.com        | password2    | 12        | false            |
 
     And the following "Parents" have been added to MedMonitor:
       | full_name               | email                      | password     | school_id |
@@ -21,13 +23,21 @@ Feature:
 
     And  I am on the MedMonitor home page
 
+  Scenario: Unnaproved Nurse logs into system
+    When I log in as a "nurse" with email: "j-doe@hotmail.com" and password: "passtheword"
+    Then I should see: "Your Account has not yet been approved by an administrator."
+
   Scenario: Nurse logs into system
     When I log in as a "nurse" with email: "bobby_R@gmail.com" and password: "pa$$word"
-    Then I should see: "Nurse#homepage"
+    Then I should see the "nurse" homepage
 
   Scenario: admin logs into system
     When I log in as a "administrator" with email: "johnsmith1@icloud.com" and password: "password1"
-    Then I should see: "Administrator#homepage"
+    Then I should see the "administrator" homepage
+
+  Scenario: Unapproved admin logs into system
+    When I log in as a "administrator" with email: "johndoe1@icloud.com" and password: "password2"
+    Then I should see: "Your Account has not yet been approved by an administrator."
 
   Scenario: parent logs into system
     When I log in as a "parent" with email: "johndavis1@yahoo.com" and password: "password2"

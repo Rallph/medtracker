@@ -1,5 +1,5 @@
 Given /^I am on the Add Medication page$/ do
-  visit :add_medication
+  visit '/nurse/add_medication' #:add_medication
 end
 
 When /^The student box is checked$/ do

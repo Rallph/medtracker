@@ -9,8 +9,7 @@ Given /the following "(.*?)" have been added to MedMonitor:/ do |user_type, user
     elsif (user_type == "Parents")
       Parent.create(user)
     else
-      student = Student.create(user)
-      student.parents << Parent.find(1)
+      Student.create(user)
     end
   end
 end
@@ -32,6 +31,21 @@ When /^I attempt to visit the "(.*?)" sign in page$/ do |user_type|
 
   visit "/#{user_type}s/sign_in"
 
+end
+
+Then /^I should see the "(.*?)" homepage$/ do  |homepage|
+
+  if homepage == "administrator"
+    buttons = ["Manage Access","View Reports/Logs"]
+  else
+    buttons = ["Administer Medicine","Reports/Logs","Send Consent Form"]
+  end
+
+  buttons.each do |button|
+
+    expect(page.has_link?(button)).to be_truthy
+
+  end
 end
 
 Then /^I should see: "(.*?)"$/ do |alert|

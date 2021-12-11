@@ -1,0 +1,57 @@
+medicaiton_name,quantity,unit,school_id
+ibuprofen,200,tablets,1
+tylenol,190,tablets,1
+tylenol,500,mL,1
+neosporin,100,mL,1
+benadryl,50,tablets,1
+excedirine,75,tablets,1
+motrin,40,tablets,1
+tums,35,tablets,1
+peptobismol,60,tablets,1
+peptobismol,600,mL,1
+allegra,75,tablets,1
+claritin,80,tablets,1
+cough drop,50,lozenge,1
+robitussin,250,mL,1
+ibuprofen,150,tablets,2
+tylenol,46,tablets,2
+tylenol,260,mL,2
+neosporin,300,mL,2
+benadryl,20,tablets,2
+excedirine,100,tablets,2
+motrin,60,tablets,2
+tums,20,tablets,2
+peptobismol,30,tablets,2
+peptobismol,450,mL,2
+allegra,30,tablets,2
+claritin,70,tablets,2
+cough drop,45,lozenge,2
+robitussin,350,mL,2
+ibuprofen,20,tablets,3
+tylenol,70,tablets,3
+tylenol,550,mL,3
+neosporin,150,mL,3
+benadryl,40,tablets,3
+excedirine,140,tablets,3
+motrin,50,tablets,3
+tums,45,tablets,3
+peptobismol,35,tablets,3
+peptobismol,500,mL,3
+allegra,20,tablets,3
+claritin,90,tablets,3
+cough drop,50,lozenge,3
+robitussin,245,mL,3
+ibuprofen,60,tablets,4
+tylenol,90,tablets,4
+tylenol,600,mL,4
+neosporin,300,mL,4
+benadryl,75,tablets,4
+excedirine,68,tablets,4
+motrin,76,tablets,4
+tums,56,tablets,4
+peptobismol,57,tablets,4
+peptobismol,400,mL,4
+allegra,15,tablets,4
+claritin,70,tablets,4
+cough drop,25,lozenge,4
+robitussin,300,mL,4

@@ -10,7 +10,7 @@ Feature:
       | full_name               | email                      | password     | school_id |
       | Sally Milbert           | s-milbert@hotmail.com      | PassWord     | 3         |
 
-    Given the following "Students" have been added to MedMonitor:
+    Given the following students have been added to MedMonitor with parent id 1:
       | full_name               | date_of_birth    | school_id |
       | Jamie Milbert           | 10-01-2009       | 3         |
       | Bobby Milbert           | 10-01-2009       | 3         |
