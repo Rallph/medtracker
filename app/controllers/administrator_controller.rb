@@ -24,11 +24,15 @@ class AdministratorController < ApplicationController
     elsif parent_email.eql? ''
       flash[:info] = "Parent email was not specified."
     else
+      Student.create!(
+        student_name: student_name,
+        school_id: school_id,
+        date_of_birth: date_of_birth,
+        parent_email: parent_email
+      )
+
+      flash[:info] = "Student info added successfully"
     end
-
-    #Student.create!
-
-    flash[:info] = "Student info added successfully"
     redirect_to :add_student
   end
 
