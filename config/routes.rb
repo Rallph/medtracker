@@ -21,10 +21,20 @@ Rails.application.routes.draw do
 
   # administrator controller routes
   get 'administrator/homepage', as: :administrator_root
+  get 'administrator/approve_accounts' => 'administrator#approve_accounts', as: :approve_accounts
+  post 'administrator/approve_new_account' => "administrator#approve_new_account"
+  #post 'administrator/homepage' => 'administrator#submit_new_student', as: :submit_new_student
+  get 'administrator/add_student' => 'administrator#add_student', as: :add_student
+  post 'administrator/add_student' => 'administrator#submit_new_student', as: :submit_new_student
+
 
   # nurse controller routes
-  get 'nurse/homepage', as: :nurse_root
-  get 'nurse/inventory'
+  get   'nurse/homepage', as: :nurse_root
+  get   'nurse/administer' => 'nurse#administer', as: :administer
+  post  'nurse/administer' => 'nurse#administer_submit', as: :administer_submit
+  get   'nurse/add_medication' => 'nurse#add_medication', as: :add_medication
+  post   'nurse/add_medication' => 'nurse#add_medication_submit', as: :add_medication_submit
+  get 'nurse/inventory' => 'nurse#inventory', as: :inventory
 
   # parent controller routes
   get 'parent/homepage', as: :parent_root

@@ -2,5 +2,6 @@
     "GROUP": "G09",
     "ALL_SPRINTS":{
           "SPRINT1_URL": "https://polar-everglades-10265.herokuapp.com/",
+          "SPRINT2_URL": "https://polar-everglades-10265.herokuapp.com/"
          }
 }
