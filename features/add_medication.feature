@@ -3,10 +3,10 @@ Feature: Nurse Add Medication
   Background: Nurses, students, and medications have been added to MedMonitor
 
     Given the following "Nurses" have been added to MedMonitor:
-      | full_name               | email                      | password     | school_id |
-      | Sally Milbert           | s-milbert@hotmail.com      | PassWord     | 14        |
+      | full_name               | email                      | password     | school_id | account_approved |
+      | Sally Milbert           | s-milbert@hotmail.com      | PassWord     | 14        | t               |
 
-    And the following Students have been added to MedMonitor:
+    And the following "Students" have been added to MedMonitor:
       | full_name               | school_id
       | John Doe                | 14
       | Jane Doe                | 14
