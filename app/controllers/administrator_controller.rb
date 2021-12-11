@@ -25,6 +25,7 @@ class AdministratorController < ApplicationController
       flash[:info] = "Parent email was not specified."
     else
     end
+
     #Student.create!
 
     flash[:info] = "Student info added successfully"
