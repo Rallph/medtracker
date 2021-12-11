@@ -2,29 +2,24 @@
   <h2>Add Student</h2>
 
   <%= form_tag do %>
-    <div class="form-group form-group-sm">
+    <div class="form-group form-control-sm">
       <%= label_tag :student_name, "Name" %>
-      <%= text_area_tag :student_name, nil, class: %w[form-control input-lg] %>
-    </div>
-
-    <div class="form-group form-group-sm">
-      <%= label_tag :school_id, "School ID" %>
-      <%= text_area_tag :school_id, nil, class: %w[form-control input-lg] %>
-    </div>
-
-    <div class="form-group form-group-sm">
-      <%= label_tag :date_of_birth, "Date of Birth" %>
-      <%= text_area_tag :date_of_birth, nil, class: %w[form-control input-lg] %>
+      <%= text_area_tag :student_name, nil, class: %w[form-control] %>
     </div>
 
     <div class="form-group">
-      <%= label_tag :emerg_contact, "Emergency Contact" %>
-      <%= text_area_tag :emerg_contact, nil, class: %w[form-control input-lg] %>
+      <%= label_tag :school_id, "School ID" %>
+      <%= text_area_tag :school_id, nil, class: %w[form-control] %>
     </div>
 
-    <div class="form-group form-group-sm">
-      <%= label_tag :parent_info, "Parent Info" %>
-      <%= text_area_tag :parent_info, nil, class: %w[form-control input-lg] %>
+    <div class="form-group">
+      <%= label_tag :date_of_birth, "Date of Birth" %>
+      <%= text_area_tag :date_of_birth, nil, class: %w[form-control] %>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :parent_email, "Parent Email" %>
+      <%= text_area_tag :parent_email, nil, class: %w[form-control] %>
     </div>
 
     <div class="form-group">

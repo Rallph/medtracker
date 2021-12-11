@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="610f97ae-6156-409e-8378-b12ced97f076" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/5d36c488-4281-45ee-96ff-de1845d9be02.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/5d36c488-4281-45ee-96ff-de1845d9be02.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/selt_2021_proj_09.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/selt_2021_proj_09.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/administrator_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/administrator_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/administrator/add_student.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/administrator/add_student.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
     </list>
@@ -28,6 +30,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="sqlite" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
