@@ -5,6 +5,12 @@ Given /the following Students have been added to MedMonitor:/ do |students_table
   end
 end
 
+Given /the following school medications have been added to MedMonitor:/ do |medications_table|
+  medications_table.hashes.each do |medication|
+    SchoolMedication.create!(medication)
+  end
+end
+
 Given /^I am on the Administer Medication page$/ do
   visit :administer
 end
