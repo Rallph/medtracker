@@ -137,11 +137,6 @@ ActiveRecord::Schema.define(version: 20211210181035) do
     t.integer "student_id"
   end
 
-  create_table "student_medications_students", id: false, force: :cascade do |t|
-    t.integer "student_id",            null: false
-    t.integer "student_medication_id", null: false
-  end
-
   create_table "students", force: :cascade do |t|
     t.string  "full_name"
     t.string  "date_of_birth"
