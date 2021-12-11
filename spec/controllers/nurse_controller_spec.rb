@@ -76,6 +76,34 @@ RSpec.describe NurseController, type: :controller do
     end
   end
 
+  describe 'Add Medication' do
+    it 'should create an instance of SchoolMedication' do
+      expect(SchoolMedication).to receive(:create!)
+      get :add_medication_submit, {name_of_medication: 'fake_med_name', unit_of_measurement: 'fake_unit', initial_amount: 10}
+    end
+    it 'should create an instance of StudentMedication' do
+      expect(StudentMedication).to receive(:create!)
+      get :add_medication_submit, {name_of_medication: 'fake_med_name', unit_of_measurement: 'fake_unit', initial_amount: 10, belongs_to_student: "on", student_id: 1}
+    end
+    it 'should reach the no student id flash' do
+      get :add_medication_submit, {name_of_medication: 'fake_med_name', unit_of_measurement: 'fake_unit', initial_amount: 10, belongs_to_student: "on", student_id: ''}
+    end
+    it 'should reach the no initial amount flash' do
+      get :add_medication_submit, {name_of_medication: 'fake_med_name', unit_of_measurement: 'fake_unit', initial_amount: '', belongs_to_student: "on", student_id: 1}
+    end
+    it 'should reach the invalid initial amount flash' do
+      get :add_medication_submit, {name_of_medication: 'fake_med_name', unit_of_measurement: 'fake_unit', initial_amount: 'a', belongs_to_student: "on", student_id: 1}
+    end
+    it 'should reach the no unit of measurement flash' do
+      get :add_medication_submit, {name_of_medication: 'fake_med_name', unit_of_measurement: '', initial_amount: 10, belongs_to_student: "on", student_id: 1}
+    end
+    it 'should reach the no name of medication flash' do
+      get :add_medication_submit, {name_of_medication: '', unit_of_measurement: 'fake_unit', initial_amount: 10, belongs_to_student: "on", student_id: 1}
+    end
+    it 'should reach the invalid student id flash' do
+      get :add_medication_submit, {name_of_medication: 'fake_med_name', unit_of_measurement: 'fake_unit', initial_amount: 10, belongs_to_student: "on", student_id: 'a'}
+    end
+  end
 
 
 end

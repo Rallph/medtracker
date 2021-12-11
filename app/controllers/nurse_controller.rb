@@ -34,4 +34,56 @@ class NurseController < ApplicationController
     redirect_to :administer
   end
 
+
+  def add_medication
+  end
+
+  def add_medication_submit
+
+    med_name = params[:name_of_medication]
+    initial_amount = params[:initial_amount]
+    med_unit = params[:unit_of_measurement]
+
+    if med_name.eql? ''
+      flash[:info] = "Medication not added. Name of medication was not specified."
+    elsif med_unit.eql? ''
+      flash[:info] = "Medication not added. Unit of medication was not specified."
+    elsif initial_amount.eql? ''
+      flash[:info] = "Medication not added. Initial amount of medication was not specified."
+    elsif initial_amount.to_i.to_s != initial_amount
+      flash[:info] = "Medication not added. Initial amount of medication has to be a number (1,2,3,...)."
+    else
+
+      if defined? params[:belongs_to_student] and params[:belongs_to_student].eql? "on"
+
+        student_id = params[:student_id]
+
+        if student_id.eql? ''
+          flash[:info] = "Medication not added. Student box was checked, but Student ID was not specified."
+        elsif student_id.to_i.to_s != student_id
+          flash[:info] = "Medication not added. Student box was checked, but Student ID was not a number (1,2,3,...)."
+        else
+          StudentMedication.create!(
+            medication_name: med_name,
+            quantity: initial_amount,
+            unit: med_unit,
+            school_id: 1,
+            student_id: student_id
+          )
+          flash[:info] = "Student Medication added successfully"
+        end
+
+      else
+        SchoolMedication.create!(
+          medication_name: med_name,
+          quantity: initial_amount,
+          unit: med_unit,
+          school_id: 1
+        )
+
+        flash[:info] = "Medication added successfully"
+      end
+    end
+    redirect_to :add_medication
+  end
 end
