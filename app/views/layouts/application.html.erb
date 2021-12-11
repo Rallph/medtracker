@@ -1,6 +1,5 @@
-
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
+<!DOCTYPE html>
+<html>
 <head>
   <title>Selt2021Proj09</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -8,7 +7,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<li> <%= link_to 'Log Out', destroy_parent_session_path, method: :delete %> </li>
   <h1 class = "header">MedTracker</h1>
   <% flash.each do |type, msg| %>
     <div class="alert alert-info">
