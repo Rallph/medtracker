@@ -11,18 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20211208210149) do
+ActiveRecord::Schema.define(version: 20211210181035) do
 
   create_table "administrators", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string   "full_name"
     t.integer  "school_id"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.boolean  "account_approved",       default: false
   end
 
   add_index "administrators", ["email"], name: "index_administrators_on_email", unique: true
@@ -63,15 +64,16 @@ ActiveRecord::Schema.define(version: 20211208210149) do
   end
 
   create_table "nurses", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string   "full_name"
     t.integer  "school_id"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.boolean  "account_approved",       default: false
   end
 
   add_index "nurses", ["email"], name: "index_nurses_on_email", unique: true
@@ -133,11 +135,6 @@ ActiveRecord::Schema.define(version: 20211208210149) do
     t.string  "unit"
     t.integer "school_id"
     t.integer "student_id"
-  end
-
-  create_table "student_medications_students", id: false, force: :cascade do |t|
-    t.integer "student_id",            null: false
-    t.integer "student_medication_id", null: false
   end
 
   create_table "students", force: :cascade do |t|
