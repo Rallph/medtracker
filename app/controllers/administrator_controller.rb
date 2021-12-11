@@ -10,25 +10,25 @@ class AdministratorController < ApplicationController
   end
 
   def submit_new_student
-    student_name = params[:student_name]
-    school_id = params[:school_id]
-    date_of_birth = params[:date_of_birth]
-    parent_email = params[:parent_email]
+    studnt_name = params[:student_name]
+    schl_id = params[:school_id]
+    dob = params[:date_of_birth]
+    p_email = params[:parent_email]
 
-    if student_name.eql? ''
+    if studnt_name.eql? ''
       flash[:info] = "Student not specified."
-    elsif school_id.eql? ''
+    elsif schl_id.eql? ''
       flash[:info] = "School ID was not specified."
-    elsif date_of_birth.eql? ''
+    elsif dob.eql? ''
       flash[:info] = "Date of Birth was not specified."
-    elsif parent_email.eql? ''
+    elsif p_email.eql? ''
       flash[:info] = "Parent email was not specified."
     else
       Student.create!(
-        student_name: student_name,
-        school_id: school_id,
-        date_of_birth: date_of_birth,
-        parent_email: parent_email
+        full_name: studnt_name,
+        school_id: schl_id,
+        date_of_birth: dob,
+      #parent_email: p_email
       )
 
       flash[:info] = "Student info added successfully"

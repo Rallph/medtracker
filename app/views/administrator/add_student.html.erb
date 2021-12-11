@@ -4,17 +4,17 @@
   <%= form_tag do %>
     <div class="form-group form-control-sm">
       <%= label_tag :student_name, "Name" %>
-      <%= text_area_tag :student_name, nil, class: %w[form-control] %>
+      <%= text_field_tag :student_name, nil, class: %w[form-control] %>
     </div>
 
     <div class="form-group">
       <%= label_tag :school_id, "School ID" %>
-      <%= text_area_tag :school_id, nil, class: %w[form-control] %>
+      <%= number_field_tag :school_id, nil, class: %w[form-control] %>
     </div>
 
     <div class="form-group">
       <%= label_tag :date_of_birth, "Date of Birth" %>
-      <%= text_area_tag :date_of_birth, nil, class: %w[form-control] %>
+      <%= date_field_tag :date_of_birth, nil, class: %w[form-control] %>
     </div>
 
     <div class="form-group">
