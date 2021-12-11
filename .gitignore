@@ -23,3 +23,4 @@ coverage/.*
 /.idea/modules.xml
 /.idea/selt_2021_proj_09.iml
 /.idea/vcs.xml
+/.externalDependencies.xml
