@@ -27,8 +27,6 @@ end
 
 Then /^I should only see medications belonging to student: "(.*?)"$/ do |student_name|
   all('#inventory tr > td:nth-child(4)').each do |td|
-    #puts(td.text)
     "#{student_name}".should include td.text
-    #%w{school_id}.should include td.text
   end
 end

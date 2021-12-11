@@ -5,8 +5,10 @@ class ParentController < ApplicationController
 
   def inventory
     #Verify the parent has an assigned student
-    if current_parent.students.nil?
+    if current_parent.students.first.nil?
+      redirect_to :parent_root
       flash[:alert] = "Could not find a student belonging to you. Please contact the school."
+
     else
       # Get the students that belong to the currently signed in parent
       @students = current_parent.students
@@ -16,7 +18,7 @@ class ParentController < ApplicationController
       end
       # if the student has no student medications, flash that there are no meds.
       if @student_medications.empty?
-        flash[:alert] = "There are no student medications in stock, if this seems wrong, please contact the school"
+        flash[:alert] = "There are no student medications in stock, if this seems wrong, please contact the school."
       end
     end
 
