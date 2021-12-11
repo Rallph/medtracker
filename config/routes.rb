@@ -37,6 +37,7 @@ Rails.application.routes.draw do
 
   # parent controller routes
   get 'parent/homepage', as: :parent_root
+  get 'parent/inventory' => 'parent#inventory', as: :inventory
 
   # homepage routes
   get 'homepage/home'
