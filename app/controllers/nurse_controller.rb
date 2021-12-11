@@ -39,9 +39,6 @@ class NurseController < ApplicationController
   end
 
   def add_medication_submit
-    # param! :name_of_medication,   String, required: false, message: "Name not specified"
-    # param! :unit_of_medication,   String, required: false, message: "Unit not specified"
-    # param! :initial_amount,       Integer, required: false, message: "Initial amount is not specified or is invalid"
 
     med_name = params[:name_of_medication]
     initial_amount = params[:initial_amount]
@@ -83,7 +80,6 @@ class NurseController < ApplicationController
           unit: med_unit,
           school_id: 1
         )
-        # SchoolMedicationTransaction.create!(student_id: params[:select_student], nurse_id: current_nurse.id, school_medication_id: params[:select_medication], change_in_quantity: params[:dosage], date: date, time: time, comment: params[:comment])
 
         flash[:info] = "Medication added successfully"
       end
