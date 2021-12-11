@@ -11,8 +11,6 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <%#  if defined?(current_nurse.email) or defined?(current_parent.email) or defined?(current_adminstrator.email) %>
-<!--        <a id="home_navigation" class="navbar-brand header" href="homepage">MedTracker</a>-->
       <% if request.fullpath.eql? '/' %>
         <a id="home_navigation" class="navbar-brand header" href="#">MedTracker</a>
       <% elsif request.fullpath.eql? '/nurses/sign_in' or request.fullpath.eql? '/parents/sign_in' or request.fullpath.eql? '/administrators/sign_in' %>
