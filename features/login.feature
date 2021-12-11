@@ -1,35 +1,91 @@
 Feature:
 
-  As a nurse
-  I want a new page to appear when I hit the "Login" button on the Login page
-  So that I know the page is responsive
+  As a User
+  I want to be able to log into MedMonitor
+  So that I can securely access my account
 
-  Background: movies have been added to RottenPotatoes
+  Background: Users Have been added to MedMonitor
 
-    Given the following Nurses have been added to MedMonitor:
-      | full_name               | username      | password     |
-      | Bob Rogers              | bobby_R       | pa$$word     |
-      | Sally Milbert           | s-milbert     | PassWord     |
+    Given the following "Nurses" have been added to MedMonitor:
+      | full_name               | email                      | password     | school_id |
+      | Bob Rogers              | bobby_R@gmail.com          | pa$$word     | 12        |
+      | Sally Milbert           | s-milbert@hotmail.com      | PassWord     | 14        |
 
-    And the following Administrators have been added to MedMonitor:
-      | full_name               | username      | password     |
-      | John Smith              | johnsmith1    | password1    |
+    And the following "Administrators" have been added to MedMonitor:
+      | full_name               | email                      | password     | school_id |
+      | John Smith              | johnsmith1@icloud.com      | password1    | 12        |
+
+    And the following "Parents" have been added to MedMonitor:
+      | full_name               | email                      | password     | school_id |
+      | John Davis              | johndavis1@yahoo.com       | password2    | 17        |
 
     And  I am on the MedMonitor home page
 
-  Scenario: User does not fill out username and password field before hitting login
-    When I attempt to login with username: "" and password: "PassWord"
-    Then I should see: "Please enter both a username and password"
-
-  Scenario: User inputs username and password that does not exist in db
-    When I attempt to login with username: "larry" and password: "PassWord"
-    Then I should see: "User with username larry could not be found in the database"
-
-  Scenario: User inputs username and password that corresponds to an admin account
-    When I attempt to login with username: "johnsmith1" and password: "password1"
-    Then I should see: "Administrator#homepage"
-
-  Scenario: User inputs username and password that corresponds to an nurse account
-    When I attempt to login with username: "bobby_R" and password: "pa$$word"
+  Scenario: Nurse logs into system
+    When I log in as a "nurse" with email: "bobby_R@gmail.com" and password: "pa$$word"
     Then I should see: "Nurse#homepage"
 
+  Scenario: admin logs into system
+    When I log in as a "administrator" with email: "johnsmith1@icloud.com" and password: "password1"
+    Then I should see: "Administrator#homepage"
+
+  Scenario: parent logs into system
+    When I log in as a "parent" with email: "johndavis1@yahoo.com" and password: "password2"
+    Then I should see: "Parent#homepage"
+
+  Scenario: Nurse inputs username and password that does not exist
+    When I log in as a "nurse" with email: "boby_R@gmail.com" and password: "pa$$word"
+    Then I should see: "Invalid Email or password."
+
+  Scenario: Admin inputs username and password that does not exist
+    When I log in as a "administrator" with email: "johnsmith1@icloud.com" and password: "password"
+    Then I should see: "Invalid Email or password."
+
+  Scenario: Parent inputs username and password that does not exist
+    When I log in as a "parent" with email: "bobs_burgers@bobsburgers.com" and password: "pass_the_word"
+    Then I should see: "Invalid Email or password."
+
+  Scenario: Logged in Nurse tries to access nurse login page
+    When I log in as a "nurse" with email: "bobby_R@gmail.com" and password: "pa$$word"
+    And I attempt to visit the "nurse" sign in page
+    Then I should see: "You are already signed in."
+
+  Scenario: Logged in Nurse tries to access admin login page
+    When I log in as a "nurse" with email: "bobby_R@gmail.com" and password: "pa$$word"
+    And I attempt to visit the "administrator" sign in page
+    Then I should see: "You are already signed in. If you want to sign into a different account, you must sign out of your current account first."
+
+  Scenario: Logged in Nurse tries to access parent login page
+    When I log in as a "nurse" with email: "bobby_R@gmail.com" and password: "pa$$word"
+    And I attempt to visit the "parent" sign in page
+    Then I should see: "You are already signed in. If you want to sign into a different account, you must sign out of your current account first."
+
+  Scenario: Logged in Administrator tries to access administrator login page
+    When I log in as a "administrator" with email: "johnsmith1@icloud.com" and password: "password1"
+    And I attempt to visit the "administrator" sign in page
+    Then I should see: "You are already signed in."
+
+  Scenario: Logged in Administrator tries to access administrator login page
+    When I log in as a "administrator" with email: "johnsmith1@icloud.com" and password: "password1"
+    And I attempt to visit the "nurse" sign in page
+    Then I should see: "You are already signed in. If you want to sign into a different account, you must sign out of your current account first."
+
+  Scenario: Logged in Administrator tries to access dministrator login page
+    When I log in as a "administrator" with email: "johnsmith1@icloud.com" and password: "password1"
+    And I attempt to visit the "parent" sign in page
+    Then I should see: "You are already signed in. If you want to sign into a different account, you must sign out of your current account first."
+
+  Scenario: Logged in Parent tries to access parent login page
+    When I log in as a "parent" with email: "johndavis1@yahoo.com" and password: "password2"
+    And I attempt to visit the "parent" sign in page
+    Then I should see: "You are already signed in."
+
+  Scenario: Logged in Parent tries to access parent login page
+    When I log in as a "parent" with email: "johndavis1@yahoo.com" and password: "password2"
+    And I attempt to visit the "nurse" sign in page
+    Then I should see: "You are already signed in. If you want to sign into a different account, you must sign out of your current account first."
+
+  Scenario: Logged in Parent tries to access parent login page
+    When I log in as a "parent" with email: "johndavis1@yahoo.com" and password: "password2"
+    And I attempt to visit the "administrator" sign in page
+    Then I should see: "You are already signed in. If you want to sign into a different account, you must sign out of your current account first."

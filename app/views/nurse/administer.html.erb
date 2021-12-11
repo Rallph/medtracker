@@ -1,0 +1,34 @@
+<div class="container">
+  <h2>Administer Medication</h2>
+
+  <%= form_tag do %>
+    <div class="form-group">
+      <%= label_tag :select_student, "Student" %>
+      <%= select_tag :select_student, options_for_select(@student_options), class: %w[form-control input-lg] %>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :select_medication, "Medication" %>
+      <%= select_tag :select_medication, options_for_select(@school_medication_options), class: %w[form-control input-lg] %>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :dosage, "Dosage" %>
+      <%= number_field_tag :dosage, 1, min: 1, class: %w[form-control input-lg]%>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :time, "Date/Time" %>
+      <%= datetime_local_field_tag :time, nil, class: %w[form-control input-lg] %>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :comment, "Comment" %>
+      <%= text_area_tag :comment, nil, class: %w[form-control input-lg] %>
+    </div>
+
+    <div class="form-group">
+      <%= submit_tag "Administer Medication", class: %w[btn btn-primary] %>
+    </div>
+  <% end %>
+</div>
