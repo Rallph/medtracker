@@ -15,6 +15,10 @@ Feature:
       | John Doe                | 14        |
       | Jane Doe                | 14        |
 
+    And the following school medications have been added to MedMonitor:
+      | medication_name         | quantity  | unit    | school_id |
+      | Ibuprofen               | 30        | tablets | 14        |
+
     And I log in as a "nurse" with email: "s-milbert@hotmail.com" and password: "PassWord"
     And I am on the Administer Medication page
 
