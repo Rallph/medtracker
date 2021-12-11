@@ -31,4 +31,4 @@ Feature: Parent View Current Student Medication Inventory
     Scenario: Parent view their student's medication inventory
       When I log in as a "parent" with email: "dpain05@gmail.com" and password: "PASSWORD"
       And I view "parent" medication inventory
-      Then I should only see medication belonging to student "Ethan Heusel"
+      Then I should only see medications belonging to student: "Ethan Heusel"

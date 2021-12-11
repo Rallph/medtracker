@@ -14,8 +14,8 @@ end
 
 And /the following Parent Student relationships exists:/ do |parents_students_table|
   parents_students_table.hashes.each do |row|
-    parent = parent.find(row["parent_id"])
-    student = student.find(row["student_id"])
+    parent = Parent.find(row["parent_id"])
+    student = Student.find(row["student_id"])
     parent.students << student
   end
 end
@@ -23,4 +23,12 @@ end
 When /^I view "(.*?)" medication inventory$/ do |user_type|
   #pending # Write code here that turns the phrase above into concrete actions
   visit "/#{user_type}/inventory"
+end
+
+Then /^I should only see medications belonging to student: "(.*?)"$/ do |student_name|
+  all('#inventory tr > td:nth-child(4)').each do |td|
+    #puts(td.text)
+    "#{student_name}".should include td.text
+    #%w{school_id}.should include td.text
+  end
 end
