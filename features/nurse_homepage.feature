@@ -7,10 +7,10 @@ Feature:
   Background: Nurses, students, and inventory have been added to MedMonitor
 
     Given the following "Nurses" have been added to MedMonitor:
-      | full_name               | email                      | password     | school_id |
-      | Sally Milbert           | s-milbert@hotmail.com      | PassWord     | 3         |
+      | full_name               | email                      | password     | school_id | account_approved |
+      | Sally Milbert           | s-milbert@hotmail.com      | PassWord     | 3         | true             |
 
-    Given the following medications have been added to the school inventory:
+    And the following medications have been added to the school inventory:
       | medication_name     | quantity        | unit         | school_id |
       | Ibuprofen           | 5               | tablets      | 3         |
       | Cough Syrup         | 50              | mL           | 3         |
