@@ -151,6 +151,6 @@ StudentMedication.count.times do |i|
   student_or_school = 'student'
 
   MedicationApproval.create!({:student_or_school => student_or_school,
-                              :student_medication_id => i,
+                              :student_medication_id => i+1,
                               :student_id => student_med[:student_id]})
 end

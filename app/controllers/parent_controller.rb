@@ -8,6 +8,63 @@ class ParentController < ApplicationController
 
   end
 
+  def medication_history
+
+    @student = Student.find(params[:student_id])
+
+    if not @student.parents.include? current_parent
+      flash[:info] = "Error: You do not have access to that page."
+      redirect_to '/parent/homepage'
+    end
+
+    school_med_transactions = @student.school_medication_transactions
+    student_medications = @student.student_medications
+
+    @med_transactions = []
+
+    school_med_transactions.each do |school_med_transaction|
+
+      transaction = {}
+      transaction["nurse"] = Nurse.find(school_med_transaction.nurse_id).full_name
+      transaction["amount"] = school_med_transaction.change_in_quantity
+      transaction["time"] = school_med_transaction.time
+      transaction["date"] = school_med_transaction.date
+
+      medication = SchoolMedication.find(school_med_transaction.school_medication_id)
+
+      transaction["med_name"] = medication.medication_name
+      transaction["units"] = medication.unit
+      transaction["type"] = "School Medication"
+
+      @med_transactions.append(transaction)
+
+    end
+
+    # No way to directly reference student medication transactions from student
+    student_medications.each do |student_medication|
+
+      student_medication.student_medication_transactions.each do |student_medication_transaction|
+
+        transaction = {}
+        transaction["nurse"] = Nurse.find(student_medication_transaction.nurse_id).full_name
+        transaction["amount"] = student_medication_transaction.change_in_quantity
+        transaction["time"] = student_medication_transaction.time
+        transaction["date"] = student_medication_transaction.date
+
+        transaction["med_name"] = student_medication.medication_name
+        transaction["units"] = student_medication.unit
+        transaction["type"] = "Student Medication"
+
+        @med_transactions.append(transaction)
+
+
+      end
+
+    end
+
+
+  end
+
   def parent_inventory
     #Verify the parent has an assigned student
     if current_parent.students.first.nil?
@@ -28,6 +85,7 @@ class ParentController < ApplicationController
     end
 
   end
+
   def consent_form
 
     # @student = params[:student_id]

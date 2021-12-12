@@ -34,3 +34,9 @@ When /^I administer "([^"]*)" dose\(s\) of school medication "([^"]*)" to studen
 
   click_button 'Administer Medication'
 end
+
+When /John Doe has been approved to take Ibuprofen/ do
+
+  MedicationApproval.create!({student_id: 1, school_medication_id: 1})
+
+end

@@ -15,7 +15,7 @@
         <td style="text-align: center"><%= student.full_name %></td>
         <td style="text-align: center">
           <div id="parent-homepage-divs">
-            <%= form_tag "view_medication_distribution", method: :get do %>
+            <%= form_tag "medication_history", method: :get do %>
               <%= hidden_field_tag :student_id, student.id %>
               <%= button_tag :class => "btn btn-info", :id => "View Medication History-" + student.full_name + "-" + student.id.to_s do %>
                 View Medication History <span class='glyphicon glyphicon-list-alt'></span>
