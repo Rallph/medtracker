@@ -35,6 +35,7 @@ class NurseController < ApplicationController
     #TODO add actual validation to ensure only one type of medication is submitted
     if student_medication && !student_medication.empty?
       StudentMedicationTransaction.create!(nurse_id: current_nurse.id, student_medication_id: student_medication, change_in_quantity: params[:dosage], date: date, time: time, comment: params[:comment])
+                                  .decrease_medication_quantity
     else
       SchoolMedicationTransaction.create!(student_id: params[:select_student], nurse_id: current_nurse.id, school_medication_id: school_medication, change_in_quantity: params[:dosage], date: date, time: time, comment: params[:comment])
                                  .decrease_medication_quantity
