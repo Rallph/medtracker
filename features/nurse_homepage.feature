@@ -19,7 +19,7 @@ Feature:
     And I log in as a "nurse" with email: "s-milbert@hotmail.com" and password: "PassWord"
 
   Scenario: Nurse visits the nurse homepage
-    Then I should see buttons for: "Administer Medicine,Reports/Logs"
+    Then I should see buttons for: "Administer Medicine"
 
   Scenario: Nurse visits nurse homepage and checks low medicine count
 

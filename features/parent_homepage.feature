@@ -21,14 +21,6 @@ Feature:
   Scenario: Parent visits the parent homepage
     Then I should see the following students: "Jamie Milbert,Bobby Milbert"
 
-  Scenario: Parent clicks "View Medication History" button for student "Jamie Milbert"
-    When I click the "View Medication History" button for student "Jamie Milbert" with id "1"
-    Then I should see: "Medication History"
-
   Scenario: Parent clicks "Edit Consent Forms" button for student "Bobby Milbert"
     When I click the "Edit Consent Form" button for student "Bobby Milbert" with id "2"
     Then I should see: "Consent Form"
-
-  Scenario: Parent clicks "View Medication Stock" button for student "Jamie Milbert"
-    When I click the "View Medication Stock" button for student "Jamie Milbert" with id "1"
-    Then I should see: "Medication Inventory"
