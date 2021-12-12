@@ -38,8 +38,8 @@ RSpec.describe ParentController, type: :controller do
 
     before(:each) do
       @fake_nurse = double('nurse1', full_name: "Bob Henderson")
-      @fake_med_transactions = [double('school_transaction_1', nurse_id: 1, change_in_quantity: 1, time: "3:45 PM"),
-                                   double('school_transaction_1', nurse_id: 2, change_in_quantity: 3, time: "4:45 PM")]
+      @fake_med_transactions = [double('school_transaction_1', nurse_id: 1, change_in_quantity: 1, time: "3:45 PM", date: "11/12/2021", school_medication_id: 1),
+                                   double('school_transaction_1', nurse_id: 2, change_in_quantity: 3, time: "4:45 PM", date: "11/12/2020", school_medication_id: 2)]
       @fake_medication = double('med1', unit: 'mL', medication_name: 'Ibuprofen')
       @fake_medications = [double('med1', unit: 'tablets', medication_name: 'Ibuprofen', student_medication_transactions: @fake_med_transactions),
                                   double('med2', unit: 'tablets', medication_name: 'Ibuprofen', student_medication_transactions: @fake_med_transactions)]
@@ -62,12 +62,12 @@ RSpec.describe ParentController, type: :controller do
 
       get :medication_history
       correct_med_transactions = [
-        {"nurse" => "Bob Henderson", "amount" => 1, "time" =>  "3:45 PM", "type" => "School Medication", "med_name" => "Ibuprofen", "units" => "mL"},
-        {"nurse" => "Bob Henderson", "amount" => 3, "time" => "4:45 PM", "type" => "School Medication", "med_name" => "Ibuprofen", "units" => "mL"},
-        {"nurse" => "Bob Henderson", "amount" => 1, "time" => "3:45 PM", "type" => "Student Medication", "med_name" => "Ibuprofen", "units" => "tablets"},
-        {"nurse" => "Bob Henderson", "amount" => 3, "time" => "4:45 PM", "type" => "Student Medication", "med_name" => "Ibuprofen", "units" => "tablets"},
-        {"nurse" => "Bob Henderson", "amount" => 1, "time" => "3:45 PM", "type" => "Student Medication", "med_name" => "Ibuprofen", "units" => "tablets"},
-        {"nurse" => "Bob Henderson", "amount" => 3, "time" => "4:45 PM", "type" => "Student Medication", "med_name" => "Ibuprofen", "units" => "tablets"}
+        {"nurse" => "Bob Henderson", "amount" => 1, "time" =>  "3:45 PM", "type" => "School Medication", "med_name" => "Ibuprofen", "units" => "mL", "date" => "11/12/2021"},
+        {"nurse" => "Bob Henderson", "amount" => 3, "time" => "4:45 PM", "type" => "School Medication", "med_name" => "Ibuprofen", "units" => "mL", "date" => "11/12/2020"},
+        {"nurse" => "Bob Henderson", "amount" => 1, "time" => "3:45 PM", "type" => "Student Medication", "med_name" => "Ibuprofen", "units" => "tablets", "date" => "11/12/2021"},
+        {"nurse" => "Bob Henderson", "amount" => 3, "time" => "4:45 PM", "type" => "Student Medication", "med_name" => "Ibuprofen", "units" => "tablets", "date" => "11/12/2020"},
+        {"nurse" => "Bob Henderson", "amount" => 1, "time" => "3:45 PM", "type" => "Student Medication", "med_name" => "Ibuprofen", "units" => "tablets", "date" => "11/12/2021"},
+        {"nurse" => "Bob Henderson", "amount" => 3, "time" => "4:45 PM", "type" => "Student Medication", "med_name" => "Ibuprofen", "units" => "tablets", "date" => "11/12/2020"}
       ]
 
 

@@ -23,6 +23,7 @@ class ParentController < ApplicationController
       transaction["nurse"] = Nurse.find(school_med_transaction.nurse_id).full_name
       transaction["amount"] = school_med_transaction.change_in_quantity
       transaction["time"] = school_med_transaction.time
+      transaction["date"] = school_med_transaction.date
 
       medication = SchoolMedication.find(school_med_transaction.school_medication_id)
 
@@ -43,6 +44,7 @@ class ParentController < ApplicationController
         transaction["nurse"] = Nurse.find(student_medication_transaction.nurse_id).full_name
         transaction["amount"] = student_medication_transaction.change_in_quantity
         transaction["time"] = student_medication_transaction.time
+        transaction["date"] = student_medication_transaction.date
 
         transaction["med_name"] = student_medication.medication_name
         transaction["units"] = student_medication.unit
