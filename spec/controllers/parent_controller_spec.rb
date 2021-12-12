@@ -37,6 +37,8 @@ RSpec.describe ParentController, type: :controller do
   describe "Render Parent View Medication Distribution History" do
 
     before(:each) do
+      @fake_parent = double('fake_parent')
+      @fake_parents = [@fake_parent]
       @fake_nurse = double('nurse1', full_name: "Bob Henderson")
       @fake_med_transactions = [double('school_transaction_1', nurse_id: 1, change_in_quantity: 1, time: "3:45 PM", date: "11/12/2021", school_medication_id: 1),
                                    double('school_transaction_1', nurse_id: 2, change_in_quantity: 3, time: "4:45 PM", date: "11/12/2020", school_medication_id: 2)]
@@ -44,9 +46,10 @@ RSpec.describe ParentController, type: :controller do
       @fake_medications = [double('med1', unit: 'tablets', medication_name: 'Ibuprofen', student_medication_transactions: @fake_med_transactions),
                                   double('med2', unit: 'tablets', medication_name: 'Ibuprofen', student_medication_transactions: @fake_med_transactions)]
       @fake_student = double('fake_student_1', id: 1, school_medication_transactions: @fake_med_transactions,
-                             student_medications: @fake_medications)
+                             student_medications: @fake_medications, parents: @fake_parents)
 
 
+      allow(controller).to receive(:current_parent).and_return(@fake_parent)
       allow(SchoolMedication).to receive(:find).and_return(@fake_medication)
       allow(Student).to receive(:find).and_return(@fake_student)
       allow(Nurse).to receive(:find).and_return(@fake_nurse)
