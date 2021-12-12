@@ -1,3 +1,31 @@
 // Place all the styles related to the parent controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.consent_header {
+  margin: auto;
+  width: 50%;
+  text-align: center;
+  border: 3px black;
+  padding: 80px;
+  font-weight: bold;
+  color: red;
+}
+
+.header {
+  font-size: 50px;
+  text-align: center;
+  margin: 0 0 0 0;
+}
+
+#parent-homepage-divs{
+  display: inline-block;
+}
+
+#table-style {
+  width: 55%;
+  margin:0 auto;
+  font-size:20px;
+  position:relative;
+}

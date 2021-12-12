@@ -21,6 +21,8 @@ Rails.application.routes.draw do
 
   # administrator controller routes
   get 'administrator/homepage', as: :administrator_root
+  get 'administrator/approve_accounts' => 'administrator#approve_accounts', as: :approve_accounts
+  post 'administrator/approve_new_account' => "administrator#approve_new_account"
   #post 'administrator/homepage' => 'administrator#submit_new_student', as: :submit_new_student
   get 'administrator/add_student' => 'administrator#add_student', as: :add_student
   post 'administrator/add_student' => 'administrator#submit_new_student', as: :submit_new_student
@@ -30,6 +32,8 @@ Rails.application.routes.draw do
   get   'nurse/homepage', as: :nurse_root
   get   'nurse/administer' => 'nurse#administer', as: :administer
   post  'nurse/administer' => 'nurse#administer_submit', as: :administer_submit
+  get   'nurse/add_medication' => 'nurse#add_medication', as: :add_medication
+  post   'nurse/add_medication' => 'nurse#add_medication_submit', as: :add_medication_submit
 
   # student medications controller routes
   # needed to get student medications via a RESTful API interface
@@ -37,6 +41,11 @@ Rails.application.routes.draw do
 
   # parent controller routes
   get 'parent/homepage', as: :parent_root
+  get 'parent/consent_form' => "parent#consent_form", as: :consent_form
+  post 'parent/approve_medication' => "parent#approve_medication", as: :approve_medication
+  post 'parent/disapprove_medication' => "parent#disapprove_medication", as: :disapprove_medication
+  # post 'parent/consent_form' => "parent#disapprove_medication", as: :disapprove_medication
+
 
   # homepage routes
   get 'homepage/home'

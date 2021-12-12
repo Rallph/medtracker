@@ -12,4 +12,28 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:full_name, :school_id, :email, :password, :current_password)}
   end
 
+  # check that user is both logged in and that their account has been approved
+  def verify_nurse
+
+    if current_nurse.account_approved == true
+      authenticate_nurse!
+    else
+      flash[:warning] = "Your Account has not yet been approved by an administrator."
+      redirect_to root_path
+    end
+
+  end
+
+  # check that user is both logged in and that their account has been approved
+  def verify_administrator
+
+    if current_administrator.account_approved == true
+      authenticate_administrator!
+    else
+      flash[:warning] = "Your Account has not yet been approved by an administrator."
+      redirect_to root_path
+    end
+
+  end
+
 end

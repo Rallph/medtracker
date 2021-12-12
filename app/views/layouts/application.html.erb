@@ -8,13 +8,39 @@
 </head>
 <body>
 
-  <h1 class = "header">MedTracker</h1>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <% if request.fullpath.eql? '/' %>
+        <a id="home_navigation" class="navbar-brand header" href="#">MedTracker</a>
+      <% elsif request.fullpath.eql? '/nurses/sign_in' or request.fullpath.eql? '/parents/sign_in' or request.fullpath.eql? '/administrators/sign_in' %>
+        <a id="home_navigation" class="navbar-brand header" href="/">MedTracker</a>
+      <% else %>
+        <a id="home_navigation" class="navbar-brand header" href="homepage">MedTracker</a>-->
+    <% end %>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <% if defined?(current_nurse.email) %>
+        <li><a href="#" id="user_info"><span class="glyphicon glyphicon-user"></span> Nurse signed in as: <%= current_nurse.email %></a></li>
+        <li> <%= link_to 'Log Out', destroy_nurse_session_path, method: :delete, id: :logout %> </li>
+      <% elsif defined?(current_parent.email) %>
+        <li><a href="#" id="user_info"><span class="glyphicon glyphicon-user"></span> Parent signed in as: <%= current_parent.email %></a></li>
+        <li> <%= link_to 'Log Out', destroy_parent_session_path, method: :delete, id: :logout %> </li>
+      <% elsif defined?(current_administrator.email) %>
+        <li><a href="#" id="user_info"><span class="glyphicon glyphicon-user"></span> Administrator signed in as: <%= current_administrator.email %></a></li>
+        <li> <%= link_to 'Log Out', destroy_administrator_session_path, method: :delete, id: :logout %> </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
+
   <% flash.each do |type, msg| %>
     <div class="alert alert-info">
       <%= msg %>
     </div>
   <% end %>
   <%= yield %>
+  <%= yield :approve_accounts_javascript %>
 
 </body>
 </html>
