@@ -20,7 +20,7 @@ Feature:
     And I log in as a "administrator" with email: "johnsmith1@icloud.com" and password: "password1"
 
   Scenario: Admin visits their homepage
-    Then I should see buttons for: "Manage Access,View Reports/Logs,School Medication Inventory"
+    Then I should see buttons for: "Manage Access,View Reports/Logs"
 
   Scenario: Admin visits homepage and checks Access Notifications
     Then I should see access alerts for user(s):"Cody Anderson,John Doe" with email(s) "c-anderson@hotmail.com,johndoe1@icloud.com"
