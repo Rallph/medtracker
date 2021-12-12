@@ -27,6 +27,11 @@ Feature:
   Scenario: Nurse visits administer medication page
     Then I should see fields for "select student,select school medication,dosage,comment,time"
 
-  Scenario: Nurse successfully administers school medication to a student
+  Scenario: Nurse unsuccessfully administers school medication to a student
     When I administer "1" dose(s) of school medication "Ibuprofen" to student "John Doe"
+    Then I should see: "Record not taken. Medication is not approved for that student"
+
+  Scenario: Nurse successfully administers school medication to a student
+    When John Doe has been approved to take Ibuprofen
+    And I administer "1" dose(s) of school medication "Ibuprofen" to student "John Doe"
     Then I should see: "Medication administered successfully"
