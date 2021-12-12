@@ -101,7 +101,7 @@ RSpec.describe NurseController, type: :controller do
     end
 
     it 'should call the student medication transaction model to create a new transaction when a student medication is selected in the form' do
-      expect(StudentMedicationTransaction).to receive(:create!)
+      expect(StudentMedicationTransaction).to receive(:create!).and_return(double('transaction', :decrease_medication_quantity => nil))
       post :administer_submit, { select_student: "1", select_student_medication: "1", dosage: "1", time: "2021-11-16T18:06", comment: ""}
     end
   end
