@@ -6,20 +6,22 @@ Feature:
   Background: Users Have been added to MedMonitor
 
     Given the following "Nurses" have been added to MedMonitor:
-      | full_name               | email                      | password     | school_id |
-      | Bob Rogers              | bobby_R@gmail.com          | pa$$word     | 1         |
-      | Sally Milbert           | s-milbert@hotmail.com      | PassWord     | 2         |
-      | Jim Beam                | jimmyB@gmail.com           | PASSWORD     | 3         |
+      | full_name               | email                      | password     | school_id | account_approved |
+      | Bob Rogers              | bobby_R@gmail.com          | pa$$word     | 1         | true             |
+      | Sally Milbert           | s-milbert@hotmail.com      | PassWord     | 2         | true             |
+      | Jim Beam                | jimmyB@gmail.com           | PASSWORD     | 3         | true             |
 
     And the school with name: "Kate Wickham Elementary" and district_id: "1" has been added to MedMonitor:
+    And the school with name: "West High School" and district_id: "1" has been added to MedMonitor:
+    And the school with name: "City High High School" and district_id: "1" has been added to MedMonitor:
 
     And the following "Administrators" have been added to MedMonitor:
-      | full_name               | email                      | password     | school_id |
-      | John Smith              | johnsmith1@icloud.com      | password1    | 12        |
+      | full_name               | email                      | password     | school_id | account_approved |
+      | John Smith              | johnsmith1@icloud.com      | password1    | 1         | true             |
 
     And the following "Parents" have been added to MedMonitor:
       | full_name               | email                      | password     | school_id |
-      | John Davis              | johndavis1@yahoo.com       | password2    | 17        |
+      | John Davis              | johndavis1@yahoo.com       | password2    | 1         |
 
     And the following "school_medications" have been added to inventory:
       | medication_name         | quantity                   | unit         | school_id |
