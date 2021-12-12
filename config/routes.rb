@@ -35,6 +35,10 @@ Rails.application.routes.draw do
   get   'nurse/add_medication' => 'nurse#add_medication', as: :add_medication
   post   'nurse/add_medication' => 'nurse#add_medication_submit', as: :add_medication_submit
 
+  # student medications controller routes
+  # needed to get student medications via a RESTful API interface
+  get   'student_medications/student/:student_id' => 'student_medications#get_medications_for_student'
+
   # parent controller routes
   get 'parent/homepage', as: :parent_root
   get 'parent/consent_form' => "parent#consent_form", as: :consent_form

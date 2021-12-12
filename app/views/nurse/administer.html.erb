@@ -4,12 +4,17 @@
   <%= form_tag do %>
     <div class="form-group">
       <%= label_tag :select_student, "Student" %>
-      <%= select_tag :select_student, options_for_select(@student_options), class: %w[form-control input-lg] %>
+      <%= select_tag :select_student, options_from_collection_for_select(@student_options, 'id', 'full_name'), class: %w[form-control input-lg], :prompt => "Select a student" %>
     </div>
 
     <div class="form-group">
-      <%= label_tag :select_medication, "Medication" %>
-      <%= select_tag :select_medication, options_for_select(@school_medication_options), class: %w[form-control input-lg] %>
+      <%= label_tag :select_school_medication, "School Medication" %>
+      <%= select_tag :select_school_medication, options_from_collection_for_select(@school_medication_options, 'id', 'medication_name'), class: %w[form-control input-lg], :prompt => "Select a school medication" %>
+    </div>
+
+    <div class="form-group" id="student-medication-section">
+      <%= label_tag :select_student_medication, "Student Medication" %>
+      <%= select_tag :select_student_medication, nil, class: %w[form-control input-lg] %>
     </div>
 
     <div class="form-group">
@@ -32,3 +37,50 @@
     </div>
   <% end %>
 </div>
+
+<script>
+
+  // accepts an array of StudentMedication objects in json format
+  const updateStudentMedications = (student_medications_json) => {
+
+      const student_medication_select = $("#select_student_medication")
+      student_medication_select.empty();
+      if (student_medications_json.length !== 0) { // hide the student medications field if the student doesnt have any medications
+          // maps through the student medications json array, creates an array of <option> html elements
+          // that each have the medication name as their text and medication id as their value
+          const student_medication_options = student_medications_json.map(med => {
+              let option = document.createElement("option");
+              option.text = med.medication_name;
+              option.value = med.id;
+
+              return option
+          });
+
+          // add a prompt for student medications in case the nurse doesn't want to select one
+          student_medication_select.append("<option>Select a student-specific medication</option>")
+
+          // put all the previously created <option> elements into the student medication select tag
+          student_medication_select.append(student_medication_options);
+          $("#student-medication-section").show();
+      } else {
+          $("#student-medication-section").hide();
+      }
+  }
+
+  $("#student-medication-section").hide(); // hide student medications initially
+
+  $("#select_student").change((event) => {
+      let student_id = event.target.value;
+
+      // check that student_id is not empty in case the prompt is selected again
+      if (student_id) {
+          $.ajax({
+              url: `/student_medications/student/${student_id}`,
+              success: updateStudentMedications
+          })
+      } else {
+          $("#student-medication-section").hide(); // hide student medications if prompt is selected
+      }
+  })
+
+</script>
