@@ -12,6 +12,11 @@ class ParentController < ApplicationController
 
     @student = Student.find(params[:student_id])
 
+    if not @student.parents.include? current_parent
+      flash[:info] = "Error: You do not have access to that page."
+      redirect_to '/parent/homepage'
+    end
+
     school_med_transactions = @student.school_medication_transactions
     student_medications = @student.student_medications
 
