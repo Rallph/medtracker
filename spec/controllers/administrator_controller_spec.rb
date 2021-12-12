@@ -23,10 +23,10 @@ RSpec.describe AdministratorController, type: :controller do
       get :submit_new_student, {student_name: 'fake_name', school_id: '', date_of_birth: 10/10/2021, parent_email: "kmema@uiowa.edu"}
     end
     it 'should reach the DOB not specified flash' do
-      get :submit_new_student, {student_name: 'fake_name', school_id: 'fake_id', date_of_birth: 10/10/2021, parent_email: "kmema@uiowa.edu"}
+      get :submit_new_student, {student_name: 'fake_name', school_id: 'fake_id', date_of_birth: '', parent_email: "kmema@uiowa.edu"}
     end
     it 'should reach the parent email not specified flash' do
-      get :submit_new_student, {student_name: 'fake_name', school_id: 'fake_id', date_of_birth: 10/10/2021, parent_email: ""}
+      get :submit_new_student, {student_name: 'fake_name', school_id: 'fake_id', date_of_birth: 10/10/2021, parent_email: ''}
     end
   end
 
