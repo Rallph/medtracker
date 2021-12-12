@@ -14,17 +14,17 @@ Feature: Admin Add Student
     And I am on the Add Student page
 
   Scenario: Admin adds a student to the database
-    When I enter a student's information as name: "James Bond", school id: "12345", date of birth: "12/07/2021", parent email: "kmema@uiowa.edu"
+    When I enter a student's information as name: "James Bond", school_id: "12345", date_of_birth: "12/07/2021", parent_email: "kmema@uiowa.edu"
     Then I should see: "Student info added successfully"
   Scenario: Admin doesn't enter the name field
-    When I enter a student's information as name: "", school id: "12345", date of birth: "12/07/2021", parent email: "kmema@uiowa.edu"
+    When I enter a student's information as name: "", school_id: "12345", date_of_birth: "12/07/2021", parent_email: "kmema@uiowa.edu"
     Then I should see: "Student not specified."
   Scenario: Admin doesn't enter the school id field
-    When I enter a student's information as name: "James Bond", school id: "", date of birth: "12/07/2021", parent email: "kmema@uiowa.edu"
+    When I enter a student's information as name: "James Bond", school_id: "", date_of_birth: "12/07/2021", parent_email: "kmema@uiowa.edu"
     Then I should see: "School ID was not specified."
   Scenario: Admin doesn't enter the DOB id field
-    When I enter a student's information as name: "James Bond", school id: "12345", date of birth: "", parent email: "kmema@uiowa.edu"
+    When I enter a student's information as name: "James Bond", school_id: "12345", date_of_birth: "", parent_email: "kmema@uiowa.edu"
     Then I should see: "Date of Birth was not specified"
   Scenario: Admin doesn't enter the parent email field
-    When I enter a student's information as name: "James Bond", school id: "12345", date of birth: "12/07/2021", parent email: ""
+    When I enter a student's information as name: "James Bond", school_id: "12345", date_of_birth: "12/07/2021", parent_email: ""
     Then I should see: "Parent email was not specified."
