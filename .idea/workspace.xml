@@ -1,7 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="610f97ae-6156-409e-8378-b12ced97f076" name="Changes" comment="" />
+    <list default="true" id="610f97ae-6156-409e-8378-b12ced97f076" name="Changes" comment="re synchronize with main.">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/95191c13-1fc8-452f-b260-93ff96f28a65.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/95191c13-1fc8-452f-b260-93ff96f28a65/entities/entities.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/95191c13-1fc8-452f-b260-93ff96f28a65/entities/entities.dat.len" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/95191c13-1fc8-452f-b260-93ff96f28a65/entities/entities.dat.values" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/95191c13-1fc8-452f-b260-93ff96f28a65/entities/entities.dat.values.at" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/95191c13-1fc8-452f-b260-93ff96f28a65/entities/entities.dat.values.s" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/95191c13-1fc8-452f-b260-93ff96f28a65/entities/entities.dat_i" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/95191c13-1fc8-452f-b260-93ff96f28a65/entities/entities.dat_i.len" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/features/add_student.feature" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/features/step_definitions/add_student_steps.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/identifier.sqlite" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/.sprockets-manifest-63b7d5af60dbfbee935bf3857a14a032.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/AdministerGetStudentMedications-48187e3f7c53e453cecf2f044f69cbdbc3ec3ef7531b36932909731ae904f0dc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/AdministerGetStudentMedications-48187e3f7c53e453cecf2f044f69cbdbc3ec3ef7531b36932909731ae904f0dc.js.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/ApproveAccounts-6e41b70f0fcf9f662ab97b3c6c9ee38666c4aa2ae8b8fcfc2d3172e2f51ee13e.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/ApproveAccounts-6e41b70f0fcf9f662ab97b3c6c9ee38666c4aa2ae8b8fcfc2d3172e2f51ee13e.js.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/application-350999b497128dec38aba74bacca6345b4e074511cf8cb982d5c3bea741637de.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/application-350999b497128dec38aba74bacca6345b4e074511cf8cb982d5c3bea741637de.css.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/application-cb6e0faf25a831053e3bb4a73a0f7de02fe592f7d1d6d286efcee02ebcd7999a.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/application-cb6e0faf25a831053e3bb4a73a0f7de02fe592f7d1d6d286efcee02ebcd7999a.js.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/black-mamba-40e71c328609c1667a35a39ba85723edcbcea51d4d6ef195cc6aaacec7be399c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/black-thread-light-5b71d1c76732d83c1b392600faf9e829776d0da3584895c26dbbee4a024b590a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/bootstrap/glyphicons-halflings-regular-13634da87d9e23f8c3ed9108ce1724d183a39ad072e73e1b3d8cbf646d2d0407.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/bootstrap/glyphicons-halflings-regular-13634da87d9e23f8c3ed9108ce1724d183a39ad072e73e1b3d8cbf646d2d0407.eot.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/bootstrap/glyphicons-halflings-regular-42f60659d265c1a3c30f9fa42abcbb56bd4a53af4d83d316d6dd7a36903c43e5.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/bootstrap/glyphicons-halflings-regular-42f60659d265c1a3c30f9fa42abcbb56bd4a53af4d83d316d6dd7a36903c43e5.svg.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/bootstrap/glyphicons-halflings-regular-a26394f7ede100ca118eff2eda08596275a9839b959c226e15439557a5a80742.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/bootstrap/glyphicons-halflings-regular-e395044093757d82afcb138957d06a1ea9361bdcf0b442d06a18a8051af57456.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/bootstrap/glyphicons-halflings-regular-e395044093757d82afcb138957d06a1ea9361bdcf0b442d06a18a8051af57456.ttf.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/bootstrap/glyphicons-halflings-regular-fe185d11a49676890d47bb783312a0cda5a44c4039214094e7957b4c040ef11c.woff2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/selt_2021_proj_09.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/selt_2021_proj_09.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/administrator_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/administrator_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/parent_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/parent_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/administrator/add_student.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/administrator/add_student.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/features/consent_form.feature" beforeDir="false" afterPath="$PROJECT_DIR$/features/consent_form.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/features/step_definitions/consent_form_steps.rb" beforeDir="false" afterPath="$PROJECT_DIR$/features/step_definitions/consent_form_steps.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/controllers/administrator_controller_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/controllers/administrator_controller_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/controllers/parent_controller_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/controllers/parent_controller_spec.rb" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,6 +99,7 @@
           <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
         </COVERAGE_PATTERN>
       </EXTENSION>
+      <EXTENSION ID="RubyDockerContainerSettingsRunConfigurationExtension" dockerComposeCommand="RUN" />
       <EXTENSION ID="org.jetbrains.plugins.ruby.rails.run.RailsRunConfigurationExtension" SCRATCH_USE_RAILS_RUNNER="false" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*.feature" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="CUSTOM_SET_OF_FILES" />
@@ -89,6 +138,7 @@
           <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
         </COVERAGE_PATTERN>
       </EXTENSION>
+      <EXTENSION ID="RubyDockerContainerSettingsRunConfigurationExtension" dockerComposeCommand="RUN" />
       <EXTENSION ID="org.jetbrains.plugins.ruby.rails.run.RailsRunConfigurationExtension" SCRATCH_USE_RAILS_RUNNER="false" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*.feature" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="CUSTOM_SET_OF_FILES" />
@@ -127,6 +177,7 @@
           <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
         </COVERAGE_PATTERN>
       </EXTENSION>
+      <EXTENSION ID="RubyDockerContainerSettingsRunConfigurationExtension" dockerComposeCommand="UP" />
       <EXTENSION ID="org.jetbrains.plugins.ruby.rails.run.RailsRunConfigurationExtension" SCRATCH_USE_RAILS_RUNNER="false" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SCRIPT_ARGS" VALUE="" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="PORT" VALUE="3000" />
@@ -152,6 +203,7 @@
           <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
         </COVERAGE_PATTERN>
       </EXTENSION>
+      <EXTENSION ID="RubyDockerContainerSettingsRunConfigurationExtension" dockerComposeCommand="UP" />
       <EXTENSION ID="org.jetbrains.plugins.ruby.rails.run.RailsRunConfigurationExtension" SCRATCH_USE_RAILS_RUNNER="false" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SCRIPT_ARGS" VALUE="" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="PORT" VALUE="3000" />
@@ -176,6 +228,7 @@
           <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
         </COVERAGE_PATTERN>
       </EXTENSION>
+      <EXTENSION ID="RubyDockerContainerSettingsRunConfigurationExtension" dockerComposeCommand="RUN" />
       <EXTENSION ID="org.jetbrains.plugins.ruby.rails.run.RailsRunConfigurationExtension" SCRATCH_USE_RAILS_RUNNER="false" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_NAME" VALUE="spec" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ARGS" VALUE="" />
@@ -203,6 +256,7 @@
           <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
         </COVERAGE_PATTERN>
       </EXTENSION>
+      <EXTENSION ID="RubyDockerContainerSettingsRunConfigurationExtension" dockerComposeCommand="RUN" />
       <EXTENSION ID="org.jetbrains.plugins.ruby.rails.run.RailsRunConfigurationExtension" SCRATCH_USE_RAILS_RUNNER="false" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_NAME" VALUE="test" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ARGS" VALUE="" />
@@ -213,6 +267,15 @@
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_TESTOPTS" VALUE="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Cucumber.Scenario: Admin adds a student to the database" />
+      <item itemvalue="Cucumber.add_student.feature" />
+      <item itemvalue="JavaScript Debug.index.html" />
+      <item itemvalue="Rails.Development: selt_2021_proj_09" />
+      <item itemvalue="Rails.Production: selt_2021_proj_09" />
+      <item itemvalue="Rake.spec: selt_2021_proj_09" />
+      <item itemvalue="Rake.test: selt_2021_proj_09" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Cucumber.Scenario: Admin adds a student to the database" />

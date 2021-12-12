@@ -27,6 +27,10 @@ When /^I view "(.*?)" medication inventory$/ do |user_type|
   visit "/#{user_type}/inventory"
 end
 
+When /^I view parent medication inventory$/ do
+  #pending # Write code here that turns the phrase above into concrete actions
+  visit "/parent/parent_inventory"
+end
 
 Then /^I should only see medications belonging to school_name: "(.*?)"$/ do |school_id|
 
