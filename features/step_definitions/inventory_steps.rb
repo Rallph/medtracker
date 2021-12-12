@@ -3,7 +3,6 @@ Given /the following "(.*?)" have been added to inventory:/ do |medication_type,
   medications_table.hashes.each do |medication|
 
     if (medication_type == "school_medications")
-      #puts("school meds created")
       SchoolMedication.create(medication)
     elsif (medication_type == "student_medications")
       StudentMedication.create(medication)
