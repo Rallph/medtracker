@@ -37,6 +37,7 @@ class NurseController < ApplicationController
       StudentMedicationTransaction.create!(nurse_id: current_nurse.id, student_medication_id: student_medication, change_in_quantity: params[:dosage], date: date, time: time, comment: params[:comment])
     else
       SchoolMedicationTransaction.create!(student_id: params[:select_student], nurse_id: current_nurse.id, school_medication_id: school_medication, change_in_quantity: params[:dosage], date: date, time: time, comment: params[:comment])
+                                 .decrease_medication_quantity
     end
 
     flash[:info] = "Medication administered successfully"
