@@ -7,6 +7,30 @@ RSpec.describe NurseController, type: :controller do
     login_with(nurse, :nurse)
   }
 
+  describe "Render Nurse Inventory" do
+    before(:each) do
+      nurse = double('nurse', school_id: 1, id: 1, account_approved: true)
+      student_medications = [double('st_med1'), double('st_med2')]
+      school_medications = [double('sc_med1'), double('sc_med2')]
+    end
+    it "returns http success" do
+      fake_school = double('school1', id: 1)
+      allow(School).to receive(:find).and_return(fake_school)
+      get :inventory
+      expect(response).to have_http_status(:success)
+    end
+    it "should query the schools, SchoolMedication, StudentMedication model" do
+      fake_school = double('school1', id: 1)
+      student_medications = [double('st_med1', school_id: 1), double('st_med2', school_id: 1)]
+      school_medications = [double('sc_med1', school_id: 1), double('sc_med2', school_id: 1)]
+      expect(School).to receive(:find).and_return(fake_school)
+      expect(SchoolMedication).to receive(:where).and_return(school_medications)
+      expect(StudentMedication).to receive(:where).and_return(student_medications)
+      get :inventory
+    end
+  end
+
+
   describe "Render Nurse Homepage" do
     it "returns http success" do
       get :homepage
@@ -104,6 +128,5 @@ RSpec.describe NurseController, type: :controller do
       get :add_medication_submit, {name_of_medication: 'fake_med_name', unit_of_measurement: 'fake_unit', initial_amount: 10, belongs_to_student: "on", student_id: 'a'}
     end
   end
-
 
 end
