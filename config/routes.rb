@@ -47,7 +47,7 @@ Rails.application.routes.draw do
   post 'parent/disapprove_medication' => "parent#disapprove_medication", as: :disapprove_medication
   # post 'parent/consent_form' => "parent#disapprove_medication", as: :disapprove_medication
 
-  get 'parent/inventory' => 'parent#inventory', as: :parent_inventory
+  get 'parent/parent_inventory' => 'parent#parent_inventory', as: :parent_inventory
 
   # homepage routes
   get 'homepage/home'

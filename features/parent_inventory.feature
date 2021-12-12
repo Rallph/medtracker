@@ -30,20 +30,20 @@ Feature: Parent View Current Student Medication Inventory
 
     Scenario: Parent logs in then goes to inventory
       When I log in as a "parent" with email: "dpain05@gmail.com" and password: "PASSWORD"
-      And I view "parent" medication inventory
+      And I view parent medication inventory
       Then I should see: "Parent Inventory"
 
     Scenario: Parent view their student's medication inventory
       When I log in as a "parent" with email: "dpain05@gmail.com" and password: "PASSWORD"
-      And I view "parent" medication inventory
+      And I view parent medication inventory
       Then I should only see medications belonging to student: "Ethan Heusel"
 
     Scenario: Parent's student has no approved student medications
       When I log in as a "parent" with email: "bigjohn@gmail.com" and password: "PASSWORD"
-      And I view "parent" medication inventory
+      And I view parent medication inventory
       Then I should see: "There are no student medications in stock, if this seems wrong, please contact the school."
 
     Scenario: Parent attempts to view inventory without having an assigned student
       When I log in as a "parent" with email: "johnnyboy@gmail.com" and password: "PASSWORD"
-      And I view "parent" medication inventory
+      And I view parent medication inventory
       Then I should see: "Could not find a student belonging to you. Please contact the school."

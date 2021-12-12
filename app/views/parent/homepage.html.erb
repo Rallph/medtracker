@@ -33,7 +33,7 @@
           </div>
 
           <div id="parent-homepage-divs">
-            <%= form_tag "medication_stock", method: :get do %>
+            <%= form_tag "parent_inventory", method: :get do %>
               <%= hidden_field_tag :student_id, student.id %>
               <%= button_tag :class => "btn btn-primary", :id => "View Medication Stock-" + student.full_name + "-" + student.id.to_s do %>
                 View Medication Stock <span class='glyphicon glyphicon-list'></span>

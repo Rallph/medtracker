@@ -8,7 +8,7 @@ class ParentController < ApplicationController
 
   end
 
-  def inventory
+  def parent_inventory
     #Verify the parent has an assigned student
     if current_parent.students.first.nil?
       redirect_to :parent_root
