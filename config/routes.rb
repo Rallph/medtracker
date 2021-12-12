@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   #post 'administrator/homepage' => 'administrator#submit_new_student', as: :submit_new_student
   get 'administrator/add_student' => 'administrator#add_student', as: :add_student
   post 'administrator/add_student' => 'administrator#submit_new_student', as: :submit_new_student
-  get 'administrator/inventory' => 'administrator#inventory', as: :inventory
+  get 'administrator/inventory' => 'administrator#inventory', as: :admin_inventory
 
 
   # nurse controller routes
@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   post  'nurse/administer' => 'nurse#administer_submit', as: :administer_submit
   get   'nurse/add_medication' => 'nurse#add_medication', as: :add_medication
   post   'nurse/add_medication' => 'nurse#add_medication_submit', as: :add_medication_submit
-  get 'nurse/inventory' => 'nurse#inventory', as: :inventory
+  get 'nurse/inventory' => 'nurse#inventory', as: :nurse_inventory
 
   # parent controller routes
   get 'parent/homepage', as: :parent_root
