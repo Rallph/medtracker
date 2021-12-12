@@ -1,0 +1,96 @@
+
+<h2 id="student_title" style="margin: auto;width: 50%;text-align: center;border: 3px black;padding: 80px;font-weight: bold;"> <%= @student[0].full_name %>'s Consent Form</h2>
+
+
+<h2 style="margin: auto;width: 50%;text-align: center;border: 3px black;padding: 80px;font-weight: bold;position:relative;top:-100px;left:-400px;"> Approved Prescription Medications</h2>
+<h2 style="margin: auto;width: 50%;text-align: center;border: 3px black;padding: 80px;font-weight: bold;position:relative;top:-295px;left:400px;"> Approved School Medications </h2>
+
+<div style="height:200px">
+<table id="poll_table" style="width:400px;margin:0 auto;font-size:20px;position:relative;top:-350px;left:-400px;table-layout: fixed" class="table table-striped table-sm">
+
+  <thead>
+    <tr>
+      <th scope="col" style="width:200px">Medication Name</th>
+      <th scope="col" style="width:300px">Approval Notes</th>
+      <th scope="col" style="width:200px"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @approved_student_meds.each do |asm| %>
+    <tr class="active">
+      <td id="approved_student_med"><%= asm.medication_name %></td>
+      <td></td>
+
+      <td align="right">
+        <%= form_tag "/parent/disapprove_medication" do %>
+          <%= hidden_field_tag :med_type, "student" %>
+          <%= hidden_field_tag :medication_id, asm.id.to_s %>
+          <%= hidden_field_tag :student_id, @student[0].id.to_s %>
+
+
+          <%= submit_tag "Disapprove", :id => "delete_"+asm.medication_name, class: %w[btn btn-danger] %>
+        <% end %>
+
+          </td>
+    </tr>
+  <% end %>
+    <tr class="active">
+      <%= form_tag "/parent/approve_medication" do %>
+        <%= hidden_field_tag :med_type, "student" %>
+        <%= hidden_field_tag :student_id, @student[0].id.to_s %>
+        <td>
+        <div class="input-group">
+          <%= select_tag :st_medication_id, options_for_select(@non_approved_student_meds.collect{ |nasm| [nasm.medication_name, nasm.id]}), class: %w[form-control input-lg] %>
+        </div>
+      </td>
+      <td></td>
+      <td align="right">
+        <%= submit_tag "Approve Medication", :id => "approve_student_med", class: %w[btn btn-primary] %>
+      </td>
+      <% end %>
+    </tr>
+</table>
+</div>
+
+<table id="poll_table" style="width:400px;margin:0 auto;font-size:20px;position:relative;top:-550px;left:400px;table-layout: fixed" class="table table-striped table-sm">
+
+  <thead>
+  <tr>
+    <th scope="col" style="width:200px">Medication Name</th>
+    <th scope="col" style="width:300px">Approval Notes</th>
+    <th scope="col" style="width:200px"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @approved_school_meds.each do |asm| %>
+    <tr class="active">
+      <td id="approved_school_med"><%= asm.medication_name %></td>
+      <td></td>
+      <td align="right">
+        <%= form_tag "/parent/disapprove_medication" do %>
+          <%= hidden_field_tag :med_type, "school" %>
+          <%= hidden_field_tag :medication_id, asm.id.to_s %>
+          <%= hidden_field_tag :student_id, @student[0].id.to_s %>
+          <%= submit_tag "Disapprove", :id => "delete_"+asm.medication_name, class: %w[btn btn-danger] %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  <tr class="active">
+    <%= form_tag "/parent/approve_medication" do %>
+      <%= hidden_field_tag :med_type, "school" %>
+      <%= hidden_field_tag :student_id, @student[0].id.to_s %>
+      <td>
+        <div class="input-group">
+          <%= select_tag :sc_medication_id, options_for_select(@non_approved_school_meds.collect{ |nasm| [nasm.medication_name, nasm.id]}), class: %w[form-control input-lg] %>
+        </div>
+      </td>
+      <td></td>
+      <td align="right">
+        <%= submit_tag "Approve Medication", :id => "approve_school_med", class: %w[btn btn-primary] %>
+      </td>
+    <% end %>
+  </tr>
+</table>
