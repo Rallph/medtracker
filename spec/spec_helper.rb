@@ -27,6 +27,7 @@ SimpleCov.start 'rails' do
   add_filter '/app/controllers/nurses'
   add_filter '/app/controllers/parents'
   add_filter '/app/controllers/administrators'
+  add_filter 'app/controllers/concerns'
 end
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
