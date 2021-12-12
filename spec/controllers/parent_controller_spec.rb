@@ -16,12 +16,12 @@ RSpec.describe ParentController, type: :controller do
       allow(controller).to receive(:current_parent).and_return(@parent)
     end
     it 'returns http success' do
-      get :inventory
+      get :parent_inventory
       expect(response).to have_http_status(:success)
     end
 
     it 'should assign the @students member variable' do
-      get :inventory
+      get :parent_inventory
       expect(assigns(:students)).to eq(@fake_students)
     end
   end
@@ -34,7 +34,7 @@ RSpec.describe ParentController, type: :controller do
       allow(controller).to receive(:current_parent).and_return(@fake_parent)
     end
     it 'should redirect to the parent homepage' do
-      get :inventory
+      get :parent_inventory
       expect(response).to redirect_to(:parent_root)
     end
 
