@@ -15,9 +15,9 @@ Feature:
       | cedar central elementary | 2  |
 
     And the following "Administrators" have been added to MedMonitor:
-      | full_name               | email                      | password     | school_id |
-      | John Smith              | johnsmith1@icloud.com      | 123456       | 1         |
-      | Dan Faulk               | danfaulk@gmail.com         | 123456       | 2         |
+      | full_name               | email                      | password     | school_id | account_approved |
+      | John Smith              | johnsmith1@icloud.com      | 123456       | 1         | true             |
+      | Dan Faulk               | danfaulk@gmail.com         | 123456       | 2         | true             |
 
     And the following students have been added to MedMonitor:
       | full_name               | date_of_birth              | school_id    |
