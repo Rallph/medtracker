@@ -179,4 +179,33 @@ RSpec.describe AdministratorController, type: :controller do
 
 
 
+  describe "Render Administrator Inventory Page" do
+    #it "returns http success" do
+      #get :inventory
+      #expect(response).to have_http_status(:success)
+      #end
+    #
+    it "should query the School Model" do
+      fake_school = double("school1", :school_id => 1)
+      expect(School).to receive(:find).and_return(fake_school)
+      get :inventory
+    end
+
+    it "should query the SchoolMedication Model" do
+      fake_school = double("school1", :school_id => 1)
+      fake_medication = [double('medicine1'), double('medicine2')]
+      allow(School).to receive(:find).and_return(fake_school)
+      expect(SchoolMedication).to receive(:where).and_return(fake_medication)
+      get :inventory
+      #expect(response).to render_template("inventory")
+    end
+    it "should query the StudentMedication Model" do
+      fake_medication = [double('medicine1'), double('medicine2')]
+      fake_school = double("school1", :school_id =>1)
+      allow(School).to receive(:find).and_return(fake_school)
+      expect(StudentMedication).to receive(:where).and_return(fake_medication)
+      get :inventory
+    end
+  end
+
 end

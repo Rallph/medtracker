@@ -15,7 +15,7 @@ const updateStudentMedications = (student_medications_json) => {
         });
 
         // add a prompt for student medications in case the nurse doesn't want to select one
-        student_medication_select.append("<option value=\"\">Select a student-specific medication</option>")
+        student_medication_select.append("<option>Select a student-specific medication</option>")
 
         // put all the previously created <option> elements into the student medication select tag
         student_medication_select.append(student_medication_options);
@@ -40,3 +40,4 @@ $("#select_student").change((event) => {
         $("#student-medication-section").hide(); // hide student medications if prompt is selected
     }
 })
+;
