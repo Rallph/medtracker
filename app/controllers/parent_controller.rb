@@ -8,6 +8,51 @@ class ParentController < ApplicationController
 
   end
 
+  def medication_history
+
+    @student = Student.find(params[:student_id])
+
+    student_med_transactions = StudentMedicationTransaction.where("student_id =" + @student.id)
+    school_med_transactions = SchoolMedicationTransaction("student_id =" + @student.id)
+
+    @med_transactions = []
+
+    student_med_transactions.each do |student_med_transaction|
+      transaction = {}
+      transaction["nurse"] = Nurse.find(student_med_transaction.nurse_id)
+      transaction["amount"] = student_med_transaction.change_in_quantity
+      transaction["time"] = student_med_transaction.time
+
+      medication = StudentMedication.find(student_med_transaction.student_medication_id)
+
+      transaction["med_name"] = medication.medication_name
+      transaction["units"] = medication.unit
+      transaction["type"] = "Student Medication"
+
+      @med_transactions.append(transaction)
+
+    end
+
+    school_med_transactions.each do |school_med_transaction|
+
+      transaction = {}
+      transaction["nurse"] = Nurse.find(school_med_transaction.nurse_id)
+      transaction["amount"] = school_med_transaction.change_in_quantity
+      transaction["time"] = school_med_transaction.time
+
+      medication = SchoolMedication.find(school_med_transaction.student_medication_id)
+
+      transaction["med_name"] = medication.medication_name
+      transaction["units"] = medication.unit
+      transaction["type"] = "School Medication"
+
+      @med_transactions.append(transaction)
+
+    end
+
+
+  end
+
 
   def consent_form
 

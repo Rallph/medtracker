@@ -4,9 +4,9 @@ RSpec.describe ParentController, type: :controller do
 
   before {
     @fake_students = [double('student1'), double('student2')]
-    @admin = double('admin', school_id: 1, id: 1, students: @fake_students)
-    login_with(@admin, :administrator)
-    allow(controller).to receive(:current_parent).and_return(@admin)
+    @parent = double('admin', school_id: 1, id: 1, students: @fake_students)
+    login_with(@parent, :administrator)
+    allow(controller).to receive(:current_parent).and_return(@parent)
   }
 
   describe "Render Parent Homepage" do
@@ -17,7 +17,7 @@ RSpec.describe ParentController, type: :controller do
     end
 
     it "should get the students of the current parent" do
-      expect(controller).to receive(:current_parent).and_return(@admin)
+      expect(controller).to receive(:current_parent).and_return(@parent)
       get :homepage
     end
 
@@ -30,6 +30,86 @@ RSpec.describe ParentController, type: :controller do
     it "should assign the @students member variable" do
       get :homepage
       expect(assigns(:students)).to eq(@fake_students)
+    end
+
+  end
+
+  describe "Render Parent View Medication Distribution History" do
+
+    before(:each) do
+      @fake_nurse = double('nurse1', full_name: "Bob Henderson")
+      @fake_med_transactions = [double('school_transaction_1', nurse_id: 1, change_in_quantity: 1, time: "3:45 PM"),
+                                   double('school_transaction_1', nurse_id: 2, change_in_quantity: 3, time: "4:45 PM")]
+      @fake_medication = double('med1', unit: 'mL', medication_name: 'Ibuprofen')
+      @fake_medications = [double('med1', unit: 'tablets', medication_name: 'Ibuprofen', student_medication_transactions: @fake_med_transactions),
+                                  double('med2', unit: 'tablets', medication_name: 'Ibuprofen', student_medication_transactions: @fake_med_transactions)]
+      @fake_student = double('fake_student_1', id: 1, school_medication_transactions: @fake_med_transactions,
+                             student_medications: @fake_medications)
+
+
+      allow(SchoolMedication).to receive(:find).and_return(@fake_medication)
+      allow(Student).to receive(:find).and_return(@fake_student)
+      allow(Nurse).to receive(:find).and_return(@fake_nurse)
+
+    end
+
+    it "returns http success" do
+      get :medication_history
+      expect(response).to have_http_status(:success)
+    end
+
+    it "should correctly assign @med_transactions member variable" do
+
+      get :medication_history
+      correct_med_transactions = [
+        {"nurse" => "Bob Henderson", "amount" => 1, "time" =>  "3:45 PM", "type" => "School Medication", "med_name" => "Ibuprofen", "units" => "mL"},
+        {"nurse" => "Bob Henderson", "amount" => 3, "time" => "4:45 PM", "type" => "School Medication", "med_name" => "Ibuprofen", "units" => "mL"},
+        {"nurse" => "Bob Henderson", "amount" => 1, "time" => "3:45 PM", "type" => "Student Medication", "med_name" => "Ibuprofen", "units" => "tablets"},
+        {"nurse" => "Bob Henderson", "amount" => 3, "time" => "4:45 PM", "type" => "Student Medication", "med_name" => "Ibuprofen", "units" => "tablets"},
+        {"nurse" => "Bob Henderson", "amount" => 1, "time" => "3:45 PM", "type" => "Student Medication", "med_name" => "Ibuprofen", "units" => "tablets"},
+        {"nurse" => "Bob Henderson", "amount" => 3, "time" => "4:45 PM", "type" => "Student Medication", "med_name" => "Ibuprofen", "units" => "tablets"}
+      ]
+
+
+      expect(assigns(:med_transactions)).to eq(correct_med_transactions)
+
+    end
+
+
+    it "should query school medication transactions table" do
+
+      expect(@fake_student).to receive(:school_medication_transactions)
+      get :medication_history
+
+
+    end
+
+    it "should query student medications table" do
+
+      expect(@fake_student).to receive(:student_medications)
+      get :medication_history
+
+    end
+
+    it "should query student medication transactions table" do
+
+      expect(@fake_medications).to all(receive(:student_medication_transactions))
+      get :medication_history
+
+    end
+
+    it "should query school medications table" do
+
+      expect(SchoolMedication).to receive(:find)
+      get :medication_history
+
+    end
+
+    it "should query nurse table" do
+
+      expect(Nurse).to receive(:find)
+      get :medication_history
+
     end
 
   end
