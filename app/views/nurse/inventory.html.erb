@@ -1,0 +1,66 @@
+<h1>Nurse Inventory</h1>
+<h2>School: <%=@schools[:school_name] %></h2>
+<body>
+<div class="row">
+  <div class="column">
+    <h3>School Medications</h3>
+    <div class="table-wrapper">
+      <table id = "inventory" ; class="fixed_header">
+        <thead>
+        <tr>
+          <th>medication_name</th>
+          <th>quantity</th>
+          <th>unit</th>
+        </tr>
+        </thead>
+        <tbody>
+        <%@school_medications.each do |med| %>
+          <tr>
+            <td><%= med[:medication_name] %></td>
+            <td><%= med[:quantity] %></td>
+            <td><%= med[:unit] %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  <div class="column">
+    <h3>Student Medications</h3>
+    <div class="table-wrapper">
+      <table id=student_inventory ; class="fixed_header">
+        <thead>
+        <tr>
+          <th>medication_name</th>
+          <th>quantity</th>
+          <th>unit</th>
+          <th>student_name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <%@student_medications.each do |med| %>
+          <tr>
+            <td><%= med[:medication_name] %></td>
+            <td><%= med[:quantity] %></td>
+            <td><%= med[:unit] %></td>
+            <td><%= med.student.full_name %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+</body>
+
+
+
+
+
+
+
+
+
+
