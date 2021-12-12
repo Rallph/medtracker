@@ -7,6 +7,30 @@ RSpec.describe NurseController, type: :controller do
     login_with(nurse, :nurse)
   }
 
+  describe "Render Nurse Inventory" do
+    before(:each) do
+      nurse = double('nurse', school_id: 1, id: 1, account_approved: true)
+      student_medications = [double('st_med1'), double('st_med2')]
+      school_medications = [double('sc_med1'), double('sc_med2')]
+    end
+    it "returns http success" do
+      fake_school = double('school1', id: 1)
+      allow(School).to receive(:find).and_return(fake_school)
+      get :inventory
+      expect(response).to have_http_status(:success)
+    end
+    it "should query the schools, SchoolMedication, StudentMedication model" do
+      fake_school = double('school1', id: 1)
+      student_medications = [double('st_med1', school_id: 1), double('st_med2', school_id: 1)]
+      school_medications = [double('sc_med1', school_id: 1), double('sc_med2', school_id: 1)]
+      expect(School).to receive(:find).and_return(fake_school)
+      expect(SchoolMedication).to receive(:where).and_return(school_medications)
+      expect(StudentMedication).to receive(:where).and_return(student_medications)
+      get :inventory
+    end
+  end
+
+
   describe "Render Nurse Homepage" do
     it "returns http success" do
       get :homepage
@@ -65,14 +89,19 @@ RSpec.describe NurseController, type: :controller do
 
   describe 'Submit Administer Medication Form' do
     it 'should redirect to the administer form with a flash notice' do
-      post :administer_submit, { select_student: "1", select_medication: "1", dosage: "1", time: "2021-11-16T18:06", comment: ""}
+      post :administer_submit, { select_student: "1", select_school_medication: "1", dosage: "1", time: "2021-11-16T18:06", comment: ""}
       expect(flash[:info]).to be_truthy
       expect(response).to redirect_to :administer
     end
 
-    it 'should call the school medication transaction model to create a new transaction', :pending => true do
-      post :administer_submit, { select_student: "1", select_medication: "1", dosage: "1", time: "2021-11-16T18:06", comment: ""}
+    it 'should call the school medication transaction model to create a new transaction when a school medication is selected in the form' do
       expect(SchoolMedicationTransaction).to receive(:create!)
+      post :administer_submit, { select_student: "1", select_school_medication: "1", dosage: "1", time: "2021-11-16T18:06", comment: ""}
+    end
+
+    it 'should call the student medication transaction model to create a new transaction when a student medication is selected in the form' do
+      expect(StudentMedicationTransaction).to receive(:create!)
+      post :administer_submit, { select_student: "1", select_student_medication: "1", dosage: "1", time: "2021-11-16T18:06", comment: ""}
     end
   end
 
@@ -104,6 +133,5 @@ RSpec.describe NurseController, type: :controller do
       get :add_medication_submit, {name_of_medication: 'fake_med_name', unit_of_measurement: 'fake_unit', initial_amount: 10, belongs_to_student: "on", student_id: 'a'}
     end
   end
-
 
 end

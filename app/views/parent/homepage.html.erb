@@ -1,2 +1,54 @@
-<h1>Parent#homepage</h1>
-<p>Find me in app/views/parent/homepage.html.erb</p>
+<h1 style="text-align: center;">Your Students</h1>
+<% if @students.blank? == false%>
+  <table id="table-style" class="table table-striped table-sm">
+    <thead>
+    <tr>
+      <th scope="col" style="text-align: center">Name</th>
+      <th scope="col" style="text-align: center">Actions</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <% @students.each do |student| %>
+      <tr class="active">
+        <td style="text-align: center"><%= student.full_name %></td>
+        <td style="text-align: center">
+          <div id="parent-homepage-divs">
+            <%= form_tag "view_medication_distribution", method: :get do %>
+              <%= hidden_field_tag :student_id, student.id %>
+              <%= button_tag :class => "btn btn-info", :id => "View Medication History-" + student.full_name + "-" + student.id.to_s do %>
+                View Medication History <span class='glyphicon glyphicon-list-alt'></span>
+              <% end %>
+            <% end %>
+          </div>
+
+          <div id="parent-homepage-divs">
+            <%= form_tag "consent_form", method: :get do %>
+              <%= hidden_field_tag :student_id, student.id %>
+              <%= button_tag :class => "btn btn-warning", :id => "Edit Consent Form-" + student.full_name + "-" + student.id.to_s do %>
+                Edit Consent Form <span class='glyphicon glyphicon-pencil'></span>
+              <% end %>
+            <% end %>
+          </div>
+
+          <div id="parent-homepage-divs">
+            <%= form_tag "medication_stock", method: :get do %>
+              <%= hidden_field_tag :student_id, student.id %>
+              <%= button_tag :class => "btn btn-primary", :id => "View Medication Stock-" + student.full_name + "-" + student.id.to_s do %>
+                View Medication Stock <span class='glyphicon glyphicon-list'></span>
+              <% end %>
+            <% end %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+
+    </tbody>
+
+  </table>
+<% else %>
+
+  <h3 style="text-align: center;">You Currently Do Not Have Any Students</h3>
+
+<% end %>
