@@ -3,15 +3,38 @@ require 'rails_helper'
 RSpec.describe NurseController, type: :controller do
 
   before {
-    nurse = double('nurse', school_id: 1, id: 1)
+    nurse = double('nurse', school_id: 1, id: 1, account_approved: true)
     login_with(nurse, :nurse)
   }
 
-  describe "GET #homepage" do
+  describe "Render Nurse Homepage" do
     it "returns http success" do
       get :homepage
       expect(response).to have_http_status(:success)
     end
+
+    it "should query the SchoolMedication Model" do
+      fake_medicines = [double('medicine1'), double('medicine2')]
+      expect(SchoolMedication).to receive(:where).and_return(fake_medicines)
+      get :homepage
+    end
+
+    it "should render the nurse homepage" do
+
+      fake_medicines = [double('medicine1'), double('medicine2')]
+      allow(SchoolMedication).to receive(:where).and_return(fake_medicines)
+      get :homepage
+
+      expect(response).to render_template("homepage")
+    end
+
+    it "should assign the @meds_in_low_supply member variable" do
+      fake_medicines = [double('medicine1'), double('medicine2')]
+      allow(SchoolMedication).to receive(:where).and_return(fake_medicines)
+      get :homepage
+      expect(assigns(:meds_in_low_supply)).to eq(fake_medicines)
+    end
+
   end
 
   describe "Render Administer Medication Page" do
@@ -52,5 +75,35 @@ RSpec.describe NurseController, type: :controller do
       expect(SchoolMedicationTransaction).to receive(:create!)
     end
   end
+
+  describe 'Add Medication' do
+    it 'should create an instance of SchoolMedication' do
+      expect(SchoolMedication).to receive(:create!)
+      get :add_medication_submit, {name_of_medication: 'fake_med_name', unit_of_measurement: 'fake_unit', initial_amount: 10}
+    end
+    it 'should create an instance of StudentMedication' do
+      expect(StudentMedication).to receive(:create!)
+      get :add_medication_submit, {name_of_medication: 'fake_med_name', unit_of_measurement: 'fake_unit', initial_amount: 10, belongs_to_student: "on", student_id: 1}
+    end
+    it 'should reach the no student id flash' do
+      get :add_medication_submit, {name_of_medication: 'fake_med_name', unit_of_measurement: 'fake_unit', initial_amount: 10, belongs_to_student: "on", student_id: ''}
+    end
+    it 'should reach the no initial amount flash' do
+      get :add_medication_submit, {name_of_medication: 'fake_med_name', unit_of_measurement: 'fake_unit', initial_amount: '', belongs_to_student: "on", student_id: 1}
+    end
+    it 'should reach the invalid initial amount flash' do
+      get :add_medication_submit, {name_of_medication: 'fake_med_name', unit_of_measurement: 'fake_unit', initial_amount: 'a', belongs_to_student: "on", student_id: 1}
+    end
+    it 'should reach the no unit of measurement flash' do
+      get :add_medication_submit, {name_of_medication: 'fake_med_name', unit_of_measurement: '', initial_amount: 10, belongs_to_student: "on", student_id: 1}
+    end
+    it 'should reach the no name of medication flash' do
+      get :add_medication_submit, {name_of_medication: '', unit_of_measurement: 'fake_unit', initial_amount: 10, belongs_to_student: "on", student_id: 1}
+    end
+    it 'should reach the invalid student id flash' do
+      get :add_medication_submit, {name_of_medication: 'fake_med_name', unit_of_measurement: 'fake_unit', initial_amount: 10, belongs_to_student: "on", student_id: 'a'}
+    end
+  end
+
 
 end

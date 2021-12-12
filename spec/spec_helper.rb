@@ -21,6 +21,12 @@ SimpleCov.start 'rails' do
   add_filter '/db/'
   add_filter '/spec/' # for rspec
   add_filter '/test/' # for minitest
+  add_filter '/app/models' # we do not have code in need of unit testing inside our model classes
+
+  # we do note have code in need of unit testing inside of our these classes
+  add_filter '/app/controllers/nurses'
+  add_filter '/app/controllers/parents'
+  add_filter '/app/controllers/administrators'
 end
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration

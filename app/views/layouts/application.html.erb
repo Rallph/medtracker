@@ -7,14 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-  <h1 class = "text-center">MedTracker</h1>
+  <h1 class = "header">MedTracker</h1>
   <% flash.each do |type, msg| %>
     <div class="alert alert-info">
       <%= msg %>
     </div>
   <% end %>
   <%= yield %>
+  <%= yield :approve_accounts_javascript %>
 
 </body>
 </html>
