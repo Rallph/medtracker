@@ -46,7 +46,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'guard-rspec'
   gem 'sqlite3', '1.3.13'
-  gem "jasmine"
 end
 
 group :test do
