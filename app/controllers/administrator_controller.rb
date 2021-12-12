@@ -87,7 +87,7 @@ class AdministratorController < ApplicationController
         date_of_birth: dob
       )
       @parent = Parent.where(email: p_email)
-      @parent[0].students << student
+      @parent[0].students << student  # this is because parent is an array
 
       flash[:info] = "Student info added successfully"
     end
