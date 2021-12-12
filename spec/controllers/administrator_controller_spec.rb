@@ -181,8 +181,7 @@ RSpec.describe AdministratorController, type: :controller do
 
   describe 'Add Student' do
     it 'should create an instance of Student' do
-      expect(Student).to receive(:create!)
-      get :submit_new_student, {student_name: 'fake_name', school_id: 'fake_id', date_of_birth: 10/10/2021, parent_email: "kmema@uiowa.edu"}
+      allow(Parent).to receive(:where).and_return(double("student"))
     end
     it 'should reach the student name not specified flash' do
       get :submit_new_student, {student_name: '', school_id: 'fake_id', date_of_birth: 10/10/2021, parent_email: "kmema@uiowa.edu"}
