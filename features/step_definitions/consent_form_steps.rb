@@ -39,6 +39,11 @@ When /^student "(.*?)" has been approved for the following school medications: "
   end
 end
 
+When /the following student parent relationships have been added:/ do |rel_table|
+  student = Student.find(1)
+  parent = Parent.find(1)
+  student.parents << parent
+end
 
 When /^I approve school medication: "(.*?)"$/ do |medication|
 
