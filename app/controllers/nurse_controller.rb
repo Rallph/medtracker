@@ -18,7 +18,9 @@ class NurseController < ApplicationController
 
   def administer_submit
     param! :select_student,     Integer, required: true, message: "Student not specified"
-    param! :select_medication,  Integer, required: true, message: "Medication not specified"
+    # TODO change this to check if at least one is present
+    param! :select_school_medication,  String
+    param! :select_student_medication,  String
     param! :dosage,             Integer, required: true, min: 1, message: "At least one dose must be administered"
     param! :time,               String, required: true, message: "Administration time not specified"
     param! :comment,            String
