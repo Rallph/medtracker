@@ -32,7 +32,8 @@ class NurseController < ApplicationController
     date = datetime[0]
     time = datetime[1]
 
-    med_approvals = Student.where("id = " + params[:select_student].to_s)[0].medication_approvals
+    # med_approvals = Student.where("id = " + params[:select_student].to_s)[0].medication_approvals
+    med_approvals = Student.find(params[:select_student]).medication_approvals
 
     #TODO add actual validation to ensure only one type of medication is submitted
     if student_medication && !student_medication.empty?
