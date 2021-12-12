@@ -111,6 +111,7 @@ ActiveRecord::Schema.define(version: 20211209145042) do
     t.string  "change_in_quantity"
     t.integer "student_medication_id"
     t.integer "nurse_id"
+    t.string  "comment"
   end
 
   create_table "student_medications", force: :cascade do |t|
