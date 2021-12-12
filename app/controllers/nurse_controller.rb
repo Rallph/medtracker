@@ -55,7 +55,6 @@ class NurseController < ApplicationController
       med_approvals.each do |med_approval|
 
         if (med_approval.student_id.to_s.eql? params[:select_student].to_s) and (med_approval.school_medication_id.to_s.eql? school_medication.to_s)
-          puts 'YES!'
           approved = true
         end
       end
