@@ -45,6 +45,7 @@ class NurseController < ApplicationController
       end
       if approved
         StudentMedicationTransaction.create!(nurse_id: current_nurse.id, student_medication_id: student_medication, change_in_quantity: params[:dosage], date: date, time: time, comment: params[:comment])
+                                    .decrease_medication_quantity
         flash[:info] = "Medication administered successfully"
       else
         flash[:info] = "Record not taken. Medication is not approved for that student"
@@ -60,6 +61,7 @@ class NurseController < ApplicationController
       end
       if approved.eql? true
         SchoolMedicationTransaction.create!(student_id: params[:select_student], nurse_id: current_nurse.id, school_medication_id: school_medication, change_in_quantity: params[:dosage], date: date, time: time, comment: params[:comment])
+                                   .decrease_medication_quantity
         flash[:info] = "Medication administered successfully"
       else
         flash[:info] = "Record not taken. Medication is not approved for that student"
