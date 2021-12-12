@@ -26,6 +26,10 @@ Feature:
       | Optivar                 | 250                        | mL           | 1         | 1           |
       | Elestat                 | 15                         | tablets      | 2         | 1           |
 
+    And the following student parent relationships have been added:
+    | parent_id | student_id |
+    | 1         | 1          |
+
     And student "1" has been approved for the following school medications: "1,3"
 
     And student "1" has been approved for the following student medications: "1,2,3"

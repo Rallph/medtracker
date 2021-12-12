@@ -82,6 +82,9 @@ RSpec.describe ParentController, type: :controller do
       fake_students = [double('student1', full_name: 'student1', id: 1, medication_approvals: fake_approval)] #, double('student2', full_name: 'student2', id: 2)]
       expect(Student).to receive(:where).and_return(fake_students)
 
+      fake_parents = [double('parent1', id: 1)]
+      expect(fake_students[0]).to receive(:parents).with(no_args).and_return(fake_parents)
+
       fake_school_meds = [double('school_med', id: 1),double('school_med', id: 2)]
       expect(SchoolMedication).to receive(:all).and_return(fake_school_meds)
 

@@ -179,6 +179,27 @@ RSpec.describe AdministratorController, type: :controller do
 
 
 
+
+  describe 'Add Student' do
+    it 'should create an instance of Student' do
+      allow(Parent).to receive(:where).and_return([double("parent", :students => [])])
+      expect(Student).to receive(:create!)
+      get :submit_new_student, {student_name: 'fake_name', school_id: 'fake_id', date_of_birth: 10/10/2021, parent_email: "kmema@uiowa.edu"}
+    end
+    it 'should reach the student name not specified flash' do
+      get :submit_new_student, {student_name: '', school_id: 'fake_id', date_of_birth: 10/10/2021, parent_email: "kmema@uiowa.edu"}
+    end
+    it 'should reach the school id not specified flash' do
+      get :submit_new_student, {student_name: 'fake_name', school_id: '', date_of_birth: 10/10/2021, parent_email: "kmema@uiowa.edu"}
+    end
+    it 'should reach the DOB not specified flash' do
+      get :submit_new_student, {student_name: 'fake_name', school_id: 'fake_id', date_of_birth: '', parent_email: "kmema@uiowa.edu"}
+    end
+    it 'should reach the parent email not specified flash' do
+      get :submit_new_student, {student_name: 'fake_name', school_id: 'fake_id', date_of_birth: 10/10/2021, parent_email: ''}
+    end
+  end
+
   describe "Render Administrator Inventory Page" do
     #it "returns http success" do
       #get :inventory
@@ -205,6 +226,7 @@ RSpec.describe AdministratorController, type: :controller do
       allow(School).to receive(:find).and_return(fake_school)
       expect(StudentMedication).to receive(:where).and_return(fake_medication)
       get :inventory
+
     end
   end
 
