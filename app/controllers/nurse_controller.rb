@@ -32,14 +32,42 @@ class NurseController < ApplicationController
     date = datetime[0]
     time = datetime[1]
 
+    med_approvals = Student.where("id = " + params[:select_student].to_s)[0].medication_approvals
+
     #TODO add actual validation to ensure only one type of medication is submitted
     if student_medication && !student_medication.empty?
-      StudentMedicationTransaction.create!(nurse_id: current_nurse.id, student_medication_id: student_medication, change_in_quantity: params[:dosage], date: date, time: time, comment: params[:comment])
+      approved = false
+      med_approvals.each do |med_approval|
+
+        if (med_approval.student_id.to_s.eql? params[:select_student].to_s) and (med_approval.student_medication_id.to_s.eql? student_medication.to_s)
+          approved = true
+        end
+      end
+      if approved
+        StudentMedicationTransaction.create!(nurse_id: current_nurse.id, student_medication_id: student_medication, change_in_quantity: params[:dosage], date: date, time: time, comment: params[:comment])
+        flash[:info] = "Medication administered successfully"
+      else
+        flash[:info] = "Record not taken. Medication is not approved for that student"
+      end
+
     else
-      SchoolMedicationTransaction.create!(student_id: params[:select_student], nurse_id: current_nurse.id, school_medication_id: school_medication, change_in_quantity: params[:dosage], date: date, time: time, comment: params[:comment])
+      approved = false
+      med_approvals.each do |med_approval|
+
+        if (med_approval.student_id.to_s.eql? params[:select_student].to_s) and (med_approval.school_medication_id.to_s.eql? school_medication.to_s)
+          puts 'YES!'
+          approved = true
+        end
+      end
+      if approved.eql? true
+        SchoolMedicationTransaction.create!(student_id: params[:select_student], nurse_id: current_nurse.id, school_medication_id: school_medication, change_in_quantity: params[:dosage], date: date, time: time, comment: params[:comment])
+        flash[:info] = "Medication administered successfully"
+      else
+        flash[:info] = "Record not taken. Medication is not approved for that student"
+      end
+
     end
 
-    flash[:info] = "Medication administered successfully"
     redirect_to :administer
   end
 
