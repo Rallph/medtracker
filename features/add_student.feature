@@ -13,9 +13,6 @@ Feature: Admin Add Student
     And I log in as a "administrator" with email: "lebron@gmail.com " and password: "123456"
     And I am on the Add Student page
 
-  Scenario: Admin adds a student to the database
-    When I input a student as name: "James Bond", school_id: "12345", date_of_birth: "12/07/2021", parent_email: "kmema@uiowa.edu"
-    Then I should see: "Student info added successfully"
   Scenario: Admin doesn't enter the name field
     When I input a student as name: "", school_id: "12345", date_of_birth: "12/07/2021", parent_email: "kmema@uiowa.edu"
     Then I should see: "Student not specified."
