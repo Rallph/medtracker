@@ -14,6 +14,7 @@ Feature: Nurse Add Medication
     And I log in as a "nurse" with email: "s-milbert@hotmail.com" and password: "PassWord"
     And I am on the Add Medication page
 
+
     # Capybara not responding to javascript
 #  Scenario: Nurse visits the add medication page
 #    When The student box is checked

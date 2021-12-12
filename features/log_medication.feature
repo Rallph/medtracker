@@ -25,8 +25,8 @@ Feature:
     And I am on the Administer Medication page
 
   Scenario: Nurse visits administer medication page
-    Then I should see fields for "select student,select medication,dosage,comment,time"
+    Then I should see fields for "select student,select school medication,dosage,comment,time"
 
-  Scenario: Nurse successfully administers medication to a student
-    When I administer "1" dose(s) of medication "Ibuprofen" to student "John Doe"
-    Then I should see: "1 dose(s) of Ibuprofen administered to John Doe"
+  Scenario: Nurse successfully administers school medication to a student
+    When I administer "1" dose(s) of school medication "Ibuprofen" to student "John Doe"
+    Then I should see: "Medication administered successfully"

@@ -4,12 +4,17 @@
   <%= form_tag do %>
     <div class="form-group">
       <%= label_tag :select_student, "Student" %>
-      <%= select_tag :select_student, options_for_select(@student_options), class: %w[form-control input-lg] %>
+      <%= select_tag :select_student, options_from_collection_for_select(@student_options, 'id', 'full_name'), class: %w[form-control input-lg], :prompt => "Select a student" %>
     </div>
 
     <div class="form-group">
-      <%= label_tag :select_medication, "Medication" %>
-      <%= select_tag :select_medication, options_for_select(@school_medication_options), class: %w[form-control input-lg] %>
+      <%= label_tag :select_school_medication, "School Medication" %>
+      <%= select_tag :select_school_medication, options_from_collection_for_select(@school_medication_options, 'id', 'medication_name'), class: %w[form-control input-lg], :prompt => "Select a school medication" %>
+    </div>
+
+    <div class="form-group" id="student-medication-section">
+      <%= label_tag :select_student_medication, "Student Medication" %>
+      <%= select_tag :select_student_medication, nil, class: %w[form-control input-lg] %>
     </div>
 
     <div class="form-group">
@@ -32,3 +37,7 @@
     </div>
   <% end %>
 </div>
+
+<% content_for :administer_student_medications_javascript do %>
+  <%= javascript_include_tag "AdministerGetStudentMedications.js" %>
+<% end %>
