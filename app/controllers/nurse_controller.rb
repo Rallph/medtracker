@@ -23,6 +23,9 @@ class NurseController < ApplicationController
     param! :time,               String, required: true, message: "Administration time not specified"
     param! :comment,            String
 
+    school_medication = params[:select_school_medication]
+    student_medication = params[:select_student_medication]
+
     datetime = params[:time].split("T")
     date = datetime[0]
     time = datetime[1]
