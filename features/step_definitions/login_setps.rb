@@ -38,7 +38,7 @@ Then /^I should see the "(.*?)" homepage$/ do  |homepage|
   if homepage == "administrator"
     buttons = ["Manage Access","View Reports/Logs"]
   else
-    buttons = ["Administer Medicine","Reports/Logs","Send Consent Form"]
+    buttons = ["Administer Medicine","Reports/Logs"]
   end
 
   buttons.each do |button|
