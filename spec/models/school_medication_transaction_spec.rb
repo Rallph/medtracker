@@ -8,6 +8,12 @@ RSpec.describe SchoolMedicationTransaction, type: :model do
       expect(SchoolMedication).to receive(:find_by).and_return(fake_medication)
       SchoolMedicationTransaction.create(school_medication_id: 1, change_in_quantity: 1)
     end
-
+    
+    it 'should call the quantity setter on the returned medication' do
+      fake_medication = double('medication', :quantity => 10, :save => nil)
+      allow(SchoolMedication).to receive(:find_by).and_return(fake_medication)
+      expect(fake_medication).to receive(:quantity=).and_return(9)
+      SchoolMedicationTransaction.create(school_medication_id: 1, change_in_quantity: 1)
+    end
   end
 end
