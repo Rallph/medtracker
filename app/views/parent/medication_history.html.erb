@@ -2,10 +2,10 @@
   <thead>
   <tr>
     <th scope="col">Medication Name</th>
-    <th scope="col">Quantity</th>
     <th scope="col">Type</th>
+    <th scope="col">Quantity</th>
     <th scope="col">Administered By</th>
-    <th scope="col">Date</th>
+    <th scope="col">Time</th>
 
   </tr>
   </thead>
@@ -15,8 +15,8 @@
   <% @med_transactions.each do |med_transaction| %>
     <tr class="active">
       <td><%= med_transaction["med_name"] %></td>
-      <td><%= med_transaction["amount"] %>  <%= med_transaction["units"] %></td>
       <td><%= med_transaction["type"] %></td>
+      <td><%= med_transaction["amount"] %>  <%= med_transaction["units"] %></td>
       <td><%= med_transaction["nurse"] %></td>
       <td><%= med_transaction["time"] %></td>
     </tr>

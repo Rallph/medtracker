@@ -43,6 +43,7 @@ Rails.application.routes.draw do
   # parent controller routes
   get 'parent/homepage', as: :parent_root
   get 'parent/consent_form' => "parent#consent_form", as: :consent_form
+  get 'parent/medication_history' => "parent#medication_history", as: :medication_history
   post 'parent/approve_medication' => "parent#approve_medication", as: :approve_medication
   post 'parent/disapprove_medication' => "parent#disapprove_medication", as: :disapprove_medication
   # post 'parent/consent_form' => "parent#disapprove_medication", as: :disapprove_medication
