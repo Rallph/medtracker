@@ -13,7 +13,7 @@ services:
     networks:
       - development
     ports:
-      - 3000:3000
+      - "3000:3000"
     stdin_open: true # stdin_open and tty allow an interactive shell to be attached to the container
     tty: true
     entrypoint: entrypoint.sh # executes the entrypoint script on container start

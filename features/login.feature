@@ -41,7 +41,7 @@ Feature:
 
   Scenario: parent logs into system
     When I log in as a "parent" with email: "johndavis1@yahoo.com" and password: "password2"
-    Then I should see: "Parent#homepage"
+    Then I should see: "Your Students"
 
   Scenario: Nurse inputs username and password that does not exist
     When I log in as a "nurse" with email: "boby_R@gmail.com" and password: "pa$$word"
